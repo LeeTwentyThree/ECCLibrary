@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using ECCLibrary.Examples;
 
 namespace ECCLibrary;
 [BepInPlugin(PluginInfo.GUID, PluginInfo.Name, PluginInfo.Version)]
@@ -16,5 +17,8 @@ internal class ECCPlugin : BaseUnityPlugin
         harmony.PatchAll(Assembly.GetExecutingAssembly());
 
         logger.Log(LogLevel.Info, "ECCLibrary loaded!");
+        
+        var exampleCreature = new ExampleCreature();
+        exampleCreature.Register();
     }
 }

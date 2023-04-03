@@ -64,6 +64,23 @@ public class CreaturePrefabUtils
     }
 
     /// <summary>
+    /// Adds the <see cref="SplineFollowing"/> component.
+    /// </summary>
+    /// <param name="rb"></param>
+    /// <param name="locomotion"></param>
+    /// <param name="behaviourLOD"></param>
+    /// <returns></returns>
+    public static SplineFollowing AddSplineFollowing(GameObject creature, Rigidbody rb, Locomotion locomotion, BehaviourLOD behaviourLOD)
+    {
+        var component = creature.EnsureComponent<SplineFollowing>();
+        component.useRigidbody = rb;
+        component.locomotion = locomotion;
+        component.levelOfDetail = behaviourLOD;
+        return component;
+
+    }
+
+    /// <summary>
     /// Adds the <see cref="LiveMixin"/> component.
     /// </summary>
     /// <param name="creature"></param>
@@ -110,5 +127,21 @@ public class CreaturePrefabUtils
         var data = ScriptableObject.CreateInstance<WaterParkCreatureData>();
         ECCPlugin.logger.LogError("PLEASE IMPLEMENT WATER PARK FUNCTIONALITY NOW!!!");
         return data;
+    }
+
+    /// <summary>
+    /// Makes a given GameObject scannable with the scanner room, using the <see cref="ResourceTracker"/> component.
+    /// </summary>
+    /// <param name="gameObject"></param>
+    /// <param name="updatePositionPeriodically">Whether to automatically update the position of this ResourceTracker or not (should always be true for creatures).</param>
+    public static void MakeObjectScannerRoomScannable(GameObject gameObject, bool updatePositionPeriodically)
+    {
+        ResourceTracker resourceTracker = gameObject.AddComponent<ResourceTracker>();
+        resourceTracker.prefabIdentifier = gameObject.GetComponent<PrefabIdentifier>();
+        resourceTracker.rb = gameObject.GetComponent<Rigidbody>();
+        if (updatePositionPeriodically == true)
+        {
+            gameObject.AddComponent<ResourceTrackerUpdater>();
+        }
     }
 }

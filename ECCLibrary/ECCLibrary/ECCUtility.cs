@@ -19,76 +19,6 @@ public static class ECCUtility
         return AssetBundle.LoadFromFile(Path.Combine(Path.GetDirectoryName(modAssembly.Location), "Assets", assetsFileName));
     }
 
-    /// <summary>
-    /// Applies the MarmosetUBER shader to all renderers in a given prefab and its children, including inactive children.
-    /// </summary>
-    /// <param name="prefab">The GameObject to fi. Does not necessarily have to be a prefab.</param>
-    /// <param name="materialSettings">A set of </param>
-    public static void ApplySNShaders(GameObject prefab, UBERMaterialProperties materialSettings)
-    {
-        var renderers = prefab.GetComponentsInChildren<Renderer>(true);
-        var newShader = Shader.Find("MarmosetUBER");
-        for (int i = 0; i < renderers.Length; i++)
-        {
-            for (int j = 0; j < renderers[i].materials.Length; j++)
-            {
-                Material material = renderers[i].materials[j];
-                Texture specularTexture = material.GetTexture("_SpecGlossMap");
-                Texture emissionTexture = material.GetTexture("_EmissionMap");
-                material.shader = newShader;
-
-                material.DisableKeyword("_SPECGLOSSMAP");
-                material.DisableKeyword("_NORMALMAP");
-                if (specularTexture != null)
-                {
-                    material.SetTexture("_SpecTex", specularTexture);
-                    material.SetFloat("_SpecInt", materialSettings.SpecularInt);
-                    material.SetFloat("_Shininess", materialSettings.Shininess);
-                    material.EnableKeyword("MARMO_SPECMAP");
-                    material.SetColor("_SpecColor", new Color(1f, 1f, 1f, 1f));
-                    material.SetFloat("_Fresnel", 0.24f);
-                    material.SetVector("_SpecTex_ST", new Vector4(1.0f, 1.0f, 0.0f, 0.0f));
-                }
-                if (material.IsKeywordEnabled("_EMISSION"))
-                {
-                    material.EnableKeyword("MARMO_EMISSION");
-                    material.SetFloat("_EnableGlow", 1f);
-                    material.SetTexture("_Illum", emissionTexture);
-                    material.SetFloat("_GlowStrength", materialSettings.EmissionScale);
-                    material.SetFloat("_GlowStrengthNight", materialSettings.EmissionScale);
-                }
-
-                if (material.GetTexture("_BumpMap"))
-                {
-                    material.EnableKeyword("MARMO_NORMALMAP");
-                }
-
-                if (CompareStrings(material.name, "Cutout", ECCStringComparison.Contains))
-                {
-                    material.EnableKeyword("MARMO_ALPHA_CLIP");
-                }
-                if (CompareStrings(material.name, "Transparent", ECCStringComparison.Contains))
-                {
-                    material.EnableKeyword("_ZWRITE_ON");
-                    material.EnableKeyword("WBOIT");
-                    material.SetInt("_ZWrite", 0);
-                    material.SetInt("_Cutoff", 0);
-                    material.SetFloat("_SrcBlend", 1f);
-                    material.SetFloat("_DstBlend", 1f);
-                    material.SetFloat("_SrcBlend2", 0f);
-                    material.SetFloat("_DstBlend2", 10f);
-                    material.SetFloat("_AddSrcBlend", 1f);
-                    material.SetFloat("_AddDstBlend", 1f);
-                    material.SetFloat("_AddSrcBlend2", 0f);
-                    material.SetFloat("_AddDstBlend2", 10f);
-                    material.globalIlluminationFlags = MaterialGlobalIlluminationFlags.EmissiveIsBlack | MaterialGlobalIlluminationFlags.RealtimeEmissive;
-                    material.renderQueue = 3101;
-                    material.enableInstancing = true;
-                }
-            }
-        }
-    }
-
     internal static SwimBehaviour EssentialComponentSystem_Swimming(GameObject prefab, float turnSpeed, Rigidbody rb)
     {
         Locomotion locomotion = prefab.AddComponent<Locomotion>();
@@ -120,40 +50,6 @@ public static class ECCUtility
         List<TechType> acidImmuneList = new List<TechType>(DamageSystem.acidImmune);
         acidImmuneList.Add(techType);
         DamageSystem.acidImmune = acidImmuneList.ToArray();
-    }
-
-    /// <returns>An arbitrary <see cref="AnimationCurve"/> which is used in ECC TrailManagers by default.</returns>
-    public static AnimationCurve Curve_Trail()
-    {
-        return new AnimationCurve(new Keyframe[] { new Keyframe(0f, 0.25f), new Keyframe(1f, 0.75f) });
-    }
-
-    /// <returns>An <see cref="AnimationCurve"/> with no variation in value.</returns>
-    public static AnimationCurve Curve_Flat(float value = 1f)
-    {
-        return new AnimationCurve(new Keyframe[] { new Keyframe(0f, value), new Keyframe(1f, value) });
-    }
-
-    /// <returns>A new instance of a <see cref="LiveMixinSettings"/>.</returns>
-    public static LiveMixinSettings CreateNewLiveMixinData()
-    {
-        return ScriptableObject.CreateInstance<LiveMixinSettings>();
-    }
-
-    /// <summary>
-    /// Makes a given GameObject scannable with the scanner room, using the <see cref="ResourceTracker"/> component.
-    /// </summary>
-    /// <param name="gameObject"></param>
-    /// <param name="updatePositionPeriodically">Whether to automatically update the position of this ResourceTracker or not (should always be true for creatures).</param>
-    public static void MakeObjectScannerRoomScannable(GameObject gameObject, bool updatePositionPeriodically)
-    {
-        ResourceTracker resourceTracker = gameObject.AddComponent<ResourceTracker>();
-        resourceTracker.prefabIdentifier = gameObject.GetComponent<PrefabIdentifier>();
-        resourceTracker.rb = gameObject.GetComponent<Rigidbody>();
-        if (updatePositionPeriodically == true)
-        {
-            gameObject.AddComponent<ResourceTrackerUpdater>();
-        }
     }
 
     /// <summary>
@@ -308,12 +204,7 @@ public static class GameObjectExtensions
     /// <returns></returns>
     public static GameObject SearchChild(this GameObject gameObject, string byName, ECCStringComparison stringComparison = ECCStringComparison.Equals)
     {
-        GameObject obj = SearchChildRecursive(gameObject, byName, stringComparison);
-        if (obj == null)
-        {
-            ECCLog.AddMessage("No child found in hierarchy by name {0}.", byName);
-        }
-        return obj;
+        return SearchChildRecursive(gameObject, byName, stringComparison);
     }
 
     static GameObject SearchChildRecursive(GameObject gameObject, string byName, ECCStringComparison stringComparison)
@@ -362,23 +253,4 @@ public enum ECCStringComparison
     /// Whether a given string is located anywhere inside of a larger string. Case sensitive.
     /// </summary>
     ContainsCaseSensitive
-}
-/// <summary>
-/// Enum with values that correspond to item pickup sounds.
-/// </summary>
-public enum ItemSoundsType
-{
-    Default,
-    Organic,
-    Egg,
-    Fins,
-    Suit,
-    Tank,
-    Floater,
-    Light,
-    AirBladder,
-    FirstAidKit,
-    Water,
-    StillSuitWater,
-    Fish
 }
