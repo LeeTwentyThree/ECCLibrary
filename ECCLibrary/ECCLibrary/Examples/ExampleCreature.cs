@@ -8,6 +8,7 @@ internal class ExampleCreature : CreatureAsset
         var prefabInfo = PrefabInfo.WithTechType("ExampleCreature", "Example Creature", "Un ejemplo.");
         var liveMixinData = CreaturePrefabUtils.CreateLiveMixinData(160f);
 
+        // all test model shit (could be reduced to a single line with Asset Bundles):
         var model = new GameObject("CreatureModel");
         model.SetActive(false);
 
@@ -19,6 +20,7 @@ internal class ExampleCreature : CreatureAsset
         cube.AddComponent<Animator>();
 
         Object.DontDestroyOnLoad(model);
+        // model shit ends here
 
         var template = new CreatureTemplate(prefabInfo, model, BehaviourType.SmallFish, EcoTargetType.SmallFish, liveMixinData);
         template.CellLevel = LargeWorldEntity.CellLevel.Far;
