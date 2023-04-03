@@ -1,4 +1,4 @@
-﻿using ProtoBuf;
+﻿using ECCLibrary.Data;
 using System;
 
 namespace ECCLibrary;
@@ -11,24 +11,17 @@ public sealed class CreatureTemplate
     /// <summary>
     /// Contains most of the data related to registering a creature into the game.
     /// </summary>
-    /// <param name="prefabInfo">Information for registering the prefab. MUST be unique to each creature.</param>
     /// <param name="model">The model that is cloned to create the creature GameObject.</param>
     /// <param name="behaviourType">Goes hand in hand with the EcoTargetType. Please note the Player is a SHARK! Determines very few creature behaviours/interactions.</param>
     /// <param name="ecoTargetType">Goes hand in hand with the BehaviourType. Determines many interactions with creatures, specifically how this creature is "located" or "targeted" by other creatures</param>
     /// <param name="liveMixinData">Controls health and damage-taking aspects of this creature.</param>
-    public CreatureTemplate(PrefabInfo prefabInfo, GameObject model, BehaviourType behaviourType, EcoTargetType ecoTargetType, LiveMixinData liveMixinData)
+    public CreatureTemplate(GameObject model, BehaviourType behaviourType, EcoTargetType ecoTargetType, LiveMixinData liveMixinData)
     {
-        PrefabInfo = prefabInfo;
         Model = model;
         BehaviourType = behaviourType;
         EcoTargetType = ecoTargetType;
         LiveMixinData = liveMixinData;
     }
-
-    /// <summary>
-    /// Information for registering the prefab. MUST be unique to each creature.
-    /// </summary>
-    public PrefabInfo PrefabInfo { get; set; }
 
     /// <summary>
     /// The model that is cloned to create the creature GameObject.
@@ -54,6 +47,11 @@ public sealed class CreatureTemplate
     /// Contains data pertaining to the <see cref="SwimRandom"/> action.
     /// </summary>
     public SwimRandomData SwimRandomData { get; set; } = new SwimRandomData(0.2f, Vector3.one * 20f, 3f);
+
+    /// <summary>
+    /// Contains data pertaining to the <see cref="StayAtLeashPosition"/> action.
+    /// </summary>
+    public StayAtLeashData StayAtLeashData { get; set; }
 
     /// <summary>
     /// The Type of the main component that must inherit from <see cref="Creature"/>.
@@ -90,7 +88,7 @@ public sealed class CreatureTemplate
     public bool AcidImmune { get; set; }
 
     /// <summary>
-    /// Total power output of this creature. All ECC creatures can be put in the bioreactor unless this value is LESS than 0.
+    /// Total power output of this creature. All ECC creatures can be put in the bioreactor as long as this value is 0 or greater.
     /// </summary>
     public float BioReactorCharge { get; set; } = 200f;
 
@@ -138,11 +136,6 @@ public sealed class CreatureTemplate
     /// Controls health and damage-taking aspects of this creature.
     /// </summary>
     public LiveMixinData LiveMixinData { get; set; }
-
-    /// <summary>
-    /// Sprite asset for this creature.
-    /// </summary>
-    public Sprite Sprite { get; set; }
 
     /// <summary>
     /// Settings for growth in Alien Containment.

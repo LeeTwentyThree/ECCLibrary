@@ -1,4 +1,4 @@
-﻿namespace ECCLibrary;
+﻿namespace ECCLibrary.Data;
 
 /// <summary>
 /// Contains basic data pertaining to the <see cref="CreatureTrait"/>s of a creature.

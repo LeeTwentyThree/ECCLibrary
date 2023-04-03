@@ -1,14 +1,30 @@
-﻿namespace ECCLibrary.Examples;
+﻿using ECCLibrary.Data;
+
+namespace ECCLibrary.Examples;
 
 internal class ExampleCreature : CreatureAsset
 {
+    public ExampleCreature(PrefabInfo prefabInfo) : base(prefabInfo)
+    {
+    }
 
     protected override CreatureTemplate CreateTemplate()
     {
-        var prefabInfo = PrefabInfo.WithTechType("ExampleCreature", "Example Creature", "Un ejemplo.");
-        var liveMixinData = CreaturePrefabUtils.CreateLiveMixinData(160f);
+        var template = new CreatureTemplate(GetModel(), BehaviourType.SmallFish, EcoTargetType.SmallFish, CreatureDataUtils.CreateLiveMixinData(160f));
+        template.CellLevel = LargeWorldEntity.CellLevel.Far;
+        template.SetCreatureComponentType<ExampleCreatureComponent>();
+        template.SwimRandomData = new SwimRandomData(0.2f, new Vector3(20, 20, 20), 2f);
+        template.StayAtLeashData = new StayAtLeashData(0.6f, 14f, 6f);
+        template.AcidImmune = true;
+        template.BioReactorCharge = 600;
+        template.Mass = 50;
+        template.EyeFOV = 0.34f;
+        template.SurfaceType = VFXSurfaceTypes.metal;
+        return template;
+    }
 
-        // all test model shit (could be reduced to a single line with Asset Bundles):
+    private GameObject GetModel()
+    {
         var model = new GameObject("CreatureModel");
         model.SetActive(false);
 
@@ -20,12 +36,8 @@ internal class ExampleCreature : CreatureAsset
         cube.AddComponent<Animator>();
 
         Object.DontDestroyOnLoad(model);
-        // model shit ends here
 
-        var template = new CreatureTemplate(prefabInfo, model, BehaviourType.SmallFish, EcoTargetType.SmallFish, liveMixinData);
-        template.CellLevel = LargeWorldEntity.CellLevel.Far;
-        template.SetCreatureComponentType<ExampleCreatureComponent>();
-        return template;
+        return model;
     }
 
     protected override IEnumerator ModifyPrefab(GameObject obj, CreatureComponents components)

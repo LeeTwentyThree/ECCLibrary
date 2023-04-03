@@ -1,86 +1,102 @@
-﻿using UnityEngine;
-using static CraftData;
-using static LargeWorldEntity;
-using static PlaceTool;
-using static UWE.FreezeTime;
+﻿using ECCLibrary.Data;
 
 namespace ECCLibrary;
 
-internal abstract class CreatureAsset
+/// <summary>
+/// Override this class to define a new creature. Call the <see cref="Register"/> method on an instance to add it to the game.
+/// </summary>
+public abstract class CreatureAsset
 {
-    protected abstract CreatureTemplate CreateTemplate();
-
-    protected abstract IEnumerator ModifyPrefab(GameObject obj, CreatureComponents components);
-
     private CreatureTemplate template;
 
-    private GameObject cached;
+    private GameObject cachedPrefab;
 
-    public PrefabInfo PrefabInfo
+    /// <summary>
+    /// Information for registering the prefab. MUST be unique to each creature.
+    /// </summary>
+    public PrefabInfo PrefabInfo { get; private set; }
+
+    /// <summary>
+    /// Creates a CreatureAsset with the given PrefabInfo.
+    /// </summary>
+    /// <param name="prefabInfo"></param>
+    public CreatureAsset(PrefabInfo prefabInfo)
     {
-        get
-        {
-            if (template != null && template.PrefabInfo != null && !string.IsNullOrEmpty(template.PrefabInfo.ClassID)) return template.PrefabInfo;
-            ECCPlugin.logger.LogError("Attempting to access PrefabInfo property before creature has been initialized!");
-            return new PrefabInfo();
-        }
+        PrefabInfo = prefabInfo;
     }
 
+    /// <summary>
+    /// The TechType of this creature. MUST be unique to each creature.
+    /// </summary>
     public TechType TechType
     {
         get
         {
-            if (template != null && template.PrefabInfo != null) return template.PrefabInfo.TechType;
-            ECCPlugin.logger.LogError("Attempting to access TechType property before creature has been initialized!");
-            return TechType.None;
+            return PrefabInfo.TechType;
         }
     }
 
+    /// <summary>
+    /// Registers this creature into the game.
+    /// </summary>
     public void Register()
     {
         template = CreateTemplate();
 
         // check validity of essentials
 
-        if (template.PrefabInfo == null || template.PrefabInfo.TechType == TechType.None)
+        if (PrefabInfo.TechType == TechType.None)
         {
-            ECCPlugin.logger.LogError("Creature initialized with invalid PrefabInfo!");
+            ECCPlugin.logger.LogError($"Attempting to register creature '{this}' without a valid TechType! Exiting early.");
             return;
         }
 
-        if (!SanityChecking.CanRegisterTechTypeSafely(template.PrefabInfo.TechType))
+        if (!SanityChecking.CanRegisterTechTypeSafely(TechType))
         {
             ECCPlugin.logger.LogError("Initializing multiple creatures with the same TechType!");
             return;
         }
 
-        var prefabInfo = template.PrefabInfo;
-        var techType = template.PrefabInfo.TechType;
-
         // assign patch-time data
 
-        if (template.Sprite != null) prefabInfo.WithIcon(template.Sprite);
-        if (template.AcidImmune) ECCUtility.MakeAcidImmune(techType);
-        if (template.BioReactorCharge >= 0f) BaseBioReactor.charge.Add(techType, template.BioReactorCharge);
-        ECCUtility.PatchBehaviorType(techType, template.BehaviourType);
-        ECCUtility.PatchItemSounds(techType, template.ItemSoundsType);
+        if (template.AcidImmune) CreatureDataUtils.MakeAcidImmune(TechType);
+        if (template.BioReactorCharge > 0f) CreatureDataUtils.SetBioreactorCharge(TechType, template.BioReactorCharge);
+        CreatureDataUtils.PatchBehaviorType(TechType, template.BehaviourType);
+        CreatureDataUtils.PatchItemSounds(TechType, template.ItemSoundsType);
 
         // register custom prefab
 
-        CustomPrefab prefab = new CustomPrefab(prefabInfo);
+        CustomPrefab prefab = new CustomPrefab(PrefabInfo);
         prefab.SetGameObject(GetGameObject);
         prefab.Register();
 
         PostRegister();
     }
 
+    /// <summary>
+    /// An empty method that can be overriden to insert code that runs directly after the prefab is registered.
+    /// </summary>
     protected virtual void PostRegister() { }
+
+    /// <summary>
+    /// The majority of the data for each creature should be assigned through this call.
+    /// </summary>
+    /// <returns></returns>
+    protected abstract CreatureTemplate CreateTemplate();
+
+    /// <summary>
+    /// Changes to the prefab can be applied here.
+    /// </summary>
+    /// <param name="obj"></param>
+    /// <param name="components"></param>
+    /// <returns></returns>
+    protected abstract IEnumerator ModifyPrefab(GameObject obj, CreatureComponents components);
 
     private IEnumerator GetGameObject(IOut<GameObject> gameObject)
     {
-        if (cached != null)
+        if (cachedPrefab != null)
         {
-            gameObject.Set(cached);
+            gameObject.Set(cachedPrefab);
             yield break;
         }
 
@@ -95,10 +111,14 @@ internal abstract class CreatureAsset
         ApplyMaterials(prefab);
 
         gameObject.Set(prefab);
-        cached = prefab;
+        cachedPrefab = prefab;
         yield break;
     }
 
+    /// <summary>
+    /// By default calls <see cref="MaterialUtils.ApplySNShaders"/> to convert the materials of the entire prefab. Can be overriden to have more control over the process.
+    /// </summary>
+    /// <param name="prefab"></param>
     protected virtual void ApplyMaterials(GameObject prefab)
     {
         MaterialUtils.ApplySNShaders(prefab);
@@ -181,11 +201,14 @@ internal abstract class CreatureAsset
             CreaturePrefabUtils.AddSwimRandom(prefab, template.SwimRandomData);
         }
 
+        if (template.StayAtLeashData != null)
+        {
+            CreaturePrefabUtils.AddStayAtLeashPosition(prefab, template.StayAtLeashData);
+        }
+
         // livemixin
 
-        ccs.liveMixin = prefab.EnsureComponent<LiveMixin>();
-        ccs.liveMixin.data = template.LiveMixinData;
-        ccs.liveMixin.health = template.LiveMixinData.maxHealth;
+        ccs.liveMixin = CreaturePrefabUtils.AddLiveMixin(prefab, template.LiveMixinData);
 
         ECCPlugin.logger.LogError("IMPLEMENT LIVEMIXIN VFX PLEASE!! SOON!??");
 
@@ -216,6 +239,19 @@ internal abstract class CreatureAsset
         // ccs.creatureDeath.eatable = eatable;
         // ccs.creatureDeath.respawnInterval = _respawnSettings.RespawnDelay;
         // ccs.creatureDeath.respawn = _respawnSettings.CanRespawn;
+
+        var deadAnimationOnEnable = prefab.AddComponent<DeadAnimationOnEnable>();
+        deadAnimationOnEnable.enabled = false;
+        deadAnimationOnEnable.animator = ccs.creature.GetAnimator();
+        deadAnimationOnEnable.liveMixin = ccs.liveMixin;
+        deadAnimationOnEnable.enabled = true;
+
+        // extra
+
+        if (template.ScannerRoomScannable)
+        {
+            CreaturePrefabUtils.MakeObjectScannerRoomScannable(prefab, true);
+        }
 
         return ccs;
     }

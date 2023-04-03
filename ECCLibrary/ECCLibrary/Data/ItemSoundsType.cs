@@ -1,4 +1,4 @@
-﻿namespace ECCLibrary;
+﻿namespace ECCLibrary.Data;
 
 /// <summary>
 /// Enum with values that correspond to item pickup sounds.

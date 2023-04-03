@@ -1,4 +1,4 @@
-﻿namespace ECCLibrary;
+﻿namespace ECCLibrary.Data;
 
 /// <summary>
 /// Stores references to the basic components of a creature. Each field should not be expected to be assigned.
