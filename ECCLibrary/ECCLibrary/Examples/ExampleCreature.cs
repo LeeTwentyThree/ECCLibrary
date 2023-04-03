@@ -9,6 +9,7 @@ internal class ExampleCreature : CreatureAsset
         var liveMixinData = CreaturePrefabUtils.CreateLiveMixinData(160f);
 
         var model = new GameObject("CreatureModel");
+        model.SetActive(false);
 
         var cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
         cube.transform.parent = model.transform;
@@ -16,6 +17,8 @@ internal class ExampleCreature : CreatureAsset
         sphere.transform.parent = model.transform;
         sphere.transform.localPosition = Vector3.forward * 0.5f;
         cube.AddComponent<Animator>();
+
+        Object.DontDestroyOnLoad(model);
 
         var template = new CreatureTemplate(prefabInfo, model, BehaviourType.SmallFish, EcoTargetType.SmallFish, liveMixinData);
         template.CellLevel = LargeWorldEntity.CellLevel.Far;
