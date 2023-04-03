@@ -84,7 +84,8 @@ internal abstract class CreatureAsset
             yield break;
         }
 
-        var prefab = new GameObject(PrefabInfo.ClassID);
+        var prefab = Object.Instantiate(template.Model);
+        prefab.name = PrefabInfo.ClassID;
         prefab.SetActive(false);
 
         var components = AddComponents(prefab);
