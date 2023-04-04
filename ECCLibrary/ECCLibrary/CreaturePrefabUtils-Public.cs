@@ -57,4 +57,92 @@ public static partial class CreaturePrefabUtils
         component.hungerThreshold = data.hungerThreshold;
         return component;
     }
+
+    #region Trail Managers
+    /// <summary>
+    /// Creates a <see cref="TrailManager"/>, which controls the procedural animations of tail-like objects.
+    /// </summary>
+    /// <param name="trailParent">The root of the spine and object that the <see cref="TrailManager"/> is added to. The first child of this object and all children of the first child are used for the trail.</param>
+    /// <param name="components">The CreatureComponents of this creature.</param>
+    /// <param name="segmentSnapSpeed">How fast each segment snaps back into the default position. A higher value gives a more rigid appearance.</param>
+    /// <param name="maxSegmentOffset">How far each segment can be from the original position.</param>
+    /// <param name="multiplier">The total strength of the movement. A value too low or too high will break the trail completely.</param>
+    public static TrailManager CreateTrailManagerWithAllChildren(GameObject trailParent, CreatureComponents components, float segmentSnapSpeed, float maxSegmentOffset = -1f, float multiplier = 1f)
+    {
+        return CreateTrailManagerWithAllChildren(trailParent, components.BehaviourLOD, components.Creature.transform, segmentSnapSpeed, maxSegmentOffset, multiplier);
+    }
+
+    /// <summary>
+    /// Creates a <see cref="TrailManager"/>, which controls the procedural animations of tail-like objects.
+    /// </summary>
+    /// <param name="trailParent">The root of the spine and object that the <see cref="TrailManager"/> is added to. The first child of this object and all children of the first child are used for the trail.</param>
+    /// <param name="behaviourLOD">The BehaviourLOD of this creature.</param>
+    /// <param name="creatureRoot">The creature's uppermost Transform.</param>
+    /// <param name="segmentSnapSpeed">How fast each segment snaps back into the default position. A higher value gives a more rigid appearance.</param>
+    /// <param name="maxSegmentOffset">How far each segment can be from the original position.</param>
+    /// <param name="multiplier">The total strength of the movement. A value too low or too high will break the trail completely.</param>
+    public static TrailManager CreateTrailManagerWithAllChildren(GameObject trailParent, BehaviourLOD behaviourLOD, Transform creatureRoot, float segmentSnapSpeed, float maxSegmentOffset = -1f, float multiplier = 1f)
+    {
+        trailParent.gameObject.SetActive(false);
+
+        TrailManager tm = trailParent.AddComponent<TrailManager>();
+        tm.trails = trailParent.transform.GetChild(0).GetComponentsInChildren<Transform>();
+        tm.rootTransform = creatureRoot;
+        tm.rootSegment = tm.transform;
+        tm.levelOfDetail = behaviourLOD;
+        tm.segmentSnapSpeed = segmentSnapSpeed;
+        tm.maxSegmentOffset = maxSegmentOffset;
+        tm.allowDisableOnScreen = false;
+        AnimationCurve decreasing = new AnimationCurve(new Keyframe[] { new Keyframe(0f, 0.25f * multiplier), new Keyframe(1f, 0.75f * multiplier) });
+        tm.pitchMultiplier = decreasing;
+        tm.rollMultiplier = decreasing;
+        tm.yawMultiplier = decreasing;
+
+        trailParent.gameObject.SetActive(true);
+        return tm;
+    }
+
+    /// <summary>
+    /// Creates a <see cref="TrailManager"/>, which controls the procedural animations of tail-like objects.
+    /// </summary>
+    /// <param name="trailRoot">The root of the spine and object that the <see cref="TrailManager"/> is added to.</param>
+    /// <param name="components">The CreatureComponents of this creature.</param>
+    /// <param name="trails">Any objects that are simulated. Should NOT include the <paramref name="trailRoot"/>'s transform.</param>
+    /// <param name="segmentSnapSpeed">How fast each segment snaps back into the default position. A higher value gives a more rigid appearance.</param>
+    /// <param name="maxSegmentOffset">How far each segment can be from the original position.</param>
+    public static TrailManager CreateTrailManagerManually(GameObject trailRoot, CreatureComponents components, Transform[] trails, float segmentSnapSpeed, float maxSegmentOffset = -1f)
+    {
+        return CreateTrailManagerManually(trailRoot, components.BehaviourLOD, components.Creature.transform, trails, segmentSnapSpeed, maxSegmentOffset); 
+    }
+
+    /// <summary>
+    /// Creates a <see cref="TrailManager"/>, which controls the procedural animations of tail-like objects.
+    /// </summary>
+    /// <param name="trailRoot">The root of the spine and object that the <see cref="TrailManager"/> is added to.</param>
+    /// <param name="behaviourLOD">The BehaviourLOD of this creature.</param>
+    /// <param name="creatureRoot">The creature's uppermost Transform.</param>
+    /// <param name="trails">Any objects that are simulated. Should NOT include the <paramref name="trailRoot"/>'s transform.</param>
+    /// <param name="segmentSnapSpeed">How fast each segment snaps back into the default position. A higher value gives a more rigid appearance.</param>
+    /// <param name="maxSegmentOffset">How far each segment can be from the original position.</param>
+    public static TrailManager CreateTrailManagerManually(GameObject trailRoot, BehaviourLOD behaviourLOD, Transform creatureRoot, Transform[] trails, float segmentSnapSpeed, float maxSegmentOffset = -1f)
+    {
+        trailRoot.gameObject.SetActive(false);
+
+        TrailManager tm = trailRoot.AddComponent<TrailManager>();
+        tm.trails = trails;
+        tm.rootTransform = creatureRoot;
+        tm.rootSegment = tm.transform;
+        tm.levelOfDetail = behaviourLOD;
+        tm.segmentSnapSpeed = segmentSnapSpeed;
+        tm.maxSegmentOffset = maxSegmentOffset;
+        tm.allowDisableOnScreen = false;
+        AnimationCurve curve = new AnimationCurve(new Keyframe[] { new Keyframe(0f, 0.25f), new Keyframe(1f, 0.75f) });
+        tm.pitchMultiplier = curve;
+        tm.rollMultiplier = curve;
+        tm.yawMultiplier = curve;
+
+        trailRoot.gameObject.SetActive(true);
+        return tm;
+    }
+    #endregion
 }
