@@ -52,7 +52,7 @@ internal class ExampleCreature : CreatureAsset
         worldModel.AddComponent<Animator>();
         viewModel.AddComponent<Animator>();
 
-        foreach (var col in model.GetComponentsInChildren<Collider>())
+        foreach (var col in model.GetComponentsInChildren<Collider>(true))
         {
             Object.DestroyImmediate(col);
         }

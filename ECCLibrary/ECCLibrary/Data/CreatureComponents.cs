@@ -20,6 +20,8 @@ public struct CreatureComponents
     /// <summary> </summary>
     public EcoTarget EcoTarget { get; internal set; }
     /// <summary> </summary>
+    public Eatable Eatable { get; internal set; }
+    /// <summary> </summary>
     public VFXSurface VfxSurface { get; internal set; }
     /// <summary> </summary>
     public BehaviourLOD BehaviourLOD { get; internal set; }

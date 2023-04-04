@@ -81,6 +81,11 @@ public sealed class CreatureTemplate
     public PickupableFishData PickupableFishData { get; set; } = null;
 
     /// <summary>
+    /// Contains data pertaining to the <see cref="CreatureDeath"/> component.
+    /// </summary>
+    public RespawnData RespawnData { get; set; } = new RespawnData(true);
+
+    /// <summary>
     /// The Type of the main component that must inherit from <see cref="Creature"/>.
     /// </summary>
     public Type CreatureComponentType { get; private set; } = typeof(Creature);
@@ -127,7 +132,7 @@ public sealed class CreatureTemplate
     /// <summary>
     /// Settings that determine basic attributes of the creature.
     /// </summary>
-    public CreatureTraitsData TraitsData { get; set; } = new CreatureTraitsData();
+    public CreatureTraitsData TraitsData { get; set; } = new CreatureTraitsData(0.1f, 0.05f, 0.1f);
 
     /// <summary>
     /// Whether this creature can randomly spawn with Kharaa symptoms. True by default.

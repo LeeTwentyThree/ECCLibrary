@@ -97,6 +97,11 @@ public abstract class CreatureAsset
 
     private IEnumerator GetGameObject(IOut<GameObject> gameObject)
     {
+        if (!ObjectReferences.Done)
+        {
+            yield return ObjectReferences.SetReferences();
+        }
+
         if (cachedPrefab != null)
         {
             gameObject.Set(cachedPrefab);
@@ -221,9 +226,13 @@ public abstract class CreatureAsset
 
         // livemixin
 
-        ccs.LiveMixin = CreaturePrefabUtils.AddLiveMixin(prefab, template.LiveMixinData);
+        var lmd = template.LiveMixinData;
 
-        ECCPlugin.logger.LogError("IMPLEMENT LIVEMIXIN VFX PLEASE!! SOON!??");
+        if (lmd.damageEffect == null) lmd.damageEffect = ObjectReferences.genericCreatureHit;
+        if (lmd.deathEffect == null) lmd.deathEffect = ObjectReferences.genericCreatureHit;
+        if (lmd.electricalDamageEffect == null) lmd.electricalDamageEffect = ObjectReferences.electrocutedEffect;
+            
+        ccs.LiveMixin = CreaturePrefabUtils.AddLiveMixin(prefab, lmd);
 
         // kharaa
 
@@ -249,9 +258,11 @@ public abstract class CreatureAsset
         ccs.CreatureDeath = prefab.AddComponent<CreatureDeath>();
         ccs.CreatureDeath.useRigidbody = ccs.Rigidbody;
         ccs.CreatureDeath.liveMixin = ccs.LiveMixin;
-        // ccs.creatureDeath.eatable = eatable;
-        // ccs.creatureDeath.respawnInterval = _respawnSettings.RespawnDelay;
-        // ccs.creatureDeath.respawn = _respawnSettings.CanRespawn;
+        ccs.CreatureDeath.respawnerPrefab = ObjectReferences.respawnerPrefab;
+        ccs.CreatureDeath.eatable = ccs.Eatable;
+        ccs.CreatureDeath.respawn = template.RespawnData.respawn;
+        ccs.CreatureDeath.respawnOnlyIfKilledByCreature = template.RespawnData.respawnOnlyIfKilledByCreature;
+        ccs.CreatureDeath.respawnInterval = template.RespawnData.respawnInterval;
 
         ccs.DeadAnimationOnEnable = prefab.AddComponent<DeadAnimationOnEnable>();
         ccs.DeadAnimationOnEnable.enabled = false;
