@@ -21,10 +21,10 @@ public struct BehaviourLODData
     /// <summary>
     /// Contains data pertaining to the <see cref="BehaviourLOD"/> component.
     /// </summary>
-    /// <param name="veryClose">Beyond this distance some animations may be removed.</param>
-    /// <param name="close">Beyond this distance some functionalities may be less precise.</param>
-    /// <param name="far">Beyond this distance trail animations will no longer exist.</param>
-    public BehaviourLODData(float veryClose = 10, float close = 50, float far = 500)
+    /// <param name="veryClose">Beyond this distance some animations may be removed. 10f by default.</param>
+    /// <param name="close">Beyond this distance some functionalities may be less precise. 50f by default.</param>
+    /// <param name="far">Beyond this distance trail animations will no longer exist. 500f by default.</param>
+    public BehaviourLODData(float veryClose, float close, float far)
     {
         this.veryClose = veryClose;
         this.close = close;

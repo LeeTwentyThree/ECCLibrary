@@ -1,12 +1,12 @@
 ﻿namespace ECCLibrary.Data;
 
 /// <summary>
-/// Contains data pertaining to creating the <see cref="StayAtLeashPosition"/> CreatureAction.
+/// Contains data pertaining to creating the <see cref="StayAtLeashPosition"/> CreatureAction. This component keeps creatures from wandering too far.
 /// </summary>
 public class StayAtLeashData
 {
     /// <summary>
-    /// The priority for this <see cref="CreatureAction"/>.
+    /// The priority for this <see cref="CreatureAction"/>, expected to be in the range [0, 1].
     /// </summary>
     public float evaluatePriority;
     /// <summary>
@@ -29,7 +29,7 @@ public class StayAtLeashData
     /// <summary>
     /// Contains data pertaining to creating the <see cref="StayAtLeashPosition"/> CreatureAction.
     /// </summary>
-    /// <param name="evaluatePriority">The priority for this <see cref="CreatureAction"/>.</param>
+    /// <param name="evaluatePriority">The priority for this <see cref="CreatureAction"/>, expected to be in the range [0, 1].</param>
     /// <param name="leashDistance">How far the creature has to be from its spawn point to begin swiwmming back to it.</param>
     /// <param name="swimVelocity">How fast the creature swims back to its spawn point.</param>
     /// <param name="swimInterval">The minimum amount of time between each "swim".</param>

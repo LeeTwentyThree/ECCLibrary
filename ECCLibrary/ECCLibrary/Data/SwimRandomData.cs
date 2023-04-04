@@ -6,6 +6,10 @@
 public class SwimRandomData
 {
     /// <summary>
+    /// The priority for this <see cref="CreatureAction"/>, expected to be in the range [0, 1].
+    /// </summary>
+    public float evaluatePriority;
+    /// <summary>
     /// The distance this creature wanders in each direction, every time the action is played.
     /// </summary>
     public Vector3 swimRadius;
@@ -17,10 +21,6 @@ public class SwimRandomData
     /// The time in seconds between each change in direction.
     /// </summary>
     public float swimInterval;
-    /// <summary>
-    /// The priority for this <see cref="CreatureAction"/>.
-    /// </summary>
-    public float evaluatePriority;
     /// <summary>
     /// If enabled, the creature will always swim to a point at the maximum distance from itself (as defined by <see cref="swimRadius"/>). Otherwise, the distance will be random.
     /// </summary>

@@ -44,14 +44,36 @@ public sealed class CreatureTemplate
     public SwimBehaviourData SwimBehaviourData { get; set; } = new SwimBehaviourData();
 
     /// <summary>
+    /// Contains data pertaining to the <see cref="AnimateByVelocity"/> component. This component sets animation parameters based on the creature's direction &#38; velocity.
+    /// <br/> Means the 'speed' parameter can be used in the creature's Animator.
+    /// <br/> NOT assigned by default!
+    /// </summary>
+    public AnimateByVelocityData AnimateByVelocityData { get; set; } = null;
+
+    /// <summary>
     /// Contains data pertaining to the <see cref="SwimRandom"/> action.
     /// </summary>
     public SwimRandomData SwimRandomData { get; set; } = new SwimRandomData(0.2f, Vector3.one * 20f, 3f);
 
     /// <summary>
-    /// Contains data pertaining to the <see cref="StayAtLeashPosition"/> action.
+    /// Contains data pertaining to the <see cref="StayAtLeashPosition"/> action. This component keeps creatures from wandering too far. Not assigned by default.
     /// </summary>
     public StayAtLeashData StayAtLeashData { get; set; }
+
+    /// <summary>
+    /// Contains data pertaining to the <see cref="FleeWhenScared"/> action. Not assigned by default.
+    /// </summary>
+    public FleeWhenScaredData FleeWhenScaredData { get; set; }
+
+    /// <summary>
+    /// Contains data pertaining to the <see cref="FleeOnDamage"/> action. Assigned by default with default values and a priority of 0.8f.
+    /// </summary>
+    public FleeOnDamageData FleeOnDamageData { get; set; } = new FleeOnDamageData(0.8f);
+
+    /// <summary>
+    /// Contains data pertaining to the <see cref="Scareable"/> component. This component is what enables small fish to swim away from the player and potential predators.
+    /// </summary>
+    public ScareableData ScareableData { get; set; } = new ScareableData();
 
     /// <summary>
     /// The Type of the main component that must inherit from <see cref="Creature"/>.
@@ -75,7 +97,7 @@ public sealed class CreatureTemplate
     /// <summary>
     /// Determines the distance for which certain calculations (such as Trail Managers) perform (or don't). It is recommended to increase these values for large creatures.
     /// </summary>
-    public BehaviourLODData BehaviourLODData { get; set; } = new BehaviourLODData();
+    public BehaviourLODData BehaviourLODData { get; set; } = new BehaviourLODData(10f, 50f, 500f);
 
     /// <summary>
     /// The FOV is used for detecting things such as prey. This value has an expected range of [0f, 1f]. Is 0.25f by default. A value of -1 means a given object is ALWAYS in view.
@@ -85,7 +107,7 @@ public sealed class CreatureTemplate
     /// <summary>
     /// Whether the creature is immune to brine or not. False by default. Typically useful for Lost River creatures.
     /// </summary>
-    public bool AcidImmune { get; set; }
+    public bool AcidImmune { get; set; } = false;
 
     /// <summary>
     /// Total power output of this creature. All ECC creatures can be put in the bioreactor as long as this value is 0 or greater.
@@ -95,7 +117,7 @@ public sealed class CreatureTemplate
     /// <summary>
     /// The Surface Type applied to the main collider.
     /// </summary>
-    public VFXSurfaceTypes SurfaceType { get; set; }
+    public VFXSurfaceTypes SurfaceType { get; set; } = VFXSurfaceTypes.organic;
 
     /// <summary>
     /// Settings that determine basic attributes of the creature.
@@ -105,12 +127,12 @@ public sealed class CreatureTemplate
     /// <summary>
     /// Whether this creature can randomly spawn with Kharaa symptoms. True by default.
     /// </summary>
-    public bool CanBeInfected { get; set; }
+    public bool CanBeInfected { get; set; } = true;
 
     /// <summary>
     /// If set to true, the Scanner Room can scan for this creature. False by default.
     /// </summary>
-    public bool ScannerRoomScannable { get; set; }
+    public bool ScannerRoomScannable { get; set; } = false;
 
     /// <summary>
     /// Possible sizes for this creature. Randomly picks a value in the range of 0 to 1. This value can not go above 1. Flat curve at 1 by default.

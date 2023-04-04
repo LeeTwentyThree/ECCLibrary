@@ -13,13 +13,13 @@ internal class ExampleCreature : CreatureAsset
         var template = new CreatureTemplate(GetModel(), BehaviourType.SmallFish, EcoTargetType.SmallFish, CreatureDataUtils.CreateLiveMixinData(160f));
         template.CellLevel = LargeWorldEntity.CellLevel.Far;
         template.SetCreatureComponentType<ExampleCreatureComponent>();
-        template.SwimRandomData = new SwimRandomData(0.2f, new Vector3(20, 20, 20), 2f);
+        template.SwimRandomData = new SwimRandomData(0.2f, new Vector3(20, 20, 20), 3f);
         template.StayAtLeashData = new StayAtLeashData(0.6f, 14f, 6f);
         template.AcidImmune = true;
         template.BioReactorCharge = 600;
         template.Mass = 50;
         template.EyeFOV = 0.34f;
-        template.SurfaceType = VFXSurfaceTypes.metal;
+        template.FleeWhenScaredData = new FleeWhenScaredData(0.7f);
         return template;
     }
 

@@ -80,6 +80,20 @@ public static class ECCUtility
         var tex = sprite.texture;
         return Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), Vector2.one * 0.5f);
     }
+
+    /// <summary>
+    /// Creates an FMODAsset with the given parameters.
+    /// </summary>
+    /// <param name="path"></param>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    public static FMODAsset GetFmodAsset(string path, string id)
+    {
+        var asset = ScriptableObject.CreateInstance<FMODAsset>();
+        asset.path = path;
+        asset.id = id;
+        return asset;
+    }
 }
 /// <summary>
 /// Various ECC-related extensions for GameObjects.
