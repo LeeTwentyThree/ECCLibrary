@@ -71,9 +71,14 @@ public sealed class CreatureTemplate
     public FleeOnDamageData FleeOnDamageData { get; set; } = new FleeOnDamageData(0.8f);
 
     /// <summary>
-    /// Contains data pertaining to the <see cref="Scareable"/> component. This component is what enables small fish to swim away from the player and potential predators.
+    /// Contains data pertaining to the <see cref="Scareable"/> component. This component is what enables small fish to swim away from the player and potential predators. Not assigned by default.
     /// </summary>
-    public ScareableData ScareableData { get; set; } = new ScareableData();
+    public ScareableData ScareableData { get; set; } = null;
+
+    /// <summary>
+    /// Contains data pertaining to picking up and/or holding fish in your hands. Not assigned by default.
+    /// </summary>
+    public PickupableFishData PickupableFishData { get; set; } = null;
 
     /// <summary>
     /// The Type of the main component that must inherit from <see cref="Creature"/>.

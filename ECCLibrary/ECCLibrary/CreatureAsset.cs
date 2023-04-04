@@ -1,4 +1,6 @@
 ﻿using ECCLibrary.Data;
+using ECCLibrary.Mono;
+using SMLHelper.Handlers;
 
 namespace ECCLibrary;
 
@@ -61,6 +63,7 @@ public abstract class CreatureAsset
 
         if (template.AcidImmune) CreatureDataUtils.MakeAcidImmune(TechType);
         if (template.BioReactorCharge > 0f) CreatureDataUtils.SetBioreactorCharge(TechType, template.BioReactorCharge);
+        if (template.PickupableFishData != null && template.PickupableFishData.CanBeHeld) CraftDataHandler.SetEquipmentType(TechType, EquipmentType.Hand);
         CreatureDataUtils.PatchBehaviorType(TechType, template.BehaviourType);
         CreatureDataUtils.PatchItemSounds(TechType, template.ItemSoundsType);
 
@@ -188,12 +191,7 @@ public abstract class CreatureAsset
 
         if (template.AnimateByVelocityData != null)
         {
-            ccs.AnimateByVelocity = prefab.AddComponent<AnimateByVelocity>();
-            ccs.AnimateByVelocity.animator = ccs.Animator;
-            ccs.AnimateByVelocity.animationMoveMaxSpeed = template.AnimateByVelocityData.animationMoveMaxSpeed;
-            ccs.AnimateByVelocity.animationMaxPitch = template.AnimateByVelocityData.animationMaxPitch;
-            ccs.AnimateByVelocity.animationMoveMaxSpeed = template.AnimateByVelocityData.animationMoveMaxSpeed;
-            ccs.AnimateByVelocity.animationMoveMaxSpeed = template.AnimateByVelocityData.animationMoveMaxSpeed;
+            ccs.AnimateByVelocity = CreaturePrefabUtils.AddAnimateByVelocity(prefab, template.AnimateByVelocityData, ccs.Animator, ccs.Rigidbody, ccs.BehaviourLOD);
         }
 
         // behaviour
@@ -291,6 +289,41 @@ public abstract class CreatureAsset
         // aggression
 
         ccs.LastTarget = prefab.AddComponent<LastTarget>();
+
+        // picking up and/or holding
+
+        var pickupableData = template.PickupableFishData;
+        if (pickupableData != null)
+        {
+            ccs.Pickupable = prefab.AddComponent<Pickupable>();
+
+            if (pickupableData.CanBeHeld)
+            {
+                HeldFish heldFish = prefab.EnsureComponent<HeldFish>();
+                heldFish.animationName = pickupableData.ReferenceHoldingAnimation.ToString().ToLower();
+                heldFish.mainCollider = prefab.GetComponent<Collider>();
+                heldFish.pickupable = ccs.Pickupable;
+
+                if (!string.IsNullOrEmpty(pickupableData.ViewModelName))
+                {
+                    var fpsModel = prefab.EnsureComponent<FPModel>();
+                    fpsModel.propModel = prefab.SearchChild(pickupableData.WorldModelName);
+                    if (fpsModel.propModel == null)
+                    {
+                        ECCPlugin.logger.LogError($"Error finding World model. No child of name {pickupableData.WorldModelName} exists in the hierarchy of item {TechType}.");
+                    }
+                    else
+                    {
+                        prefab.EnsureComponent<AquariumFish>().model = fpsModel.propModel;
+                    }
+                    fpsModel.viewModel = prefab.SearchChild(pickupableData.ViewModelName);
+                    if (fpsModel.viewModel == null)
+                    {
+                        ECCPlugin.logger.LogError($"Error finding View model. No child of name {pickupableData.ViewModelName} exists in the hierarchy of item {TechType}.");
+                    }
+                }
+            }
+        }
 
         // extra
 

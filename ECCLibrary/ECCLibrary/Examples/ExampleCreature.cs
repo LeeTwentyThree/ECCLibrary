@@ -19,7 +19,10 @@ internal class ExampleCreature : CreatureAsset
         template.BioReactorCharge = 600;
         template.Mass = 50;
         template.EyeFOV = 0.34f;
-        template.FleeWhenScaredData = new FleeWhenScaredData(0.7f);
+        CreatureTemplateUtils.SetupPreyBehaviour(template);
+        template.SizeDistribution = new AnimationCurve(new Keyframe(0, 0.5f), new Keyframe(1, 1f));
+        template.AnimateByVelocityData = new AnimateByVelocityData(6f);
+        template.PickupableFishData = new PickupableFishData(true, TechType.Peeper, "WM", "VM");
         return template;
     }
 
@@ -28,13 +31,27 @@ internal class ExampleCreature : CreatureAsset
         var model = new GameObject("CreatureModel");
         model.SetActive(false);
 
-        var cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        cube.transform.parent = model.transform;
-        var sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        sphere.transform.parent = model.transform;
-        sphere.transform.localPosition = Vector3.forward * 0.5f;
-        cube.AddComponent<Animator>();
+        model.gameObject.AddComponent<Collider>();
 
+        var worldModel = new GameObject("WM");
+
+        var cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        cube.transform.parent = worldModel.transform;
+        var sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        sphere.transform.parent = worldModel.transform;
+        sphere.transform.localPosition = Vector3.forward * 0.5f;
+
+        var viewModel = Object.Instantiate(worldModel);
+        viewModel.name = "VM";
+
+        worldModel.transform.parent = model.transform;
+        viewModel.transform.parent = model.transform;
+
+        viewModel.SetActive(false);
+
+        worldModel.AddComponent<Animator>();
+        viewModel.AddComponent<Animator>();
+        
         Object.DontDestroyOnLoad(model);
 
         return model;

@@ -106,7 +106,9 @@ public static partial class CreaturePrefabUtils
         component.animationMaxPitch = data.animationMaxPitch;
         component.animationMaxTilt = data.animationMaxTilt;
         component.useStrafeAnimation = data.useStrafeAnimation;
-        component.animationMoveMaxSpeed = data.animationMoveMaxSpeed;
+        component.rootGameObject = creature;
+        component.dampTime = data.dampTime;
+        component.levelOfDetail = behaviourLOD;
         return component;
     }
 
