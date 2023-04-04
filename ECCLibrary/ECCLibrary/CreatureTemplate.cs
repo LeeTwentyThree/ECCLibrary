@@ -110,8 +110,24 @@ public sealed class CreatureTemplate
     }
 
     /// <summary>
-    /// A list of all <see cref="AggressiveWhenSeeTargetData"/> for this creature. Contains data pertaining to the <see cref="AggressiveWhenSeeTarget"/> component, which enaebles the creature to become aggressive towards specific fauna/the player.
+    /// A list of all data pertaining to the <see cref="AggressiveWhenSeeTarget"/> component, which enables the creature to become aggressive towards specific fauna/the player.
     /// </summary>
+    public List<AggressiveWhenSeeTargetData> AggressiveWhenSeeTargetList { get; private set; }
+
+    /// <summary>
+    /// Adds a single type of aggression to this creature. This method can be called MULTIPLE TIMES to add multiple types of aggression! Not functional without the <see cref="AttackLastTarget"/> component.
+    /// </summary>
+    /// <param name="data"></param>
+    public void AddAggressiveWhenSeeTargetData(AggressiveWhenSeeTargetData data)
+    {
+        AggressiveWhenSeeTargetList ??= new List<AggressiveWhenSeeTargetData>();
+        AggressiveWhenSeeTargetList.Add(data);
+    }
+
+    /// <summary>
+    /// Contains data pertaining to creating the <see cref="AttackLastTarget"/> CreatureAction. Not assigned by default.
+    /// </summary>
+    public AttackLastTargetData AttackLastTargetData { get; set; } = null;
 
     /// <summary>
     /// Mass in kg. Ranges from about 1.8f to 4050f. Default is 15kg.

@@ -1,7 +1,7 @@
 ﻿namespace ECCLibrary.Data;
 
 /// <summary>
-/// Contains data pertaining to the <see cref="AggressiveWhenSeeTarget"/> component, which enaebles the creature to become aggressive towards specific fauna/the player
+/// Contains data pertaining to the <see cref="AggressiveWhenSeeTarget"/> component, which enables the creature to become aggressive towards specific fauna/the player.
 /// </summary>
 public class AggressiveWhenSeeTargetData
 {
@@ -39,7 +39,7 @@ public class AggressiveWhenSeeTargetData
     public float hungerThreshold;
 
     /// <summary>
-    /// Contains data pertaining to the <see cref="AggressiveWhenSeeTarget"/> component, which enaebles the creature to become aggressive towards specific fauna/the player
+    /// Contains data pertaining to the <see cref="AggressiveWhenSeeTarget"/> component, which enables the creature to become aggressive towards specific fauna/the player.
     /// </summary>
     /// <param name="targetType">The targeted EcoTargetType of this specific component. Every creature can have multiple <see cref="AggressiveWhenSeeTarget"/> components. Remember, the Player is <see cref="EcoTargetType.Shark"/>!</param>
     /// <param name="aggressionPerSecond">The amount of the aggression trait added each second while targeting a creature. Generally 1f-2f.</param>

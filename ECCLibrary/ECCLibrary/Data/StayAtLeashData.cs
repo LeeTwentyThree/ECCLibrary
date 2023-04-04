@@ -34,7 +34,7 @@ public class StayAtLeashData
     /// <param name="swimVelocity">How fast the creature swims back to its spawn point.</param>
     /// <param name="swimInterval">The minimum amount of time between each "swim".</param>
     /// <param name="minSwimDuration">How long the creature will continue to swim back to its spawn point during each "swim" (unless overriden by another action).</param>
-    public StayAtLeashData(float evaluatePriority, float leashDistance, float swimVelocity, float swimInterval = 1f, float minSwimDuration = 3f)
+    public StayAtLeashData(float evaluatePriority, float swimVelocity, float leashDistance, float swimInterval = 1f, float minSwimDuration = 3f)
     {
         this.evaluatePriority = evaluatePriority;
         this.leashDistance = leashDistance;

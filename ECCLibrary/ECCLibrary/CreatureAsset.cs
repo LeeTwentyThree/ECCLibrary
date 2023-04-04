@@ -253,7 +253,6 @@ public abstract class CreatureAsset
         ccs.Creature.sizeDistribution = template.SizeDistribution;
         ccs.Creature.eyeFOV = template.EyeFOV;
 
-
         // eating
 
         if (template.EdibleData != null)
@@ -308,6 +307,19 @@ public abstract class CreatureAsset
         // aggression
 
         ccs.LastTarget = prefab.AddComponent<LastTarget>();
+
+        if (template.AttackLastTargetData != null)
+        {
+            ccs.AttackLastTarget = CreaturePrefabUtils.AddAttackLastTargetData(prefab, template.AttackLastTargetData, ccs.LastTarget);
+        }
+
+        if (template.AggressiveWhenSeeTargetList != null)
+        {
+            foreach (var aggression in template.AggressiveWhenSeeTargetList)
+            {
+                CreaturePrefabUtils.AddAggressiveWhenSeeTarget(prefab, aggression, ccs.LastTarget, ccs.Creature);
+            }
+        }
 
         // picking up and/or holding
 

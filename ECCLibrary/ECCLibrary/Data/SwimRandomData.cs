@@ -39,7 +39,7 @@ public class SwimRandomData
     /// <param name="swimInterval">The time in seconds between each change in direction.</param>
     /// <param name="onSphere">If enabled, the creature will always swim to a point at the maximum distance from itself (as defined by <see cref="swimRadius"/>). Otherwise, the distance will be random.</param>
     /// <param name="swimForward">The higher this value, the more this creature tends to continue swimming in the same direction. Default value is 0.5f. Typically higher (1.0f-1.2f) for larger creatures.</param>
-    public SwimRandomData(float evaluatePriority, Vector3 swimRadius, float swimVelocity, float swimInterval = 5f, float swimForward = 0.5f, bool onSphere = false)
+    public SwimRandomData(float evaluatePriority, float swimVelocity, Vector3 swimRadius, float swimInterval = 5f, float swimForward = 0.5f, bool onSphere = false)
     {
         this.swimRadius = swimRadius;
         this.swimVelocity = swimVelocity;

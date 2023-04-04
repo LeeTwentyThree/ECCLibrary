@@ -173,4 +173,18 @@ public static partial class CreaturePrefabUtils
         component.animator = animator;
         return component;
     }
+
+    internal static AttackLastTarget AddAttackLastTargetData(GameObject creature, AttackLastTargetData data, LastTarget lastTarget)
+    {
+        var component = creature.AddComponent<AttackLastTarget>();
+        component.swimVelocity = data.swimVelocity;
+        component.aggressionThreshold = data.aggressionThreshold;
+        component.minAttackDuration = data.minAttackDuration;
+        component.maxAttackDuration = data.maxAttackDuration;
+        component.pauseInterval = data.pauseInterval;
+        component.rememberTargetTime = data.rememberTargetTime;
+        component.resetAggressionOnTime = data.resetAggressionOnTime;
+        component.lastTarget = lastTarget;
+        return component;
+    }
 }
