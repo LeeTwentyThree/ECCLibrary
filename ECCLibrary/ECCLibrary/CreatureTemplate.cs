@@ -53,7 +53,7 @@ public sealed class CreatureTemplate
     /// <summary>
     /// Contains data pertaining to the <see cref="SwimRandom"/> action.
     /// </summary>
-    public SwimRandomData SwimRandomData { get; set; } = new SwimRandomData(0.2f, Vector3.one * 20f, 3f);
+    public SwimRandomData SwimRandomData { get; set; } = new SwimRandomData(0.2f, 3f, Vector3.one * 20f);
 
     /// <summary>
     /// Contains data pertaining to the <see cref="StayAtLeashPosition"/> action. This component keeps creatures from wandering too far. Not assigned by default.

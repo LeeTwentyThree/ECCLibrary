@@ -14,9 +14,9 @@ internal class ExampleCreature : CreatureAsset
         var template = new CreatureTemplate(GetModel(), BehaviourType.SmallFish, EcoTargetType.SmallFish, CreatureDataUtils.CreateLiveMixinData(160f));
         template.CellLevel = LargeWorldEntity.CellLevel.Medium;
         template.SetCreatureComponentType<ExampleCreatureComponent>();
-        template.SwimRandomData = new SwimRandomData(0.2f, new Vector3(20, 20, 20), 3f);
-        template.StayAtLeashData = new StayAtLeashData(0.6f, 14f, 6f);
-        template.AvoidObstaclesData = new AvoidObstaclesData(1f, false, 3f, 5f, 5f);
+        template.SwimRandomData = new SwimRandomData(0.2f, 3f, new Vector3(20, 20, 20));
+        template.StayAtLeashData = new StayAtLeashData(0.6f, 6f, 14f);
+        template.AvoidObstaclesData = new AvoidObstaclesData(1f, 3f, false, 5f, 5f);
         template.BioReactorCharge = 600;
         template.Mass = 50;
         CreatureTemplateUtils.SetupPreyEssentials(template, 5f, new PickupableFishData(true, TechType.Peeper, "WM", "VM"), new EdibleData(true, 69f, 1337f, false, 2f));
