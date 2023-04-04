@@ -110,9 +110,13 @@ public sealed class CreatureTemplate
     }
 
     /// <summary>
-    /// Mass in kg. Ranges from about 1.8f to 4050f.
+    /// A list of all <see cref="AggressiveWhenSeeTargetData"/> for this creature. Contains data pertaining to the <see cref="AggressiveWhenSeeTarget"/> component, which enaebles the creature to become aggressive towards specific fauna/the player.
     /// </summary>
-    public float Mass { get; set; } = 15f;
+
+    /// <summary>
+    /// Mass in kg. Ranges from about 1.8f to 4050f. Default is 15kg.
+    /// </summary>
+    public float Mass { get; set; } = 10f;
 
     /// <summary>
     /// Determines the distance for which certain calculations (such as Trail Managers) perform (or don't). It is recommended to increase these values for large creatures.
@@ -120,9 +124,9 @@ public sealed class CreatureTemplate
     public BehaviourLODData BehaviourLODData { get; set; } = new BehaviourLODData(10f, 50f, 500f);
 
     /// <summary>
-    /// The FOV is used for detecting things such as prey. This value has an expected range of [0f, 1f]. Is 0.25f by default. A value of -1 means a given object is ALWAYS in view.
+    /// The FOV is used for detecting things such as prey. SHOULD BE NEGATIVE! This value has an expected range of [-1, 0]. Is 0f by default. A value of -1 means a given object is ALWAYS in view.
     /// </summary>
-    public float EyeFOV { get; set; } = 0.25f;
+    public float EyeFOV { get; set; } = 0f;
 
     /// <summary>
     /// Whether the creature is immune to brine or not. False by default. Typically useful for Lost River creatures.

@@ -90,10 +90,10 @@ public abstract class CreatureAsset
     /// <summary>
     /// Changes to the prefab can be applied here.
     /// </summary>
-    /// <param name="obj"></param>
+    /// <param name="prefab"></param>
     /// <param name="components"></param>
     /// <returns></returns>
-    protected abstract IEnumerator ModifyPrefab(GameObject obj, CreatureComponents components);
+    protected abstract IEnumerator ModifyPrefab(GameObject prefab, CreatureComponents components);
 
     private IEnumerator GetGameObject(IOut<GameObject> gameObject)
     {
