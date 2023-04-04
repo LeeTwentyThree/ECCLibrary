@@ -1,4 +1,5 @@
 ﻿using ECCLibrary.Data;
+using System.Net.Configuration;
 
 namespace ECCLibrary.Examples;
 
@@ -31,8 +32,6 @@ internal class ExampleCreature : CreatureAsset
         var model = new GameObject("CreatureModel");
         model.SetActive(false);
 
-        model.gameObject.AddComponent<Collider>();
-
         var worldModel = new GameObject("WM");
 
         var cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
@@ -48,10 +47,18 @@ internal class ExampleCreature : CreatureAsset
         viewModel.transform.parent = model.transform;
 
         viewModel.SetActive(false);
+        viewModel.transform.localScale = Vector3.one * 0.2f;
 
         worldModel.AddComponent<Animator>();
         viewModel.AddComponent<Animator>();
-        
+
+        foreach (var col in model.GetComponentsInChildren<Collider>())
+        {
+            Object.DestroyImmediate(col);
+        }
+
+        model.gameObject.AddComponent<SphereCollider>();
+
         Object.DontDestroyOnLoad(model);
 
         return model;
