@@ -86,6 +86,11 @@ public sealed class CreatureTemplate
     public AvoidObstaclesData AvoidObstaclesData { get; set; } = null;
 
     /// <summary>
+    /// Contains data pertaining to creating the <see cref="AvoidTerrain"/> CreatureAction. This is a more advanced and expensive collision avoidance system used by leviathans.
+    /// </summary>
+    public AvoidTerrainData AvoidTerrainData { get; set; } = null;
+
+    /// <summary>
     /// Contains data pertaining to the <see cref="CreatureDeath"/> component.
     /// </summary>
     public RespawnData RespawnData { get; set; } = new RespawnData(true);

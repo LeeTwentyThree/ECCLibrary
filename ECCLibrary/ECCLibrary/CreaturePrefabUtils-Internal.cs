@@ -155,6 +155,18 @@ public static partial class CreaturePrefabUtils
         return component;
     }
 
+    internal static AvoidTerrain AddAvoidTerrain(GameObject creature, AvoidTerrainData data)
+    {
+        var component = creature.EnsureComponent<AvoidTerrain>();
+        component.evaluatePriority = data.evaluatePriority;
+        component.avoidanceDistance = data.avoidanceDistance;
+        component.avoidanceForward = data.avoidanceForward;
+        component.swimVelocity = data.swimVelocity;
+        component.scanDistance = data.scanDistance;
+        component.avoidanceIterations = data.avoidanceIterations;
+        return component;
+    }
+
     internal static CreatureFlinch AddCreatureFlinch(GameObject creature, Animator animator)
     {
         var component = creature.AddComponent<CreatureFlinch>();
