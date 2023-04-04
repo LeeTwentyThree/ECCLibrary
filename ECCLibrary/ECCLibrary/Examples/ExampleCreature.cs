@@ -16,6 +16,7 @@ internal class ExampleCreature : CreatureAsset
         template.SetCreatureComponentType<ExampleCreatureComponent>();
         template.SwimRandomData = new SwimRandomData(0.2f, new Vector3(20, 20, 20), 3f);
         template.StayAtLeashData = new StayAtLeashData(0.6f, 14f, 6f);
+        template.AvoidObstaclesData = new AvoidObstaclesData(1f, false, 3f, 5f, 5f);
         template.AcidImmune = true;
         template.BioReactorCharge = 600;
         template.Mass = 50;

@@ -81,6 +81,11 @@ public sealed class CreatureTemplate
     public PickupableFishData PickupableFishData { get; set; } = null;
 
     /// <summary>
+    /// Contains data pertaining to creating the <see cref="AvoidObstacles"/> CreatureAction. This component is used by most creatures (everything besides leviathans) to avoid objects and/or terrain. Not assigned by default.
+    /// </summary>
+    public AvoidObstaclesData AvoidObstaclesData { get; set; } = null;
+
+    /// <summary>
     /// Contains data pertaining to the <see cref="CreatureDeath"/> component.
     /// </summary>
     public RespawnData RespawnData { get; set; } = new RespawnData(true);

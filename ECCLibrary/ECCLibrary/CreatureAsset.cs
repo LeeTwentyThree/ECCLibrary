@@ -348,6 +348,13 @@ public abstract class CreatureAsset
             }
         }
 
+        // object avoidance
+
+        if (template.AvoidObstaclesData != null)
+        {
+            CreaturePrefabUtils.AddAvoidObstacles(prefab, template.AvoidObstaclesData, ccs.LastTarget);
+        }
+
         // extra
 
         if (template.ScannerRoomScannable)
