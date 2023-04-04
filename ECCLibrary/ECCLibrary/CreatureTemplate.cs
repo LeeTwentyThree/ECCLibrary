@@ -135,6 +135,11 @@ public sealed class CreatureTemplate
     public CreatureTraitsData TraitsData { get; set; } = new CreatureTraitsData(0.1f, 0.05f, 0.1f);
 
     /// <summary>
+    /// Contains data pertaining to the <see cref="Eatable"/> [sic] component. Not assigned by default.
+    /// </summary>
+    public EdibleData EdibleData { get; set; } = null; 
+
+    /// <summary>
     /// Whether this creature can randomly spawn with Kharaa symptoms. True by default.
     /// </summary>
     public bool CanBeInfected { get; set; } = true;

@@ -20,10 +20,9 @@ internal class ExampleCreature : CreatureAsset
         template.BioReactorCharge = 600;
         template.Mass = 50;
         template.EyeFOV = 0.34f;
-        CreatureTemplateUtils.SetupPreyBehaviour(template);
+        CreatureTemplateUtils.SetupPreyEssentials(template, new PickupableFishData(true, TechType.Peeper, "WM", "VM"), new EdibleData(true, 69f, 1337f, false, 2f));
         template.SizeDistribution = new AnimationCurve(new Keyframe(0, 0.5f), new Keyframe(1, 1f));
         template.AnimateByVelocityData = new AnimateByVelocityData(6f);
-        template.PickupableFishData = new PickupableFishData(true, TechType.Peeper, "WM", "VM");
         return template;
     }
 

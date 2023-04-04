@@ -253,6 +253,14 @@ public abstract class CreatureAsset
         ccs.Creature.sizeDistribution = template.SizeDistribution;
         ccs.Creature.eyeFOV = template.EyeFOV;
 
+
+        // eating
+
+        if (template.EdibleData != null)
+        {
+            ccs.Eatable = CreaturePrefabUtils.AddEatableComponent(prefab, template.EdibleData);
+        }
+
         // death & damage
 
         ccs.CreatureDeath = prefab.AddComponent<CreatureDeath>();
@@ -314,6 +322,10 @@ public abstract class CreatureAsset
                 heldFish.animationName = pickupableData.ReferenceHoldingAnimation.ToString().ToLower();
                 heldFish.mainCollider = prefab.GetComponent<Collider>();
                 heldFish.pickupable = ccs.Pickupable;
+                heldFish.drawTime = 0f;
+                heldFish.holsterTime = 0.1f;
+                heldFish.dropTime = 1.4f;
+                heldFish.ikAimRightArm = true;
 
                 if (!string.IsNullOrEmpty(pickupableData.ViewModelName))
                 {

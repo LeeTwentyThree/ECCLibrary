@@ -20,7 +20,6 @@ internal class ECCPlugin : BaseUnityPlugin
 
         var exampleCreature = new ExampleCreature(PrefabInfo.WithTechType("ExampleCreature", "Example Creature", "Un ejemplo."));
         exampleCreature.PrefabInfo.WithIcon(SpriteManager.Get(TechType.LavaBoomerang));
-        exampleCreature.PrefabInfo.WithSizeInInventory(new Vector2int(3, 2));
         exampleCreature.Register();
     }
 }
