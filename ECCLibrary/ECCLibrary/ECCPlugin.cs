@@ -18,8 +18,11 @@ internal class ECCPlugin : BaseUnityPlugin
 
         logger.Log(LogLevel.Info, "ECCLibrary loaded!");
 
-        var exampleCreature = new ExampleCreature(PrefabInfo.WithTechType("ExampleCreature", "Example Creature", "Un ejemplo."));
+        var exampleCreature = new ExampleCreature(PrefabInfo.WithTechType("ExampleCreature", "Example Creature", "An example prey fish."));
         exampleCreature.PrefabInfo.WithIcon(SpriteManager.Get(TechType.LavaBoomerang));
         exampleCreature.Register();
+
+        var exampleLeviathan = new ExampleLeviathan(PrefabInfo.WithTechType("ExampleLeviathan", "Example Leviathan", "An example leviathan."));
+        exampleLeviathan.Register();
     }
 }

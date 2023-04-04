@@ -12,15 +12,13 @@ internal class ExampleCreature : CreatureAsset
     protected override CreatureTemplate CreateTemplate()
     {
         var template = new CreatureTemplate(GetModel(), BehaviourType.SmallFish, EcoTargetType.SmallFish, CreatureDataUtils.CreateLiveMixinData(160f));
-        template.CellLevel = LargeWorldEntity.CellLevel.Far;
+        template.CellLevel = LargeWorldEntity.CellLevel.Medium;
         template.SetCreatureComponentType<ExampleCreatureComponent>();
         template.SwimRandomData = new SwimRandomData(0.2f, new Vector3(20, 20, 20), 3f);
         template.StayAtLeashData = new StayAtLeashData(0.6f, 14f, 6f);
         template.AvoidObstaclesData = new AvoidObstaclesData(1f, false, 3f, 5f, 5f);
-        template.AcidImmune = true;
         template.BioReactorCharge = 600;
         template.Mass = 50;
-        template.EyeFOV = 0.34f;
         CreatureTemplateUtils.SetupPreyEssentials(template, 5f, new PickupableFishData(true, TechType.Peeper, "WM", "VM"), new EdibleData(true, 69f, 1337f, false, 2f));
         template.SizeDistribution = new AnimationCurve(new Keyframe(0, 0.5f), new Keyframe(1, 1f));
         template.AnimateByVelocityData = new AnimateByVelocityData(6f);
@@ -64,8 +62,9 @@ internal class ExampleCreature : CreatureAsset
         return model;
     }
 
-    protected override IEnumerator ModifyPrefab(GameObject obj, CreatureComponents components)
+    protected override IEnumerator ModifyPrefab(GameObject prefab, CreatureComponents components)
     {
+        CreaturePrefabUtils.AddDamageModifier(prefab, DamageType.Heat, 0f);
         yield break;
     }
 }
