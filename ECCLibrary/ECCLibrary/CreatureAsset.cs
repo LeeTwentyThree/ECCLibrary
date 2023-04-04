@@ -175,10 +175,10 @@ public abstract class CreatureAsset
         var physicMaterial = template.PhysicMaterial;
         if (physicMaterial == null)
         {
-            template.PhysicMaterial = ECCUtility.FrictionlessPhysicMaterial;
+            physicMaterial = ECCUtility.FrictionlessPhysicMaterial;
         }
 
-        var colliders = prefab.GetComponentsInChildren<Collider>();
+        var colliders = prefab.GetComponentsInChildren<Collider>(true);
         foreach (var collider in colliders)
         {
             collider.sharedMaterial = physicMaterial;
