@@ -49,7 +49,7 @@ public class FleeWhenScaredData
     /// <param name="tiredVelocity">The velocity when tired.</param>
     /// <param name="swimExhaustion">How exhausted the creature gets while fleeing, each second.</param>
     /// <param name="exhaustedVelocity">The velocity when exhausted (after fleeing too long).</param>
-    public FleeWhenScaredData(float evaluatePriority, float swimVelocity = 10f, float swimInterval = 1f, int avoidanceIterations = 10, float swimTiredness = 0.2f, float tiredVelocity = 3f, float swimExhaustion = 0.25f, float exhaustedVelocity = 1f)
+    public FleeWhenScaredData(float evaluatePriority, float swimVelocity, float swimInterval = 1f, int avoidanceIterations = 10, float swimTiredness = 0.2f, float tiredVelocity = 3f, float swimExhaustion = 0.25f, float exhaustedVelocity = 1f)
     {
         this.evaluatePriority = evaluatePriority;
         this.swimVelocity = swimVelocity;
