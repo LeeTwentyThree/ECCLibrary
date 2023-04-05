@@ -166,4 +166,31 @@ public static partial class CreaturePrefabUtils
         setDelayed.callback = onTouchCallback;
         return onTouch;
     }
+
+    /// <summary>
+    /// Assigns the essential fields of the MeleeAttack component. For anything else, you're on your own!
+    /// </summary>
+    /// <typeparam name="T">Type which must be the same as or inherit from MeleeAttack.</typeparam>
+    /// <param name="creature">The creature prefab root.</param>
+    /// <param name="components">Components reference object.</param>
+    /// <param name="mouth">The object that has the bite trigger.</param>
+    /// <param name="damage">Bite damage.</param>
+    /// <param name="interval">Seconds between each bite.</param>
+    /// <returns></returns>
+    public static T AddBasicMeleeAttack<T>(GameObject creature, CreatureComponents components, GameObject mouth, float damage, float interval = 1f) where T : MeleeAttack
+    {
+        var meleeAttack = creature.AddComponent<T>();
+
+        meleeAttack.mouth = mouth;
+
+        meleeAttack.lastTarget = components.LastTarget;
+        meleeAttack.creature = components.Creature;
+        meleeAttack.liveMixin = components.LiveMixin;
+        meleeAttack.animator = components.Animator;
+
+        meleeAttack.biteDamage = damage;
+        meleeAttack.biteInterval = interval;
+
+        return meleeAttack;
+    }
 }
