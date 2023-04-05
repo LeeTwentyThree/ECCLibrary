@@ -90,6 +90,11 @@ public class TrailManagerBuilder
     public AnimationCurve YawMultiplier { get; set; } = TrailManagerUtilities.FlatMultiplierAnimationCurve;
 
     /// <summary>
+    /// If true, this TrailManager could be disabled while outside the BehaviourLOD's "close threshold" (for performance reasons). True by default.
+    /// </summary>
+    public bool AllowDisableOnScreen { get; set; } = true;
+
+    /// <summary>
     /// Sets the multiplier in every direction to <paramref name="curve"/>.
     /// </summary>
     public void SetAllMultiplierAnimationCurves(AnimationCurve curve)
@@ -144,6 +149,7 @@ public class TrailManagerBuilder
         tm.rootSegment = RootSegment;
         tm.rootTransform = CreatureRoot;
         tm.segmentSnapSpeed = SegmentSnapSpeed;
+        tm.allowDisableOnScreen = AllowDisableOnScreen;
         tm.maxSegmentOffset = MaxSegmentOffset;
         tm.pitchMultiplier = PitchMultiplier;
         tm.rollMultiplier = RollMultiplier;

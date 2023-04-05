@@ -22,8 +22,8 @@ public struct BehaviourLODData
     /// Contains data pertaining to the <see cref="BehaviourLOD"/> component.
     /// </summary>
     /// <param name="veryClose">Beyond this distance some animations may be removed. 10f by default.</param>
-    /// <param name="close">Beyond this distance some functionalities may be less precise. 50f by default.</param>
-    /// <param name="far">Beyond this distance trail animations will no longer exist. 500f by default.</param>
+    /// <param name="close">Beyond this distance some functionalities may be less precise, and any TrailManagers that have <see cref="TrailManager.allowDisableOnScreen"/> enabled (on by default) will stop functioning. 50f by default.</param>
+    /// <param name="far">Beyond this distance all TrailManagers will cease to function. 500f by default.</param>
     public BehaviourLODData(float veryClose, float close, float far)
     {
         this.veryClose = veryClose;
