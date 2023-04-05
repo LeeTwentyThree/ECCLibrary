@@ -20,7 +20,7 @@ internal static class ExamplePatcher
                 CellLevel = LargeWorldEntity.CellLevel.Medium,
                 SwimRandomData = new SwimRandomData(0.2f, 6f, new Vector3(20, 20, 20)),
                 StayAtLeashData = new StayAtLeashData(0.6f, 6f, 14f),
-                AvoidObstaclesData = new AvoidObstaclesData(1f, 6f, false, 5f, 5f),
+                AvoidObstaclesData = new AvoidObstaclesData(0.5f, 6f, false, 5f, 5f),
                 BioReactorCharge = 600,
                 Mass = 100,
                 SizeDistribution = new AnimationCurve(new Keyframe(0, 0.5f), new Keyframe(1, 1f)),

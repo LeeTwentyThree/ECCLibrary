@@ -45,7 +45,7 @@ public class AvoidObstaclesData
     /// <summary>
     /// Contains data pertaining to creating the <see cref="AvoidObstacles"/> CreatureAction. This component is used by most creatures (everything besides leviathans) to avoid objects and/or terrain.
     /// </summary>
-    /// <param name="evaluatePriority">The priority for this <see cref="CreatureAction"/>, expected to be in the range [0, 1].</param>
+    /// <param name="evaluatePriority">The priority for this <see cref="CreatureAction"/>, expected to be in the range [0, 1]. Typically lower than attack priorities!</param>
     /// <param name="avoidTerrainOnly">If true, the creature will only avoid terrain. Otherwise, all solid objects will be avoided. Typically true for larger creatures.</param>
     /// <param name="swimVelocity">How fast this creature swims away from obstacles (m/s). Should generally match the swim speed.</param>
     /// <param name="avoidanceDistance">How much empty space there must be in any direction around the creature for it to choose that path as "clear". Typically 5f for small fish, up to 10f for larger fish. Large enough values may disable this behaviour entirely.</param>

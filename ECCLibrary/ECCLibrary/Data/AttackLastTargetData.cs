@@ -41,7 +41,7 @@ public class AttackLastTargetData
     /// <summary>
     /// 
     /// </summary>
-    /// <param name="evaluatePriority">The priority for this <see cref="CreatureAction"/>, expected to be in the range [0, 1].</param>
+    /// <param name="evaluatePriority">The priority for this <see cref="CreatureAction"/>, expected to be in the range [0, 1]. Typically higher than object avoidance priorities!</param>
     /// <param name="swimVelocity">How fast the creature swims while attacking.</param>
     /// <param name="aggressionThreshold">Minimum amount of aggression needed to start an attack, generally 0.5f - 0.75f.</param>
     /// <param name="maxAttackDuration">Maximum length of the attack. Generally ranges from 7 to 10 seconds.</param>

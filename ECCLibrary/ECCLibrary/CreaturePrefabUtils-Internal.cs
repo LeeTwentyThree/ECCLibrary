@@ -177,6 +177,7 @@ public static partial class CreaturePrefabUtils
     internal static AttackLastTarget AddAttackLastTargetData(GameObject creature, AttackLastTargetData data, LastTarget lastTarget)
     {
         var component = creature.AddComponent<AttackLastTarget>();
+        component.evaluatePriority = data.evaluatePriority;
         component.swimVelocity = data.swimVelocity;
         component.aggressionThreshold = data.aggressionThreshold;
         component.minAttackDuration = data.minAttackDuration;
