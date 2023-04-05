@@ -15,7 +15,7 @@ internal class ExampleLeviathan : CreatureAsset
             CellLevel = LargeWorldEntity.CellLevel.Far,
             SwimRandomData = new SwimRandomData(0.2f, 10, new Vector3(20, 20, 20)),
             StayAtLeashData = new StayAtLeashData(0.6f, 10f, 60f),
-            AvoidTerrainData = new AvoidTerrainData(1f, 10f, 15f, 15f),
+            AvoidTerrainData = new AvoidTerrainData(1f, 10f, 30f, 30f),
             AcidImmune = true,
             BioReactorCharge = 4000,
             Mass = 2000,
