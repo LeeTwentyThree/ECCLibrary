@@ -14,16 +14,17 @@ internal class ExampleLeviathan : CreatureAsset
         {
             CellLevel = LargeWorldEntity.CellLevel.Far,
             SwimRandomData = new SwimRandomData(0.2f, 10, new Vector3(20, 20, 20)),
-            StayAtLeashData = new StayAtLeashData(0.6f, 10f, 50f),
-            AvoidTerrainData = new AvoidTerrainData(1f, 10f, 30f, 30f),
+            StayAtLeashData = new StayAtLeashData(0.6f, 10f, 60f),
+            AvoidTerrainData = new AvoidTerrainData(1f, 10f, 15f, 15f),
             AcidImmune = true,
             BioReactorCharge = 4000,
             Mass = 2000,
             EyeFOV = -0.4f,
             LocomotionData = new LocomotionData(15, 0.3f),
             SizeDistribution = new AnimationCurve(new Keyframe(0, 0.5f), new Keyframe(1, 1f)),
-            AnimateByVelocityData = new AnimateByVelocityData(6f),
-            AttackLastTargetData = new AttackLastTargetData(0.8f, 12f, 0.5f, 10f)
+            AnimateByVelocityData = new AnimateByVelocityData(15f),
+            AttackLastTargetData = new AttackLastTargetData(0.8f, 12f, 0.5f, 10f),
+            AttackCyclopsData = new AttackCyclopsData(1f, 15f, 100f, 0.4f, 3f)
         };
 
         template.AddAggressiveWhenSeeTargetData(new AggressiveWhenSeeTargetData(EcoTargetType.Shark, 1, 50, 2));

@@ -188,4 +188,17 @@ public static partial class CreaturePrefabUtils
         component.lastTarget = lastTarget;
         return component;
     }
+
+    internal static AttackCyclops AddAttackCyclops(GameObject creature, AttackCyclopsData data, LastTarget lastTarget)
+    {
+        var component = creature.AddComponent<AttackCyclops>();
+        component.lastTarget = lastTarget;
+        component.evaluatePriority = data.evaluatePriority;
+        component.aggressPerSecond = data.aggressPerSecond;
+        component.attackAggressionThreshold = data.attackAggressionThreshold;
+        component.attackPause = data.attackPause;
+        component.maxDistToLeash = data.maxDistToLeash;
+        component.swimVelocity = data.swimVelocity;
+        return component;
+    }
 }

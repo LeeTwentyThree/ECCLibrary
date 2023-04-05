@@ -321,6 +321,11 @@ public abstract class CreatureAsset
             }
         }
 
+        if (template.AttackCyclopsData != null)
+        {
+            ccs.AttackCyclops = CreaturePrefabUtils.AddAttackCyclops(prefab, template.AttackCyclopsData, ccs.LastTarget);
+        }
+
         // picking up and/or holding
 
         var pickupableData = template.PickupableFishData;

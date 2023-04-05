@@ -130,6 +130,11 @@ public sealed class CreatureTemplate
     public AttackLastTargetData AttackLastTargetData { get; set; } = null;
 
     /// <summary>
+    /// Contains data pertaining to creating the <see cref="AttackCyclops"/> CreatureAction. Not assigned by default.
+    /// </summary>
+    public AttackCyclopsData AttackCyclopsData { get; set; } = null;
+
+    /// <summary>
     /// Mass in kg. Ranges from about 1.8f to 4050f. Default is 15kg.
     /// </summary>
     public float Mass { get; set; } = 10f;

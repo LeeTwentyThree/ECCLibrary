@@ -36,6 +36,8 @@ public struct CreatureComponents
     /// <summary> </summary>
     public AttackLastTarget AttackLastTarget { get; internal set; }
     /// <summary> </summary>
+    public AttackCyclops AttackCyclops { get; internal set; }
+    /// <summary> </summary>
     public LastTarget LastTarget { get; internal set; }
     /// <summary> </summary>
     public SwimBehaviour SwimBehaviour { get; internal set; }
