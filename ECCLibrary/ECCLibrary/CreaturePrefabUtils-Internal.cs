@@ -199,6 +199,7 @@ public static partial class CreaturePrefabUtils
         component.attackPause = data.attackPause;
         component.maxDistToLeash = data.maxDistToLeash;
         component.swimVelocity = data.swimVelocity;
+        component.aggressiveToNoise = new CreatureTrait(0, data.aggressionFalloff);
         return component;
     }
 }

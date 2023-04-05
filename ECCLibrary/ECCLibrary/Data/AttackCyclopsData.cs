@@ -27,6 +27,10 @@ public class AttackCyclopsData
     /// </summary>
     public float attackPause;
     /// <summary>
+    /// How fast the aggression to noise decreases. Typically 0.08f for smaller creatures and 0.01f for leviathans.
+    /// </summary>
+    public float aggressionFalloff;
+    /// <summary>
     /// Minimum aggression to attack. All vanilla creatures use a value of 0.75f.
     /// </summary>
     public float attackAggressionThreshold;
@@ -40,14 +44,16 @@ public class AttackCyclopsData
     /// <param name="aggressPerSecond">The amount of aggression gained per second while aware of a Cyclops. Note that this aggression is linked to '<see cref="AttackCyclops.aggressiveToNoise"/>', NOT '<see cref="Creature.Aggression"/>'.
     /// <br/>Generally 0.2f for smaller creatures and 0.4f for a leviathan.</param>
     /// <param name="attackPause">Minimum amount of time between each "attack". Generally 6 seconds for smaller creatures and 3 seconds for a leviathan.</param>
+    /// <param name="aggressionFalloff">How fast the aggression to noise decreases. Typically 0.08f for smaller creatures and 0.01f for leviathans.</param>
     /// <param name="attackAggressionThreshold">Minimum aggression to attack. All vanilla creatures use a value of 0.75f.</param>
-    public AttackCyclopsData(float evaluatePriority, float swimVelocity, float maxDistToLeash, float aggressPerSecond, float attackPause, float attackAggressionThreshold = 0.75f)
+    public AttackCyclopsData(float evaluatePriority, float swimVelocity, float maxDistToLeash, float aggressPerSecond, float attackPause, float aggressionFalloff, float attackAggressionThreshold = 0.75f)
     {
         this.evaluatePriority = evaluatePriority;
         this.swimVelocity = swimVelocity;
         this.maxDistToLeash = maxDistToLeash;
         this.aggressPerSecond = aggressPerSecond;
         this.attackPause = attackPause;
+        this.aggressionFalloff = aggressionFalloff;
         this.attackAggressionThreshold = attackAggressionThreshold;
     }
 }

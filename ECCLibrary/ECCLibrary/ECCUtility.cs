@@ -145,6 +145,20 @@ public static class TransformExtensions
     {
         return ECCUtility.SearchChildRecursive(transform, byName, stringComparison);
     }
+
+    /// <summary>
+    /// Locally resets all or some components of this Transform.
+    /// </summary>
+    /// <param name="transform">This.</param>
+    /// <param name="pos">Zero position?</param>
+    /// <param name="rot">Zero rotation?</param>
+    /// <param name="scl">Zero scale?</param>
+    public static void ZeroTransform(this Transform transform, bool pos = true, bool rot = true, bool scl = true)
+    {
+        if (pos) transform.localPosition = Vector3.zero;
+        if (rot) transform.localRotation = Quaternion.identity;
+        if (scl) transform.localScale = Vector3.one;
+    }
 }
 /// <summary>
 /// Enum which is solely used for ECCHelper methods.

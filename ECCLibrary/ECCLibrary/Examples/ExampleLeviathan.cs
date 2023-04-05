@@ -24,7 +24,7 @@ internal class ExampleLeviathan : CreatureAsset
             SizeDistribution = new AnimationCurve(new Keyframe(0, 0.5f), new Keyframe(1, 1f)),
             AnimateByVelocityData = new AnimateByVelocityData(15f),
             AttackLastTargetData = new AttackLastTargetData(0.8f, 12f, 0.5f, 10f),
-            AttackCyclopsData = new AttackCyclopsData(1f, 15f, 100f, 0.4f, 3f)
+            AttackCyclopsData = new AttackCyclopsData(1f, 15f, 100f, 0.4f, 3f, 0.01f)
         };
 
         template.AddAggressiveWhenSeeTargetData(new AggressiveWhenSeeTargetData(EcoTargetType.Shark, 1, 50, 2));
@@ -76,6 +76,10 @@ internal class ExampleLeviathan : CreatureAsset
             parent = tail.transform;
         }
 
+        GameObject mouth = new GameObject("Mouth");
+        mouth.transform.ZeroTransform();
+        mouth.AddComponent<SphereCollider>();
+        
         Object.DontDestroyOnLoad(model);
 
         return model;

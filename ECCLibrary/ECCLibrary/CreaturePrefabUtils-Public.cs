@@ -1,4 +1,5 @@
 ﻿using ECCLibrary.Data;
+using ECCLibrary.Mono;
 using System;
 
 namespace ECCLibrary;
@@ -146,4 +147,23 @@ public static partial class CreaturePrefabUtils
     }
 
     #endregion
+
+    /// <summary>
+    /// Adds an instance of the <see cref="OnTouch"/> component onto <paramref name="triggerObject"/> that calls the <paramref name="onTouchCallback"/> method.
+    /// </summary>
+    /// <param name="triggerObject">The object that holds the touch trigger, for example a creature's mouth collider. Must have Collider with <see cref="Collider.isTrigger"/> set to TRUE.</param>
+    /// <param name="onTouchCallback">The action performed when the object is collided with.</param>
+    /// <returns></returns>
+    public static OnTouch AddOnTouchTrigger(GameObject triggerObject, Action<Collider> onTouchCallback)
+    {
+        triggerObject.EnsureComponent<VFXSurface>().surfaceType = VFXSurfaceTypes.organic;
+        var collider = triggerObject.GetComponent<Collider>();
+        if (collider == null) ECCPlugin.logger.LogError($"No Collider found on trigger object '{triggerObject}'. This WILL cause errors!");
+        else if (!collider.isTrigger) ECCPlugin.logger.LogError($"Collider '{collider}' is not a trigger! This will NOT work!");
+        var onTouch = triggerObject.EnsureComponent<OnTouch>();
+        var setDelayed = triggerObject.EnsureComponent<SetOnTouchCallbackDelayed>();
+        setDelayed.onTouch = onTouch;
+        setDelayed.callback = onTouchCallback;
+        return onTouch;
+    }
 }

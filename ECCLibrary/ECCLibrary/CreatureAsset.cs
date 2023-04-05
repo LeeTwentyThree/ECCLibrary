@@ -110,6 +110,7 @@ public abstract class CreatureAsset
 
         var prefab = Object.Instantiate(template.Model);
         prefab.name = PrefabInfo.ClassID;
+        prefab.tag = "Creature";
         prefab.SetActive(false);
 
         var components = AddComponents(prefab);
@@ -150,10 +151,10 @@ public abstract class CreatureAsset
         ccs.EntityTag = prefab.EnsureComponent<EntityTag>();
         ccs.EntityTag.slotType = EntitySlot.Type.Creature;
 
-        ccs.SkyApplier = prefab.AddComponent<SkyApplier>();
+        ccs.SkyApplier = prefab.EnsureComponent<SkyApplier>();
         ccs.SkyApplier.renderers = prefab.GetComponentsInChildren<Renderer>(true);
 
-        ccs.EcoTarget = prefab.AddComponent<EcoTarget>();
+        ccs.EcoTarget = prefab.EnsureComponent<EcoTarget>();
         ccs.EcoTarget.type = template.EcoTargetType;
 
         ccs.VfxSurface = prefab.EnsureComponent<VFXSurface>();
@@ -165,6 +166,8 @@ public abstract class CreatureAsset
         ccs.BehaviourLOD.farThreshold = template.BehaviourLODData.far;
 
         ccs.Animator = prefab.GetComponentInChildren<Animator>();
+
+        if (ccs.Animator == null) ECCPlugin.logger.LogError($"No Animator found on creature '{PrefabInfo.ClassID}'. This WILL cause errors!");
 
         // physics
 
