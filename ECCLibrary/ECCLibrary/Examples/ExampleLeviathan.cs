@@ -93,6 +93,10 @@ internal class ExampleLeviathan : CreatureAsset
         trailManagerBuilder.AllowDisableOnScreen = false;
         trailManagerBuilder.Apply();
 
+        var mouth = prefab.SearchChild("Mouth");
+
+        CreaturePrefabUtils.AddMeleeAttack<MeleeAttack>(prefab, components, mouth, true, 40f);
+
         yield break;
     }
 }
