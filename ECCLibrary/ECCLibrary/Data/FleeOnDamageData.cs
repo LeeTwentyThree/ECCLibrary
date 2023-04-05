@@ -39,7 +39,7 @@ public class FleeOnDamageData
     /// <param name="minFleeDistance">At least how far in meters the creature will flee when attacked.</param>
     /// <param name="swimVelocity">How fast the creature will flee in m/s.</param>
     /// <param name="swimInterval">How many seconds are between each "swim".</param>
-    public FleeOnDamageData(float evaluatePriority, float damageThreshold = 10f, float fleeDuration = 2f, float minFleeDistance = 5f, float swimVelocity = 10f, float swimInterval = 1f)
+    public FleeOnDamageData(float evaluatePriority, float swimVelocity = 10f, float damageThreshold = 10f, float fleeDuration = 2f, float minFleeDistance = 5f, float swimInterval = 1f)
     {
         this.evaluatePriority = evaluatePriority;
         this.damageThreshold = damageThreshold;

@@ -14,13 +14,13 @@ public sealed class CreatureTemplate
     /// <param name="model">The model that is cloned to create the creature GameObject.</param>
     /// <param name="behaviourType">Goes hand in hand with the EcoTargetType. Please note the Player is a SHARK! Determines very few creature behaviours/interactions.</param>
     /// <param name="ecoTargetType">Goes hand in hand with the BehaviourType. Determines many interactions with creatures, specifically how this creature is "located" or "targeted" by other creatures</param>
-    /// <param name="liveMixinData">Controls health and damage-taking aspects of this creature.</param>
-    public CreatureTemplate(GameObject model, BehaviourType behaviourType, EcoTargetType ecoTargetType, LiveMixinData liveMixinData)
+    /// <param name="maxHealth">Maximum health of this creature.</param>
+    public CreatureTemplate(GameObject model, BehaviourType behaviourType, EcoTargetType ecoTargetType, float maxHealth)
     {
         Model = model;
         BehaviourType = behaviourType;
         EcoTargetType = ecoTargetType;
-        LiveMixinData = liveMixinData;
+        LiveMixinData = CreatureDataUtils.CreateLiveMixinData(maxHealth);
     }
 
     /// <summary>
@@ -112,7 +112,7 @@ public sealed class CreatureTemplate
     /// <summary>
     /// A list of all data pertaining to the <see cref="AggressiveWhenSeeTarget"/> component, which enables the creature to become aggressive towards specific fauna/the player.
     /// </summary>
-    public List<AggressiveWhenSeeTargetData> AggressiveWhenSeeTargetList { get; private set; }
+    public List<AggressiveWhenSeeTargetData> AggressiveWhenSeeTargetList { get; set; }
 
     /// <summary>
     /// Adds a single type of aggression to this creature. This method can be called MULTIPLE TIMES to add multiple types of aggression! Not functional without the <see cref="AttackLastTarget"/> component.

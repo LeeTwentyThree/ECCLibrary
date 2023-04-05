@@ -11,7 +11,7 @@ internal class ExampleCreature : CreatureAsset
 
     protected override CreatureTemplate CreateTemplate()
     {
-        var template = new CreatureTemplate(GetModel(), BehaviourType.SmallFish, EcoTargetType.SmallFish, CreatureDataUtils.CreateLiveMixinData(160f));
+        var template = new CreatureTemplate(GetModel(), BehaviourType.SmallFish, EcoTargetType.SmallFish, 160f);
         template.CellLevel = LargeWorldEntity.CellLevel.Medium;
         template.SetCreatureComponentType<ExampleCreatureComponent>();
         template.SwimRandomData = new SwimRandomData(0.2f, 3f, new Vector3(20, 20, 20));
@@ -25,7 +25,7 @@ internal class ExampleCreature : CreatureAsset
         return template;
     }
 
-    private GameObject GetModel()
+    public static GameObject GetModel()
     {
         var model = new GameObject("CreatureModel");
         model.SetActive(false);

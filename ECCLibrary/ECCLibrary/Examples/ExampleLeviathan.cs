@@ -1,5 +1,4 @@
 ﻿using ECCLibrary.Data;
-using System.Net.Configuration;
 
 namespace ECCLibrary.Examples;
 
@@ -11,7 +10,7 @@ internal class ExampleLeviathan : CreatureAsset
 
     protected override CreatureTemplate CreateTemplate()
     {
-        var template = new CreatureTemplate(GetModel(), BehaviourType.Leviathan, EcoTargetType.Leviathan, CreatureDataUtils.CreateLiveMixinData(600f))
+        var template = new CreatureTemplate(GetModel(), BehaviourType.Leviathan, EcoTargetType.Leviathan, 600f)
         {
             CellLevel = LargeWorldEntity.CellLevel.Far,
             SwimRandomData = new SwimRandomData(0.2f, 10, new Vector3(20, 20, 20)),
@@ -35,7 +34,7 @@ internal class ExampleLeviathan : CreatureAsset
         return template;
     }
 
-    private GameObject GetModel()
+    public static GameObject GetModel()
     {
         var model = new GameObject("CreatureModel");
         model.SetActive(false);
@@ -65,14 +64,14 @@ internal class ExampleLeviathan : CreatureAsset
 
         Transform parent = tailRoot.transform;
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 20; i++)
         {
             var tail = GameObject.CreatePrimitive(PrimitiveType.Cube);
             tail.name = "TailSegment_phys";
             Object.DestroyImmediate(tail.GetComponent<Collider>());
             tail.transform.parent = parent;
-            tail.transform.localPosition = Vector3.forward * (-0.4f * i);
-            tail.transform.localScale = Vector3.one * 0.8f;
+            tail.transform.localPosition = Vector3.forward * (-0.4f * (Mathf.Log(i + 2)));
+            tail.transform.localScale = Vector3.one * 0.9f;
             parent = tail.transform;
         }
 

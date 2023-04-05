@@ -1,5 +1,5 @@
 ﻿using System.Reflection;
-using ECCLibrary.Examples;
+using ECCLibrary.Data;
 
 namespace ECCLibrary;
 [BepInPlugin(PluginInfo.GUID, PluginInfo.Name, PluginInfo.Version)]
@@ -18,11 +18,6 @@ internal class ECCPlugin : BaseUnityPlugin
 
         logger.Log(LogLevel.Info, "ECCLibrary loaded!");
 
-        var exampleCreature = new ExampleCreature(PrefabInfo.WithTechType("ExampleCreature", "Example Creature", "An example prey fish."));
-        exampleCreature.PrefabInfo.WithIcon(SpriteManager.Get(TechType.LavaBoomerang));
-        exampleCreature.Register();
-
-        var exampleLeviathan = new ExampleLeviathan(PrefabInfo.WithTechType("ExampleLeviathan", "Example Leviathan", "An example leviathan."));
-        exampleLeviathan.Register();
+        Examples.ExamplePatcher.PatchExampleCreatures();
     }
 }
