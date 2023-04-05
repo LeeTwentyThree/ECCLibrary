@@ -7,20 +7,38 @@ using UnityEngine.UIElements;
 
 namespace ECCLibrary.Data;
 /// <summary>
-/// Helps in the creation of a <see cref="TrailManager"/>. Call the <see cref="Complete"/> method to apply the changes.
+/// Helps in the creation of a <see cref="TrailManager"/>. Call the <see cref="Apply"/> method to apply the changes.
 /// </summary>
 public class TrailManagerBuilder
 {
     /// <summary>
-    /// Helps in the creation of a <see cref="TrailManager"/>. Call the <see cref="Complete"/> method to apply the changes.
+    /// Helps in the creation of a <see cref="TrailManager"/>. Call the <see cref="Apply"/> method to apply the changes.
     /// </summary>
-    /// <param name="creatureRoot">The root of the creature. Typically the object that holds the Creature component and all CreatureActions.</param>
+    /// <param name="components">The object that holds all creature components.</param>
     /// <param name="rootSegment"> The object that the TrailManager is added to. Is generally a part of the rig. This bone does NOT get animated, and should NOT be included in the list of trail bones.</param>
     /// <param name="segmentSnapSpeed">Controls rigidity. The higher this value, the faster the TrailManager can revert to its default (stiff) state. The lower this value, the more "floaty" it appears.</param>
     /// <param name="maxSegmentOffset">If -1 (default), there is no limit on how far each segment can go. Otherwise, this value forces each bone to remain within a certain distance of its starting point.</param>
-    public TrailManagerBuilder(Transform creatureRoot, Transform rootSegment, float segmentSnapSpeed = 5f, float maxSegmentOffset = -1f)
+    public TrailManagerBuilder(CreatureComponents components, Transform rootSegment, float segmentSnapSpeed = 5f, float maxSegmentOffset = -1f)
+    {
+        CreatureRoot = components.Creature.transform;
+        BehaviourLOD = components.BehaviourLOD;
+        RootSegment = rootSegment;
+        SegmentSnapSpeed = segmentSnapSpeed;
+        MaxSegmentOffset = maxSegmentOffset;
+    }
+
+    /// <summary>
+    /// Helps in the creation of a <see cref="TrailManager"/>. Call the <see cref="Apply"/> method to apply the changes.
+    /// </summary>
+    /// <param name="creatureRoot">The root of the creature. Typically the object that holds the Creature component and all CreatureActions.</param>
+    /// <param name="behaviourLOD">The BehaviourLOD of this creature.</param>
+    /// <param name="rootSegment"> The object that the TrailManager is added to. Is generally a part of the rig. This bone does NOT get animated, and should NOT be included in the list of trail bones.</param>
+    /// <param name="segmentSnapSpeed">Controls rigidity. The higher this value, the faster the TrailManager can revert to its default (stiff) state. The lower this value, the more "floaty" it appears.</param>
+    /// <param name="maxSegmentOffset">If -1 (default), there is no limit on how far each segment can go. Otherwise, this value forces each bone to remain within a certain distance of its starting point.</param>
+    public TrailManagerBuilder(Transform creatureRoot, BehaviourLOD behaviourLOD, Transform rootSegment, float segmentSnapSpeed = 5f, float maxSegmentOffset = -1f)
     {
         CreatureRoot = creatureRoot;
+        BehaviourLOD = behaviourLOD;
         RootSegment = rootSegment;
         SegmentSnapSpeed = segmentSnapSpeed;
         MaxSegmentOffset = maxSegmentOffset;
@@ -40,6 +58,11 @@ public class TrailManagerBuilder
     /// The array that contains all of the transforms of the affected bones.
     /// </summary>
     public Transform[] Trails { get; set; } = new Transform[0];
+
+    /// <summary>
+    /// The BehaviourLOD of this creature.
+    /// </summary>
+    public BehaviourLOD BehaviourLOD { get; set; }
 
     /// <summary>
     /// Controls rigidity. The higher this value, the faster the TrailManager can revert to its default (stiff) state. The lower this value, the more "floaty" it appears.
@@ -107,7 +130,7 @@ public class TrailManagerBuilder
     /// <summary>
     /// Fills the Trails array with every child (recursive) of the <see cref="RootSegment"/> that contains 'phys' in its name (case insensitive). Ordered from parent to child, top to bottom.
     /// </summary>
-    public void SetTrailArrayToPhysBones()
+    public void SetTrailArrayToPhysBoneChildren()
     {
         SetTrailArrayToChildrenWithKeywords("phys");
     }
@@ -115,26 +138,18 @@ public class TrailManagerBuilder
     /// <summary>
     /// Finalizes creation of this TrailManager.
     /// </summary>
-    public TrailManager Complete(CreatureComponents components)
-    {
-        return Complete(components.BehaviourLOD);
-    }
-
-    /// <summary>
-    /// Finalizes creation of this TrailManager.
-    /// </summary>
-    public TrailManager Complete(BehaviourLOD lod)
+    public TrailManager Apply()
     {
         var tm = RootSegment.gameObject.AddComponent<TrailManager>();
         tm.rootSegment = RootSegment;
         tm.rootTransform = CreatureRoot;
         tm.segmentSnapSpeed = SegmentSnapSpeed;
         tm.maxSegmentOffset = MaxSegmentOffset;
-        tm.trails = Trails;
         tm.pitchMultiplier = PitchMultiplier;
         tm.rollMultiplier = RollMultiplier;
         tm.yawMultiplier = YawMultiplier;
-        tm.levelOfDetail = lod;
+        tm.levelOfDetail = BehaviourLOD;
+        tm.trails = Trails;
         return tm;
     }
 }
