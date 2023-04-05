@@ -55,6 +55,7 @@ internal class ExampleLeviathan : CreatureAsset
 
         GameObject tailRoot = new GameObject("Tail");
         tailRoot.transform.parent = worldModel.transform;
+        tailRoot.transform.localScale = Vector3.one;
 
         Transform parent = tailRoot.transform;
 
@@ -64,7 +65,7 @@ internal class ExampleLeviathan : CreatureAsset
             tail.name = "TailSegment_phys";
             Object.DestroyImmediate(tail.GetComponent<Collider>());
             tail.transform.parent = parent;
-            tail.transform.localPosition = Vector3.forward * -0.4f;
+            tail.transform.localPosition = Vector3.forward * (-0.4f * i);
             tail.transform.localScale = Vector3.one * 0.8f;
             parent = tail.transform;
         }
