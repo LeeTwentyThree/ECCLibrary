@@ -11,21 +11,27 @@ internal class ExampleLeviathan : CreatureAsset
 
     protected override CreatureTemplate CreateTemplate()
     {
-        var template = new CreatureTemplate(GetModel(), BehaviourType.Leviathan, EcoTargetType.Leviathan, CreatureDataUtils.CreateLiveMixinData(600f));
-        template.CellLevel = LargeWorldEntity.CellLevel.Far;
-        template.SwimRandomData = new SwimRandomData(0.2f, 10, new Vector3(20, 20, 20));
-        template.StayAtLeashData = new StayAtLeashData(0.6f, 10f, 50f);
-        template.AvoidTerrainData = new AvoidTerrainData(1f, 10f, 30f, 30f);
-        template.AcidImmune = true;
-        template.BioReactorCharge = 4000;
-        template.Mass = 2000;
-        template.EyeFOV = -0.4f;
-        template.LocomotionData = new LocomotionData(15, 0.3f);
-        template.SizeDistribution = new AnimationCurve(new Keyframe(0, 0.5f), new Keyframe(1, 1f));
-        template.AnimateByVelocityData = new AnimateByVelocityData(6f);
+        var template = new CreatureTemplate(GetModel(), BehaviourType.Leviathan, EcoTargetType.Leviathan, CreatureDataUtils.CreateLiveMixinData(600f))
+        {
+            CellLevel = LargeWorldEntity.CellLevel.Far,
+            SwimRandomData = new SwimRandomData(0.2f, 10, new Vector3(20, 20, 20)),
+            StayAtLeashData = new StayAtLeashData(0.6f, 10f, 50f),
+            AvoidTerrainData = new AvoidTerrainData(1f, 10f, 30f, 30f),
+            AcidImmune = true,
+            BioReactorCharge = 4000,
+            Mass = 2000,
+            EyeFOV = -0.4f,
+            LocomotionData = new LocomotionData(15, 0.3f),
+            SizeDistribution = new AnimationCurve(new Keyframe(0, 0.5f), new Keyframe(1, 1f)),
+            AnimateByVelocityData = new AnimateByVelocityData(6f),
+            AttackLastTargetData = new AttackLastTargetData(0.8f, 12f, 0.5f, 10f)
+        };
+
         template.AddAggressiveWhenSeeTargetData(new AggressiveWhenSeeTargetData(EcoTargetType.Shark, 1, 50, 2));
         template.AddAggressiveWhenSeeTargetData(new AggressiveWhenSeeTargetData(EcoTargetType.MediumFish, 0.5f, 50, 2));
-        template.AttackLastTargetData = new AttackLastTargetData(0.8f, 12f, 0.5f, 10f);
+
+        template.BehaviourLODData = new BehaviourLODData(50, 250, 500);
+
         return template;
     }
 
@@ -80,6 +86,7 @@ internal class ExampleLeviathan : CreatureAsset
         var trailManagerBuilder = new TrailManagerBuilder(components, prefab.transform.SearchChild("Tail"));
         trailManagerBuilder.SegmentSnapSpeed = 4;
         trailManagerBuilder.SetTrailArrayToPhysBoneChildren();
+        trailManagerBuilder.AllowDisableOnScreen = false;
         trailManagerBuilder.Apply();
 
         yield break;
