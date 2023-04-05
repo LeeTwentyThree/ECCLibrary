@@ -94,6 +94,23 @@ public static class ECCUtility
         asset.id = id;
         return asset;
     }
+
+    internal static Transform SearchChildRecursive(Transform transform, string byName, ECCStringComparison stringComparison)
+    {
+        foreach (Transform child in transform)
+        {
+            if (CompareStrings(child.gameObject.name, byName, stringComparison))
+            {
+                return child;
+            }
+            Transform recursive = SearchChildRecursive(child, byName, stringComparison);
+            if (recursive)
+            {
+                return recursive;
+            }
+        }
+        return null;
+    }
 }
 /// <summary>
 /// Various ECC-related extensions for GameObjects.
@@ -109,24 +126,24 @@ public static class GameObjectExtensions
     /// <returns></returns>
     public static GameObject SearchChild(this GameObject gameObject, string byName, ECCStringComparison stringComparison = ECCStringComparison.Equals)
     {
-        return SearchChildRecursive(gameObject, byName, stringComparison);
+        return ECCUtility.SearchChildRecursive(gameObject.transform, byName, stringComparison).gameObject;
     }
-
-    static GameObject SearchChildRecursive(GameObject gameObject, string byName, ECCStringComparison stringComparison)
+}
+/// <summary>
+/// Various ECC-related extensions for Transforms.
+/// </summary>
+public static class TransformExtensions
+{
+    /// <summary>
+    /// Find a GameObject in this object's hiearchy, by name.
+    /// </summary>
+    /// <param name="transform"></param>
+    /// <param name="byName"></param>
+    /// <param name="stringComparison"></param>
+    /// <returns></returns>
+    public static Transform SearchChild(this Transform transform, string byName, ECCStringComparison stringComparison = ECCStringComparison.Equals)
     {
-        foreach (Transform child in gameObject.transform)
-        {
-            if (ECCUtility.CompareStrings(child.gameObject.name, byName, stringComparison))
-            {
-                return child.gameObject;
-            }
-            GameObject recursive = SearchChildRecursive(child.gameObject, byName, stringComparison);
-            if (recursive)
-            {
-                return recursive;
-            }
-        }
-        return null;
+        return ECCUtility.SearchChildRecursive(transform, byName, stringComparison);
     }
 }
 /// <summary>
