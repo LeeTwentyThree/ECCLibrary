@@ -1,5 +1,8 @@
 ﻿using UnityEngine.Events;
 using System;
+using System.Reflection;
+using SMLHelper.Utility;
+using System.Runtime.InteropServices;
 
 namespace ECCLibrary.Mono;
 
@@ -14,14 +17,39 @@ public class SetOnTouchCallbackDelayed : MonoBehaviour
     public OnTouch onTouch;
 
     /// <summary>
-    /// Callback method.
+    /// GameObject holding the callback component.
     /// </summary>
-    public Action<Collider> callback;
+    public GameObject callbackGameObject;
+
+    /// <summary>
+    /// Callback method type name.
+    /// </summary>
+    public string callbackTypeName;
+
+    /// <summary>
+    /// Callback method name.
+    /// </summary>
+    public string callbackMethodName;
 
     private void Start()
     {
         var onTouchEvent = new OnTouch.OnTouchEvent();
-        onTouchEvent.AddListener(new UnityAction<Collider>(callback));
+        onTouchEvent.AddListener(GetCallbackAction());
         onTouch.onTouch = onTouchEvent;
     }
+
+    private UnityAction<Collider> GetCallbackAction()
+    {
+        foreach (var component in callbackGameObject.GetComponents<Component>())
+        {
+            if (component.GetType().Name == callbackTypeName)
+            {
+                var action = Delegate.CreateDelegate(typeof(OnTouchCallback), component, callbackMethodName);
+                return new UnityAction<Collider>((collider) => action.Method.Invoke(action.Target, new object[] { collider }));
+            }
+        }
+        return null;
+    }
+
+    delegate void OnTouchCallback(Collider collider);
 }

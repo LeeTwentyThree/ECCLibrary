@@ -150,12 +150,14 @@ public static partial class CreaturePrefabUtils
     #endregion
 
     /// <summary>
-    /// Adds an instance of the <see cref="OnTouch"/> component onto <paramref name="triggerObject"/> that calls the <paramref name="onTouchCallback"/> method.
+    /// Adds an instance of the <see cref="OnTouch"/> component onto <paramref name="triggerObject"/> that calls the method as defined by the parameters.
     /// </summary>
     /// <param name="triggerObject">The object that holds the touch trigger, for example a creature's mouth collider. Must have Collider with <see cref="Collider.isTrigger"/> set to TRUE.</param>
-    /// <param name="onTouchCallback">The action performed when the object is collided with.</param>
+    /// <param name="callbackObject">The GameObject that holds the callback component & method.</param>
+    /// <param name="callbackComponentTypeName">The name of the type that holds the action performed when the object is collided with.</param>
+    /// <param name="callbackMethodName">The name of the method that is performed when the object is collided with.</param>
     /// <returns></returns>
-    public static OnTouch AddOnTouchTrigger(GameObject triggerObject, Action<Collider> onTouchCallback)
+    public static OnTouch AddOnTouchTrigger(GameObject triggerObject, GameObject callbackObject, string callbackComponentTypeName, string callbackMethodName)
     {
         triggerObject.EnsureComponent<VFXSurface>().surfaceType = VFXSurfaceTypes.organic;
         var collider = triggerObject.GetComponent<Collider>();
@@ -164,7 +166,9 @@ public static partial class CreaturePrefabUtils
         var onTouch = triggerObject.EnsureComponent<OnTouch>();
         var setDelayed = triggerObject.EnsureComponent<SetOnTouchCallbackDelayed>();
         setDelayed.onTouch = onTouch;
-        setDelayed.callback = onTouchCallback;
+        setDelayed.callbackGameObject = callbackObject;
+        setDelayed.callbackTypeName = callbackComponentTypeName;
+        setDelayed.callbackMethodName = callbackMethodName;
         return onTouch;
     }
 
@@ -187,7 +191,7 @@ public static partial class CreaturePrefabUtils
 
         if (automaticallyAddOnTouchCallback)
         {
-            AddOnTouchTrigger(mouth, meleeAttack.OnTouch);
+            AddOnTouchTrigger(mouth, creature, typeof(T).Name, "OnTouch");
         }
 
         meleeAttack.lastTarget = components.LastTarget;
