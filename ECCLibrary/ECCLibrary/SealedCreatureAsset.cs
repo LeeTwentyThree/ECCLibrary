@@ -57,5 +57,9 @@ public sealed class SealedCreatureAsset : CreatureAsset
         {
             applyMaterials.Invoke(prefab);
         }
+        else
+        {
+            MaterialUtils.ApplySNShaders(prefab);
+        }
     }
 }
