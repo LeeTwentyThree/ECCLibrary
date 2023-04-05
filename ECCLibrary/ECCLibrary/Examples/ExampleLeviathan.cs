@@ -77,8 +77,9 @@ internal class ExampleLeviathan : CreatureAsset
         }
 
         GameObject mouth = new GameObject("Mouth");
+        mouth.transform.parent = sphere.transform;
         mouth.transform.ZeroTransform();
-        mouth.AddComponent<SphereCollider>();
+        mouth.AddComponent<SphereCollider>().isTrigger = true;
         
         Object.DontDestroyOnLoad(model);
 
