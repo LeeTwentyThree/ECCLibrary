@@ -53,6 +53,22 @@ internal class ExampleLeviathan : CreatureAsset
 
         model.gameObject.AddComponent<BoxCollider>().size = Vector3.one * 10;
 
+        GameObject tailRoot = new GameObject("Tail");
+        tailRoot.transform.parent = worldModel.transform;
+
+        Transform parent = tailRoot.transform;
+
+        for (int i = 0; i < 10; i++)
+        {
+            var tail = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            tail.name = "TailSegment_phys";
+            Object.DestroyImmediate(tail.GetComponent<Collider>());
+            tail.transform.parent = parent;
+            tail.transform.localPosition = Vector3.forward * -0.4f;
+            tail.transform.localScale = Vector3.one * 0.8f;
+            parent = tail.transform;
+        }
+
         Object.DontDestroyOnLoad(model);
 
         return model;
@@ -60,6 +76,11 @@ internal class ExampleLeviathan : CreatureAsset
 
     protected override IEnumerator ModifyPrefab(GameObject prefab, CreatureComponents components)
     {
+        var trailManagerBuilder = new TrailManagerBuilder(components, prefab.transform.SearchChild("Tail"));
+        trailManagerBuilder.SegmentSnapSpeed = 4;
+        trailManagerBuilder.SetTrailArrayToPhysBoneChildren();
+        trailManagerBuilder.Apply();
+
         yield break;
     }
 }
