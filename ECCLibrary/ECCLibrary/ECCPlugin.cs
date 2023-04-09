@@ -11,13 +11,17 @@ internal class ECCPlugin : BaseUnityPlugin
 
     private void Awake()
     {
-        logger = this.Logger;
+        logger = Logger;
+
+        logger.LogInfo($"Patching {PluginInfo.Name} ({PluginInfo.GUID}) v{PluginInfo.Version}...");
 
         Harmony harmony = new Harmony(PluginInfo.GUID);
         harmony.PatchAll(Assembly.GetExecutingAssembly());
 
-        logger.Log(LogLevel.Info, "ECCLibrary loaded!");
+        logger.LogInfo("Attempting to create example creatures...");
 
         Examples.ExamplePatcher.PatchExampleCreatures();
+
+        logger.LogInfo($"Finished patching {PluginInfo.Name}!");
     }
 }

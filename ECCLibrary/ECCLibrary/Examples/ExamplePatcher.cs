@@ -6,15 +6,15 @@ internal static class ExamplePatcher
 {
     public static void PatchExampleCreatures()
     {
-        var exampleCreature = new ExampleCreature(PrefabInfo.WithTechType("ExampleCreature", "Example Creature", "An example prey fish."));
+        var exampleCreature = new ExampleCreature(PrefabInfo.WithTechType("ExampleCreature", "Example Creature", "An example of a prey fish."));
         exampleCreature.PrefabInfo.WithIcon(SpriteManager.Get(TechType.LavaBoomerang));
         exampleCreature.Register();
 
-        var exampleLeviathan = new ExampleLeviathan(PrefabInfo.WithTechType("ExampleLeviathan", "Example Leviathan", "An example leviathan."));
+        var exampleLeviathan = new ExampleLeviathan(PrefabInfo.WithTechType("ExampleLeviathan", "Example Leviathan", "An example of a Leviathan."));
         exampleLeviathan.Register();
 
-        var exampleCreature2 = new SealedCreatureAsset(
-            PrefabInfo.WithTechType("ExampleCreature2", "Example Creature 2", "A second example creature."),
+        var exampleShark = new SealedCreatureAsset(
+            PrefabInfo.WithTechType("ExampleShark", "Example Shark", "An example of a Shark."),
             new CreatureTemplate(ExampleCreature.GetModel(), BehaviourType.Shark, EcoTargetType.Shark, 200f)
             {
                 CellLevel = LargeWorldEntity.CellLevel.Medium,
@@ -31,7 +31,7 @@ internal static class ExamplePatcher
             },
             ModifyExampleCreature2
         );
-        exampleCreature2.Register();
+        exampleShark.Register();
     }
 
     private static IEnumerator ModifyExampleCreature2(GameObject obj1, CreatureComponents obj2)
