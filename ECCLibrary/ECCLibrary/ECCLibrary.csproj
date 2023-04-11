@@ -1,5 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+	<!--Imports the GameDir.targets file (from the same folder) which should contain the path to the Subnautica directory for the post-build event-->
+	<Import Project="GameDir.targets" />
+	
+	<!--Project essentials, allows for C# 10 features to be used. Targets .NET Framework 4.7.2-->
 	<PropertyGroup>
 		<TargetFramework>net472</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
@@ -8,11 +12,18 @@
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
 	</PropertyGroup>
 
+	<!--Defines the PluginsDir property for use in the Post-Build event-->
+	<PropertyGroup>
+		<PluginsDir>$(GameDir)\BepInEx\plugins</PluginsDir>
+	</PropertyGroup>
+
+	<!--Remove unwanted global usings that hinder development (System) make it impossible to compile (System.Net.Http)-->
 	<ItemGroup>
 		<Using Remove="System" />
 		<Using Remove="System.Net.Http" />
 	</ItemGroup>
 
+	<!--Import NuGet packages (may not function properly if the nuget.config file is removed!)-->
 	<ItemGroup>
 		<PackageReference Include="BepInEx.Core" Version="5.4.21" />
 		<PackageReference Include="Subnautica.GameLibs" Version="71137.0.0.1-r.0" />
@@ -20,14 +31,16 @@
 		<PackageReference Include="UnityEngine.Modules" Version="2019.4.36" />
 	</ItemGroup>
 
+	<!--Reference the SMLHelper DLL. You WILL need to modify this locally if the name of the library changes or if you have a different folder structure-->
 	<ItemGroup>
 	  <Reference Include="SMLHelper">
-	    <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Subnautica.stable\BepInEx\plugins\SMLib\SMLHelper.dll</HintPath>
+	    <HintPath>$(PluginsDir)\SMLib\SMLHelper.dll</HintPath>
 	  </Reference>
 	</ItemGroup>
 
+	<!--Post-Build event that automatically places an ECCLibrary folder with the DLL and documentation into your plugins folder as defined in GameDir.targets-->
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-		<Exec Command="mkdir &quot;C:\Program Files (x86)\Steam\steamapps\common\Subnautica\BepInEx\plugins\$(TargetName)&quot;&#xD;&#xA;copy /Y &quot;$(TargetPath)&quot; &quot;C:\Program Files (x86)\Steam\steamapps\common\Subnautica\BepInEx\plugins\$(TargetName)&quot;" />
+		<Exec Command="mkdir &quot;$(PluginsDir)\$(TargetName)&quot;&#xD;&#xA;copy /Y &quot;$(TargetPath)&quot; &quot;$(PluginsDir)\$(TargetName)&quot;&#xD;&#xA;copy /Y &quot;$(TargetDir)\ECCLibrary.xml&quot; &quot;$(PluginsDir)\$(TargetName)\ECCLibrary.xml&quot;" />
 	</Target>
 
 </Project>
