@@ -15,7 +15,7 @@ The XML documentation within the library is very elaborate and should provide su
 
 ## Requirements
 
-SMLHelper 3 (name subject to change)
+SMLHelper 3 (name subject to change).
 
 ## Contributing to ECCLibrary
 
