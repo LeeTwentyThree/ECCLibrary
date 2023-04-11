@@ -37,8 +37,14 @@ public struct WaterParkCreatureDataStruct
     /// </summary>
     public bool canBreed;
 
+    /// <summary>
+    /// The prefab for either the egg or the child version of the creature
+    /// </summary>
     public AssetReferenceGameObject eggOrChildPrefab;
 
+    /// <summary>
+    /// The prefab for the adult creature GameObject
+    /// </summary>
     public AssetReferenceGameObject adultPrefab;
 
     /// <summary>
