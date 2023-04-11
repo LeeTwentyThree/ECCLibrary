@@ -153,7 +153,7 @@ public static partial class CreaturePrefabUtils
     /// Adds an instance of the <see cref="OnTouch"/> component onto <paramref name="triggerObject"/> that calls the method as defined by the parameters.
     /// </summary>
     /// <param name="triggerObject">The object that holds the touch trigger, for example a creature's mouth collider. Must have Collider with <see cref="Collider.isTrigger"/> set to TRUE.</param>
-    /// <param name="callbackObject">The GameObject that holds the callback component & method.</param>
+    /// <param name="callbackObject">The GameObject that holds the callback component and method.</param>
     /// <param name="callbackComponentTypeName">The name of the type that holds the action performed when the object is collided with.</param>
     /// <param name="callbackMethodName">The name of the method that is performed when the object is collided with.</param>
     /// <returns></returns>
