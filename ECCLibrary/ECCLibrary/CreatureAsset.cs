@@ -339,7 +339,7 @@ public abstract class CreatureAsset
             if (pickupableData.CanBeHeld)
             {
                 HeldFish heldFish = prefab.EnsureComponent<HeldFish>();
-                heldFish.animationName = pickupableData.ReferenceHoldingAnimation.ToString().ToLower();
+                heldFish.SetAnimationTechTypeReference(pickupableData.ReferenceHoldingAnimation);
                 heldFish.mainCollider = prefab.GetComponent<Collider>();
                 heldFish.pickupable = ccs.Pickupable;
                 heldFish.drawTime = 0f;
