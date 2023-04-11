@@ -24,5 +24,5 @@ If you would like to build the project, follow the steps below to set up the env
 2. Open the ECCLibrary.csproj file with an appropriate IDE (Visual Studio, Rider, etc.,).
 3. Locate the GameDir.targets file, open it, and replace the GameDir path with the correct path to your Subnautica folder.
 4. Ensure the NuGet packages are loaded correctly. You may need to right click the Solution at the top of the Solution Explorer and choose 'Restore NuGet Packages'.
-5. Build the solution. It should automatically be placed in your BepInEx 'plugins' folder.
+5. Build the solution. An ECCLibrary should be automatically placed in your BepInEx 'plugins' folder.
    - If that does not work, double check the SMLHelper reference path in the csproj file.
