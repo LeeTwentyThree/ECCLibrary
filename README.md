@@ -19,7 +19,7 @@ ECCLibrary is an open-source mod and contributions are always welcome. If you ar
 
 One way to contribute is to submit bug reports and feature requests through the issue tracker on GitHub. This helps the ECCLibrary team understand what features, changes and/or fixes are needed.
 
-If you would like to make a build the project and/or make a Pull Request, follow the steps below to set up the environment:
+If you would like to build the project and/or make a Pull Request, follow the steps below to set up the environment:
 1. Fork or clone the repository.
 2. Open the ECCLibrary.csproj file with an appropriate IDE (Visual Studio, Rider, etc.,).
 3. Locate the GameDir.targets file, open it, and replace the GameDir path with the correct path to your Subnautica folder.
