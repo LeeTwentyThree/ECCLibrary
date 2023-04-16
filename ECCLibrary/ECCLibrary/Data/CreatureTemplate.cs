@@ -3,12 +3,12 @@
 namespace ECCLibrary.Data;
 
 /// <summary>
-/// Contains most of the data related to registering a creature into the game.
+/// Contains all of the data related to registering a creature into the game.
 /// </summary>
 public sealed class CreatureTemplate
 {
     /// <summary>
-    /// Contains most of the data related to registering a creature into the game.
+    /// Contains all of the data related to registering a creature into the game.
     /// </summary>
     /// <param name="model">The model that is cloned to create the creature GameObject.</param>
     /// <param name="behaviourType">Goes hand in hand with the EcoTargetType. Please note the Player is a SHARK! Determines very few creature behaviours/interactions.</param>
