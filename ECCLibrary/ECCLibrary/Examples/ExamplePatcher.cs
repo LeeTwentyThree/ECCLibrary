@@ -1,4 +1,5 @@
 ﻿using ECCLibrary.Data;
+using UnityEngine.AddressableAssets;
 
 namespace ECCLibrary.Examples;
 
@@ -28,7 +29,7 @@ internal static class ExamplePatcher
                 FleeOnDamageData = new FleeOnDamageData(0.8f, 8f),
                 AggressiveWhenSeeTargetList = new List<AggressiveWhenSeeTargetData> { new(EcoTargetType.Shark, 1, 20, 1) },
                 AttackLastTargetData = new AttackLastTargetData(0.7f, 8f, 0.5f, 7f)
-            },
+            }.SetWaterParkCreatureData(new WaterParkCreatureDataStruct(0.1f, 1f, 1f, 1f, false, true, "ExampleShark", "ExampleShark")),
             ModifyExampleCreature2
         );
         exampleShark.Register();
@@ -36,7 +37,7 @@ internal static class ExamplePatcher
 
     private static IEnumerator ModifyExampleCreature2(GameObject obj1, CreatureComponents obj2)
     {
-        obj1.transform.GetChild(0).localScale = Vector3.one * 5;
+        obj1.transform.GetChild(0).localScale = Vector3.one * 2.5f;
         obj1.transform.GetChild(1).gameObject.SetActive(false);
         yield break;
     }

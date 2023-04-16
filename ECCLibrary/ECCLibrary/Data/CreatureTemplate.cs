@@ -103,9 +103,10 @@ public sealed class CreatureTemplate
     /// Sets the Type of the main component. Must inherit from <see cref="Creature"/>.
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public void SetCreatureComponentType<T>() where T : Creature
+    public CreatureTemplate SetCreatureComponentType<T>() where T : Creature
     {
         CreatureComponentType = typeof(T);
+        return this;
     }
 
     /// <summary>
@@ -117,10 +118,11 @@ public sealed class CreatureTemplate
     /// Adds a single type of aggression to this creature. This method can be called MULTIPLE TIMES to add multiple types of aggression! Not functional without the <see cref="AttackLastTarget"/> component.
     /// </summary>
     /// <param name="data"></param>
-    public void AddAggressiveWhenSeeTargetData(AggressiveWhenSeeTargetData data)
+    public CreatureTemplate AddAggressiveWhenSeeTargetData(AggressiveWhenSeeTargetData data)
     {
         AggressiveWhenSeeTargetList ??= new List<AggressiveWhenSeeTargetData>();
         AggressiveWhenSeeTargetList.Add(data);
+        return this;
     }
 
     /// <summary>
@@ -217,7 +219,7 @@ public sealed class CreatureTemplate
     /// Properly assigns values to the <see cref="WaterParkCreatureData"/> property, and creates a new instance of the ScriptableObject if null.
     /// </summary>
     /// <param name="dataStruct"></param>
-    public void SetWaterParkCreatureData(WaterParkCreatureDataStruct dataStruct)
+    public CreatureTemplate SetWaterParkCreatureData(WaterParkCreatureDataStruct dataStruct)
     {
         if (WaterParkCreatureData == null)
         {
@@ -231,6 +233,7 @@ public sealed class CreatureTemplate
             WaterParkCreatureData.eggOrChildPrefab = dataStruct.eggOrChildPrefab;
             WaterParkCreatureData.adultPrefab = dataStruct.adultPrefab;
         }
+        return this;
     }
 
     /// <summary>
