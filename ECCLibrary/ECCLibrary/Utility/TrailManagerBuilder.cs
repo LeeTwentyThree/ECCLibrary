@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ECCLibrary.Utility;
-using UnityEngine.UIElements;
+﻿using ECCLibrary.Data;
 
-namespace ECCLibrary.Data;
+namespace ECCLibrary;
+
 /// <summary>
 /// Helps in the creation of a <see cref="TrailManager"/>. Call the <see cref="Apply"/> method to apply the changes.
 /// </summary>

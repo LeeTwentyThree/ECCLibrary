@@ -1,7 +1,6 @@
-﻿using ECCLibrary.Data;
-using System;
+﻿using System;
 
-namespace ECCLibrary;
+namespace ECCLibrary.Data;
 
 /// <summary>
 /// Contains most of the data related to registering a creature into the game.
@@ -223,7 +222,14 @@ public sealed class CreatureTemplate
         if (WaterParkCreatureData == null)
         {
             WaterParkCreatureData = ScriptableObject.CreateInstance<WaterParkCreatureData>();
-            WaterParkCreatureData.
+            WaterParkCreatureData.initialSize = dataStruct.initialSize;
+            WaterParkCreatureData.maxSize = dataStruct.maxSize;
+            WaterParkCreatureData.outsideSize = dataStruct.outsideSize;
+            WaterParkCreatureData.daysToGrow = dataStruct.daysToGrow;
+            WaterParkCreatureData.isPickupableOutside = dataStruct.isPickupableOutside;
+            WaterParkCreatureData.canBreed = dataStruct.canBreed;
+            WaterParkCreatureData.eggOrChildPrefab = dataStruct.eggOrChildPrefab;
+            WaterParkCreatureData.adultPrefab = dataStruct.adultPrefab;
         }
     }
 

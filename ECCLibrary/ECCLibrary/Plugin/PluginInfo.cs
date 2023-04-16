@@ -1,4 +1,5 @@
 ﻿namespace ECCLibrary;
+
 internal class PluginInfo
 {
     public const string GUID = "com.lee23.ecclibrary";

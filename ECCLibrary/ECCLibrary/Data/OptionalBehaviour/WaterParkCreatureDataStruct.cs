@@ -3,7 +3,7 @@
 namespace ECCLibrary.Data;
 
 /// <summary>
-/// Contains data pertaining to the <see cref="WaterParkCreatureData"/> ScriptableObject.
+/// Contains data pertaining to the <see cref="WaterParkCreatureData"/> ScriptableObject. If assigned, allows a creature to be released in Alien Containment.
 /// </summary>
 public struct WaterParkCreatureDataStruct
 {
@@ -18,7 +18,7 @@ public struct WaterParkCreatureDataStruct
     public float maxSize;
 
     /// <summary>
-    /// The size of this creature when released outside.
+    /// The size of this creature when released outside. Typically 1f for small creatures and lower for larger creatures.
     /// </summary>
     public float outsideSize;
     
@@ -28,27 +28,27 @@ public struct WaterParkCreatureDataStruct
     public float daysToGrow;
 
     /// <summary>
-    /// Should be true for creatures that are typically pickupable.
+    /// Should be true for creatures that are typically pickupable, and should be FALSE for anything else.
     /// </summary>
     public bool isPickupableOutside;
 
     /// <summary>
-    /// If false, this creature cannot breed regardless of age.
+    /// If false, this creature cannot breed regardless of age. True for most creatures besides pets.
     /// </summary>
     public bool canBreed;
 
     /// <summary>
-    /// The prefab for either the egg or the child version of the creature
+    /// The prefab for either the egg or the child version of the creature.
     /// </summary>
     public AssetReferenceGameObject eggOrChildPrefab;
 
     /// <summary>
-    /// The prefab for the adult creature GameObject
+    /// The prefab for the adult creature GameObject.
     /// </summary>
     public AssetReferenceGameObject adultPrefab;
 
     /// <summary>
-    /// Contains data pertaining to the <see cref="WaterParkCreatureData"/> ScriptableObject.
+    /// Contains data pertaining to the <see cref="WaterParkCreatureData"/> ScriptableObject. If assigned, allows a creature to be released in Alien Containment.
     /// </summary>
     /// <param name="initialSize">The size of this creature at birth.</param>
     /// <param name="maxSize">The maximum size of this creature when fully grown.</param>
@@ -56,8 +56,8 @@ public struct WaterParkCreatureDataStruct
     /// <param name="daysToGrow">How many in-game days it takes for this creature to reach its maximum size.</param>
     /// <param name="isPickupableOutside">Should be true for creatures that are typically pickupable.</param>
     /// <param name="canBreed">If false, this creature cannot breed regardless of age.</param>
-    /// <param name="eggOrChildPrefab">IDK</param>
-    /// <param name="adultPrefab">IDK</param>
+    /// <param name="eggOrChildPrefab">The prefab for either the egg or the child version of the creature. Can be the same as the adult.</param>
+    /// <param name="adultPrefab">The prefab for the adult creature GameObject.</param>
     public WaterParkCreatureDataStruct(float initialSize, float maxSize, float outsideSize, float daysToGrow, bool isPickupableOutside, bool canBreed, AssetReferenceGameObject eggOrChildPrefab, AssetReferenceGameObject adultPrefab)
     {
         this.initialSize = initialSize;
