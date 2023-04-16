@@ -57,6 +57,7 @@ public static partial class CreaturePrefabUtils
     {
         var component = creature.EnsureComponent<LiveMixin>();
         component.data = data;
+        component.health = data.maxHealth;
         return component;
     }
 
