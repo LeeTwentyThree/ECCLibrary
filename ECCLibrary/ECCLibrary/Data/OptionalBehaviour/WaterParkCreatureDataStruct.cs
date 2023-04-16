@@ -79,7 +79,7 @@ public struct WaterParkCreatureDataStruct
     /// <param name="daysToGrow">How many in-game days it takes for this creature to reach its maximum size.</param>
     /// <param name="isPickupableOutside">Should be true for creatures that are typically pickupable.</param>
     /// <param name="canBreed">If false, this creature cannot breed regardless of age.</param>
-    /// <param name="eggOrChildPrefabClassId">ClassID of the prefab for either the egg or the child version of the creature. Can be the same as the adult.</param>
+    /// <param name="eggOrChildPrefabClassId">ClassID / TechType of the prefab for either the egg or the child version of the creature. Can be the same as the adult.</param>
     /// <param name="adultPrefabClassId">ClassID of the prefab for the adult creature GameObject.</param>
     public WaterParkCreatureDataStruct(float initialSize, float maxSize, float outsideSize, float daysToGrow, bool isPickupableOutside, bool canBreed, string eggOrChildPrefabClassId, string adultPrefabClassId)
     {
