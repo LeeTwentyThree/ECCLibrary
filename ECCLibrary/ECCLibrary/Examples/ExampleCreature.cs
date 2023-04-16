@@ -21,6 +21,7 @@ internal class ExampleCreature : CreatureAsset
         CreatureTemplateUtils.SetupPreyEssentials(template, 5f, new PickupableFishData(true, TechType.Peeper, "WM", "VM"), new EdibleData(true, 69f, 1337f, false, 2f));
         template.SizeDistribution = new AnimationCurve(new Keyframe(0, 0.5f), new Keyframe(1, 1f));
         template.AnimateByVelocityData = new AnimateByVelocityData(6f);
+        template.SetWaterParkCreatureData(new WaterParkCreatureDataStruct(0.1f, 1f, 1f, 1f, true, true, ClassID));
         return template;
     }
 

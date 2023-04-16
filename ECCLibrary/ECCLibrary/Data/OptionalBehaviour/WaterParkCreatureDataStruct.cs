@@ -57,8 +57,8 @@ public struct WaterParkCreatureDataStruct
     /// <param name="isPickupableOutside">Should be true for creatures that are typically pickupable, and should be FALSE for anything else.</param>
     /// <param name="canBreed">If false, this creature cannot breed regardless of age. True for most creatures besides pets.</param>
     /// <param name="eggOrChildPrefab">The prefab for either the egg or the child version of the creature (which can be the adult object).</param>
-    /// <param name="adultPrefab">The prefab for the adult creature GameObject.</param>
-    public WaterParkCreatureDataStruct(float initialSize, float maxSize, float outsideSize, float daysToGrow, bool isPickupableOutside, bool canBreed, AssetReferenceGameObject eggOrChildPrefab, AssetReferenceGameObject adultPrefab)
+    /// <param name="adultPrefab">The prefab for the adult creature GameObject, for creatures with a juvenile form.</param>
+    public WaterParkCreatureDataStruct(float initialSize, float maxSize, float outsideSize, float daysToGrow, bool isPickupableOutside, bool canBreed, AssetReferenceGameObject eggOrChildPrefab, AssetReferenceGameObject adultPrefab = null)
     {
         this.initialSize = initialSize;
         this.maxSize = maxSize;
@@ -80,8 +80,8 @@ public struct WaterParkCreatureDataStruct
     /// <param name="isPickupableOutside">Should be true for creatures that are typically pickupable, and should be FALSE for anything else.</param>
     /// <param name="canBreed">If false, this creature cannot breed regardless of age. True for most creatures besides pets.</param>
     /// <param name="eggOrChildPrefabClassId">ClassID / TechType of the prefab for either the egg or the child version of the creature (which can be the adult object).</param>
-    /// <param name="adultPrefabClassId">ClassID of the prefab for the adult creature GameObject.</param>
-    public WaterParkCreatureDataStruct(float initialSize, float maxSize, float outsideSize, float daysToGrow, bool isPickupableOutside, bool canBreed, string eggOrChildPrefabClassId, string adultPrefabClassId)
+    /// <param name="adultPrefabClassId">ClassID of the prefab for the adult creature GameObject, for creatures with a juvenile form.</param>
+    public WaterParkCreatureDataStruct(float initialSize, float maxSize, float outsideSize, float daysToGrow, bool isPickupableOutside, bool canBreed, string eggOrChildPrefabClassId, string adultPrefabClassId = null)
     {
         this.initialSize = initialSize;
         this.maxSize = maxSize;
