@@ -18,7 +18,7 @@ public abstract class CreatureAsset
     public PrefabInfo PrefabInfo { get; private set; }
 
     /// <summary>
-    /// Creates a CreatureAsset with the given PrefabInfo.
+    /// Instantiates a Creature Asset with the given PrefabInfo. Call the Register method to add the creature to the game.
     /// </summary>
     /// <param name="prefabInfo"></param>
     public CreatureAsset(PrefabInfo prefabInfo)
