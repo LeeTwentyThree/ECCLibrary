@@ -69,4 +69,29 @@ public struct WaterParkCreatureDataStruct
         this.eggOrChildPrefab = eggOrChildPrefab;
         this.adultPrefab = adultPrefab;
     }
+
+    /// <summary>
+    /// Contains data pertaining to the <see cref="WaterParkCreatureData"/> ScriptableObject. If assigned, allows a creature to be released in Alien Containment.
+    /// </summary>
+    /// <param name="initialSize">The size of this creature at birth.</param>
+    /// <param name="maxSize">The maximum size of this creature when fully grown.</param>
+    /// <param name="outsideSize">The size of this creature when released outside.</param>
+    /// <param name="daysToGrow">How many in-game days it takes for this creature to reach its maximum size.</param>
+    /// <param name="isPickupableOutside">Should be true for creatures that are typically pickupable.</param>
+    /// <param name="canBreed">If false, this creature cannot breed regardless of age.</param>
+    /// <param name="eggOrChildPrefabClassId">ClassID of the prefab for either the egg or the child version of the creature. Can be the same as the adult.</param>
+    /// <param name="adultPrefabClassId">ClassID of the prefab for the adult creature GameObject.</param>
+    public WaterParkCreatureDataStruct(float initialSize, float maxSize, float outsideSize, float daysToGrow, bool isPickupableOutside, bool canBreed, string eggOrChildPrefabClassId, string adultPrefabClassId)
+    {
+        this.initialSize = initialSize;
+        this.maxSize = maxSize;
+        this.outsideSize = outsideSize;
+        this.daysToGrow = daysToGrow;
+        this.isPickupableOutside = isPickupableOutside;
+        this.canBreed = canBreed;
+        if (!string.IsNullOrEmpty(eggOrChildPrefabClassId)) eggOrChildPrefab = new AssetReferenceGameObject(eggOrChildPrefabClassId);
+        else eggOrChildPrefab = null;
+        if (!string.IsNullOrEmpty(adultPrefabClassId)) adultPrefab = new AssetReferenceGameObject(adultPrefabClassId);
+        else adultPrefab = null;
+    }
 }
