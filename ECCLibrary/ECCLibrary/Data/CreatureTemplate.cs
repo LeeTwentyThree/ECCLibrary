@@ -224,15 +224,15 @@ public sealed class CreatureTemplate
         if (WaterParkCreatureData == null)
         {
             WaterParkCreatureData = ScriptableObject.CreateInstance<WaterParkCreatureData>();
-            WaterParkCreatureData.initialSize = dataStruct.initialSize;
-            WaterParkCreatureData.maxSize = dataStruct.maxSize;
-            WaterParkCreatureData.outsideSize = dataStruct.outsideSize;
-            WaterParkCreatureData.daysToGrow = dataStruct.daysToGrow;
-            WaterParkCreatureData.isPickupableOutside = dataStruct.isPickupableOutside;
-            WaterParkCreatureData.canBreed = dataStruct.canBreed;
-            WaterParkCreatureData.eggOrChildPrefab = dataStruct.eggOrChildPrefab;
-            WaterParkCreatureData.adultPrefab = dataStruct.adultPrefab;
         }
+        WaterParkCreatureData.initialSize = dataStruct.initialSize;
+        WaterParkCreatureData.maxSize = dataStruct.maxSize;
+        WaterParkCreatureData.outsideSize = dataStruct.outsideSize;
+        WaterParkCreatureData.daysToGrow = dataStruct.daysToGrow;
+        WaterParkCreatureData.isPickupableOutside = dataStruct.isPickupableOutside;
+        WaterParkCreatureData.canBreed = dataStruct.canBreed;
+        WaterParkCreatureData.eggOrChildPrefab = dataStruct.eggOrChildPrefab;
+        WaterParkCreatureData.adultPrefab = dataStruct.adultPrefab;
         return this;
     }
 

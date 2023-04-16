@@ -390,6 +390,13 @@ public abstract class CreatureAsset
             CreaturePrefabUtils.AddAvoidTerrain(prefab, template.AvoidTerrainData);
         }
 
+        // alien containment (water park)
+
+        if (template.WaterParkCreatureData != null)
+        {
+            CreaturePrefabUtils.AddWaterParkCreature(prefab, template.WaterParkCreatureData);
+        }
+
         // extra
 
         if (template.ScannerRoomScannable)
