@@ -20,7 +20,7 @@ public static class TrailManagerUtilities
     {
         return new AnimationCurve(new(0, left), new(1, right));
     }
-    
+
     /// <summary>
     /// Sets the pitch, roll, and yaw multipliers of a given TrailManager to a single value.
     /// </summary>

@@ -2,6 +2,7 @@
 using ECCLibrary.Data;
 
 namespace ECCLibrary;
+
 [BepInPlugin(PluginInfo.GUID, PluginInfo.Name, PluginInfo.Version)]
 internal class ECCPlugin : BaseUnityPlugin
 {

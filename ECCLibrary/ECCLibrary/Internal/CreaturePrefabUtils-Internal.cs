@@ -202,4 +202,11 @@ public static partial class CreaturePrefabUtils
         component.aggressiveToNoise = new CreatureTrait(0, data.aggressionFalloff);
         return component;
     }
+
+    internal static WaterParkCreature AddWaterParkCreature(GameObject creature, WaterParkCreatureData dataScriptableObject)
+    {
+        var c = creature.EnsureComponent<WaterParkCreature>();
+        c.data = dataScriptableObject;
+        return c;
+    }
 }

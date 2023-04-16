@@ -210,9 +210,22 @@ public sealed class CreatureTemplate
     public LiveMixinData LiveMixinData { get; set; }
 
     /// <summary>
-    /// Settings for growth in Alien Containment.
+    /// Settings for growth in Alien Containment. Not assigned by default.
     /// </summary>
-    public WaterParkCreatureData WaterParkCreatureData { get; set; }
+    public WaterParkCreatureData WaterParkCreatureData { get; private set; }
+
+    /// <summary>
+    /// Properly assigns values to the <see cref="WaterParkCreatureData"/> property, and creates a new instance of the ScriptableObject if null.
+    /// </summary>
+    /// <param name="dataStruct"></param>
+    public void SetWaterParkCreatureData(WaterParkCreatureDataStruct dataStruct)
+    {
+        if (WaterParkCreatureData == null)
+        {
+            WaterParkCreatureData = ScriptableObject.CreateInstance<WaterParkCreatureData>();
+            WaterParkCreatureData.
+        }
+    }
 
     /// <summary>
     /// Pickup sounds of the item.
