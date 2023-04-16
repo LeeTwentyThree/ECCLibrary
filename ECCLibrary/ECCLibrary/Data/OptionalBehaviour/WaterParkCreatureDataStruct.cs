@@ -8,7 +8,7 @@ namespace ECCLibrary.Data;
 public struct WaterParkCreatureDataStruct
 {
     /// <summary>
-    /// The size of this creature at birth.
+    /// The size of this creature at birth. Typically a fraction fo the max size.
     /// </summary>
     public float initialSize;
 
@@ -38,7 +38,7 @@ public struct WaterParkCreatureDataStruct
     public bool canBreed;
 
     /// <summary>
-    /// The prefab for either the egg or the child version of the creature.
+    /// The prefab for either the egg or the child version of the creature (which can be the adult object).
     /// </summary>
     public AssetReferenceGameObject eggOrChildPrefab;
 
@@ -50,13 +50,13 @@ public struct WaterParkCreatureDataStruct
     /// <summary>
     /// Contains data pertaining to the <see cref="WaterParkCreatureData"/> ScriptableObject. If assigned, allows a creature to be released in Alien Containment.
     /// </summary>
-    /// <param name="initialSize">The size of this creature at birth.</param>
+    /// <param name="initialSize">The size of this creature at birth. Typically a fraction fo the max size.</param>
     /// <param name="maxSize">The maximum size of this creature when fully grown.</param>
     /// <param name="outsideSize">The size of this creature when released outside.</param>
     /// <param name="daysToGrow">How many in-game days it takes for this creature to reach its maximum size.</param>
-    /// <param name="isPickupableOutside">Should be true for creatures that are typically pickupable.</param>
-    /// <param name="canBreed">If false, this creature cannot breed regardless of age.</param>
-    /// <param name="eggOrChildPrefab">The prefab for either the egg or the child version of the creature. Can be the same as the adult.</param>
+    /// <param name="isPickupableOutside">Should be true for creatures that are typically pickupable, and should be FALSE for anything else.</param>
+    /// <param name="canBreed">If false, this creature cannot breed regardless of age. True for most creatures besides pets.</param>
+    /// <param name="eggOrChildPrefab">The prefab for either the egg or the child version of the creature (which can be the adult object).</param>
     /// <param name="adultPrefab">The prefab for the adult creature GameObject.</param>
     public WaterParkCreatureDataStruct(float initialSize, float maxSize, float outsideSize, float daysToGrow, bool isPickupableOutside, bool canBreed, AssetReferenceGameObject eggOrChildPrefab, AssetReferenceGameObject adultPrefab)
     {
@@ -73,13 +73,13 @@ public struct WaterParkCreatureDataStruct
     /// <summary>
     /// Contains data pertaining to the <see cref="WaterParkCreatureData"/> ScriptableObject. If assigned, allows a creature to be released in Alien Containment.
     /// </summary>
-    /// <param name="initialSize">The size of this creature at birth.</param>
+    /// <param name="initialSize">The size of this creature at birth. Typically a fraction fo the max size.</param>
     /// <param name="maxSize">The maximum size of this creature when fully grown.</param>
     /// <param name="outsideSize">The size of this creature when released outside.</param>
     /// <param name="daysToGrow">How many in-game days it takes for this creature to reach its maximum size.</param>
-    /// <param name="isPickupableOutside">Should be true for creatures that are typically pickupable.</param>
-    /// <param name="canBreed">If false, this creature cannot breed regardless of age.</param>
-    /// <param name="eggOrChildPrefabClassId">ClassID / TechType of the prefab for either the egg or the child version of the creature. Can be the same as the adult.</param>
+    /// <param name="isPickupableOutside">Should be true for creatures that are typically pickupable, and should be FALSE for anything else.</param>
+    /// <param name="canBreed">If false, this creature cannot breed regardless of age. True for most creatures besides pets.</param>
+    /// <param name="eggOrChildPrefabClassId">ClassID / TechType of the prefab for either the egg or the child version of the creature (which can be the adult object).</param>
     /// <param name="adultPrefabClassId">ClassID of the prefab for the adult creature GameObject.</param>
     public WaterParkCreatureDataStruct(float initialSize, float maxSize, float outsideSize, float daysToGrow, bool isPickupableOutside, bool canBreed, string eggOrChildPrefabClassId, string adultPrefabClassId)
     {
