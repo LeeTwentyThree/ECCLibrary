@@ -27,7 +27,18 @@ public abstract class CreatureAsset
     }
 
     /// <summary>
-    /// The TechType of this creature. MUST be unique to each creature.
+    /// The ClassID of this creature, from the PrefabInfo property.
+    /// </summary>
+    public string ClassID
+    {
+        get
+        {
+            return PrefabInfo.ClassID;
+        }
+    }
+
+    /// <summary>
+    /// The TechType of this creature, from the PrefabInfo property.
     /// </summary>
     public TechType TechType
     {
