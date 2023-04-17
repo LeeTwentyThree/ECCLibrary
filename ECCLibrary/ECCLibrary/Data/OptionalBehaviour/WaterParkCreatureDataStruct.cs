@@ -40,12 +40,12 @@ public struct WaterParkCreatureDataStruct
     /// <summary>
     /// The prefab for either the egg or the child version of the creature (which can be the adult object).
     /// </summary>
-    public AssetReferenceGameObject eggOrChildPrefab;
+    public CustomGameObjectReference eggOrChildPrefab;
 
     /// <summary>
     /// The prefab for the adult creature GameObject.
     /// </summary>
-    public AssetReferenceGameObject adultPrefab;
+    public CustomGameObjectReference adultPrefab;
 
     /// <summary>
     /// Contains data pertaining to the <see cref="WaterParkCreatureData"/> ScriptableObject. If assigned, allows a creature to be released in Alien Containment.
@@ -58,7 +58,7 @@ public struct WaterParkCreatureDataStruct
     /// <param name="canBreed">If false, this creature cannot breed regardless of age. True for most creatures besides pets.</param>
     /// <param name="eggOrChildPrefab">The prefab for either the egg or the child version of the creature (which can be the adult object).</param>
     /// <param name="adultPrefab">The prefab for the adult creature GameObject, for creatures with a juvenile form.</param>
-    public WaterParkCreatureDataStruct(float initialSize, float maxSize, float outsideSize, float daysToGrow, bool isPickupableOutside, bool canBreed, AssetReferenceGameObject eggOrChildPrefab, AssetReferenceGameObject adultPrefab = null)
+    public WaterParkCreatureDataStruct(float initialSize, float maxSize, float outsideSize, float daysToGrow, bool isPickupableOutside, bool canBreed, CustomGameObjectReference eggOrChildPrefab, CustomGameObjectReference adultPrefab = null)
     {
         this.initialSize = initialSize;
         this.maxSize = maxSize;
@@ -89,9 +89,9 @@ public struct WaterParkCreatureDataStruct
         this.daysToGrow = daysToGrow;
         this.isPickupableOutside = isPickupableOutside;
         this.canBreed = canBreed;
-        if (!string.IsNullOrEmpty(eggOrChildPrefabClassId)) eggOrChildPrefab = new AssetReferenceGameObject(eggOrChildPrefabClassId);
+        if (!string.IsNullOrEmpty(eggOrChildPrefabClassId)) eggOrChildPrefab = new CustomGameObjectReference(eggOrChildPrefabClassId);
         else eggOrChildPrefab = null;
-        if (!string.IsNullOrEmpty(adultPrefabClassId)) adultPrefab = new AssetReferenceGameObject(adultPrefabClassId);
+        if (!string.IsNullOrEmpty(adultPrefabClassId)) adultPrefab = new CustomGameObjectReference(adultPrefabClassId);
         else adultPrefab = null;
     }
 }
