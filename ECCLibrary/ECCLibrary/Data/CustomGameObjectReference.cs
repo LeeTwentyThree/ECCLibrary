@@ -3,7 +3,7 @@
 namespace ECCLibrary.Data;
 
 /// <summary>
-/// Alternative to <see cref="AssetReferenceGameObject"/> that is valid for custom prefabs.
+/// Alternative to <see cref="AssetReferenceGameObject"/> that is always marked as valid for custom prefabs.
 /// </summary>
 public class CustomGameObjectReference : AssetReferenceGameObject
 {

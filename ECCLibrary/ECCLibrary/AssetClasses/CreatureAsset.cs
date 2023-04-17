@@ -1,5 +1,6 @@
 ﻿using ECCLibrary.Data;
 using ECCLibrary.Mono;
+using Steamworks;
 
 namespace ECCLibrary;
 
@@ -13,21 +14,23 @@ public abstract class CreatureAsset
     private GameObject cachedPrefab;
 
     /// <summary>
-    /// Information for registering the prefab. MUST be unique to each creature.
+    /// Information for registering the prefab.
     /// </summary>
     public PrefabInfo PrefabInfo { get; private set; }
 
     /// <summary>
     /// Instantiates a Creature Asset with the given PrefabInfo. Call the Register method to add the creature to the game.
     /// </summary>
-    /// <param name="prefabInfo"></param>
+    /// <param name="prefabInfo">
+    /// <para>Information required for spawning. Must be unique.</para>
+    /// <para>An instance of this struct can be easily created by calling <see cref="PrefabInfo.WithTechType"/>.</para></param>
     public CreatureAsset(PrefabInfo prefabInfo)
     {
         PrefabInfo = prefabInfo;
     }
 
     /// <summary>
-    /// The ClassID of this creature, from the PrefabInfo property.
+    /// The ClassID of this creature, sourced from the PrefabInfo property.
     /// </summary>
     public string ClassID
     {
@@ -38,7 +41,7 @@ public abstract class CreatureAsset
     }
 
     /// <summary>
-    /// The TechType of this creature, from the PrefabInfo property.
+    /// The TechType of this creature, sourced from the PrefabInfo property.
     /// </summary>
     public TechType TechType
     {
@@ -87,7 +90,7 @@ public abstract class CreatureAsset
     }
 
     /// <summary>
-    /// An empty method that can be overriden to insert code that runs directly after the prefab is registered.
+    /// An empty method that can be overriden to insert code that runs directly after the prefab is registered (runs at patch time).
     /// </summary>
     protected virtual void PostRegister() { }
 
