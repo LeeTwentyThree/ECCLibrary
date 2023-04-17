@@ -23,7 +23,7 @@ public struct WaterParkCreatureDataStruct
     public float outsideSize;
     
     /// <summary>
-    /// How many in-game days it takes for this creature to reach its maximum size.
+    /// How many in-game days it takes for this creature to reach its maximum size. Typically takes on a value of 1 to 1.5.
     /// </summary>
     public float daysToGrow;
 
@@ -52,8 +52,8 @@ public struct WaterParkCreatureDataStruct
     /// </summary>
     /// <param name="initialSize">The size of this creature at birth. Typically a fraction fo the max size.</param>
     /// <param name="maxSize">The maximum size of this creature when fully grown.</param>
-    /// <param name="outsideSize">The size of this creature when released outside.</param>
-    /// <param name="daysToGrow">How many in-game days it takes for this creature to reach its maximum size.</param>
+    /// <param name="outsideSize">The size of this creature when released outside. Typically 1f for small creatures and lower for larger creatures.</param>
+    /// <param name="daysToGrow">How many in-game days it takes for this creature to reach its maximum size. Typically takes on a value of 1 to 1.5.</param>
     /// <param name="isPickupableOutside">Should be true for creatures that are typically pickupable, and should be FALSE for anything else.</param>
     /// <param name="canBreed">If false, this creature cannot breed regardless of age. True for most creatures besides pets.</param>
     /// <param name="eggOrChildPrefab">The prefab for either the egg or the child version of the creature (which can be the adult object).</param>
@@ -75,8 +75,8 @@ public struct WaterParkCreatureDataStruct
     /// </summary>
     /// <param name="initialSize">The size of this creature at birth. Typically a fraction fo the max size.</param>
     /// <param name="maxSize">The maximum size of this creature when fully grown.</param>
-    /// <param name="outsideSize">The size of this creature when released outside.</param>
-    /// <param name="daysToGrow">How many in-game days it takes for this creature to reach its maximum size.</param>
+    /// <param name="outsideSize">The size of this creature when released outside. Typically 1f for small creatures and lower for larger creatures.</param>
+    /// <param name="daysToGrow">How many in-game days it takes for this creature to reach its maximum size. Typically takes on a value of 1 to 1.5.</param>
     /// <param name="isPickupableOutside">Should be true for creatures that are typically pickupable, and should be FALSE for anything else.</param>
     /// <param name="canBreed">If false, this creature cannot breed regardless of age. True for most creatures besides pets.</param>
     /// <param name="eggOrChildPrefabClassId">ClassID / TechType of the prefab for either the egg or the child version of the creature (which can be the adult object).</param>
