@@ -29,7 +29,7 @@ public static class CreatureDataUtils
     /// Makes a given TechType immune to acid, such as brine.
     /// </summary>
     /// <param name="techType"></param>
-    public static void MakeAcidImmune(TechType techType)
+    public static void SetAcidImmune(TechType techType)
     {
         List<TechType> acidImmuneList = new List<TechType>(DamageSystem.acidImmune);
         acidImmuneList.Add(techType);
@@ -41,19 +41,9 @@ public static class CreatureDataUtils
     /// </summary>
     /// <param name="techType"></param>
     /// <param name="behaviourType"></param>
-    public static void PatchBehaviorType(TechType techType, BehaviourType behaviourType)
+    public static void SetBehaviorType(TechType techType, BehaviourType behaviourType)
     {
         CreatureData.behaviourTypeList.Add(techType, behaviourType);
-    }
-
-    /// <summary>
-    /// Set the EquipmentType of an item.
-    /// </summary>
-    /// <param name="techType"></param>
-    /// <param name="equipmentType"></param>
-    public static void PatchEquipmentType(TechType techType, EquipmentType equipmentType)
-    {
-        CraftDataHandler.SetEquipmentType(techType, equipmentType);
     }
 
     /// <summary>
@@ -61,7 +51,7 @@ public static class CreatureDataUtils
     /// </summary>
     /// <param name="techType"></param>
     /// <param name="soundType"></param>
-    public static void PatchItemSounds(TechType techType, ItemSoundsType soundType)
+    public static void SetItemSounds(TechType techType, ItemSoundsType soundType)
     {
         string pickupSound = SoundEvents.GetPickupSoundEvent(soundType);
         string dropSound = SoundEvents.GetDropSoundEvent(soundType);

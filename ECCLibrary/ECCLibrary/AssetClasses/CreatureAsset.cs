@@ -74,11 +74,11 @@ public abstract class CreatureAsset
 
         // assign patch-time data
 
-        if (template.AcidImmune) CreatureDataUtils.MakeAcidImmune(TechType);
+        if (template.AcidImmune) CreatureDataUtils.SetAcidImmune(TechType);
         if (template.BioReactorCharge > 0f) CreatureDataUtils.SetBioreactorCharge(TechType, template.BioReactorCharge);
         if (template.PickupableFishData != null && template.PickupableFishData.CanBeHeld) CraftDataHandler.SetEquipmentType(TechType, EquipmentType.Hand);
-        CreatureDataUtils.PatchBehaviorType(TechType, template.BehaviourType);
-        CreatureDataUtils.PatchItemSounds(TechType, template.ItemSoundsType);
+        CreatureDataUtils.SetBehaviorType(TechType, template.BehaviourType);
+        CreatureDataUtils.SetItemSounds(TechType, template.ItemSoundsType);
 
         // register custom prefab
 
