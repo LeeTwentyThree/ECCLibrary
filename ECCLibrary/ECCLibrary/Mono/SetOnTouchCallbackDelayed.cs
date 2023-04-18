@@ -3,6 +3,8 @@ using System;
 using System.Reflection;
 using SMLHelper.Utility;
 using System.Runtime.InteropServices;
+using static ProtoBuf.Meta.TypeModel;
+using static OnTouch;
 
 namespace ECCLibrary.Mono;
 
@@ -34,8 +36,12 @@ public class SetOnTouchCallbackDelayed : MonoBehaviour
     private void Start()
     {
         var onTouchEvent = new OnTouch.OnTouchEvent();
-        onTouchEvent.AddListener(GetCallbackAction());
-        onTouch.onTouch = onTouchEvent;
+        var action = GetCallbackAction();
+        if (action != null)
+        {
+            onTouchEvent.AddListener(action);
+            onTouch.onTouch = onTouchEvent;
+        }
     }
 
     private UnityAction<Collider> GetCallbackAction()
@@ -48,6 +54,7 @@ public class SetOnTouchCallbackDelayed : MonoBehaviour
                 return new UnityAction<Collider>((collider) => action.Method.Invoke(action.Target, new object[] { collider }));
             }
         }
+        ECCPlugin.logger.LogError($"Error in SetOnTouchCallbackDelayed.GetCallbackAction: Failed to find correct OnTouch target! Search parameters: {callbackGameObject}, {callbackTypeName}, {callbackMethodName}.");
         return null;
     }
 
