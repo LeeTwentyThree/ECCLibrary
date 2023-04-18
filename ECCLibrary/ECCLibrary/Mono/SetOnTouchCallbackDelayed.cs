@@ -22,9 +22,9 @@ public class SetOnTouchCallbackDelayed : MonoBehaviour
     public GameObject callbackGameObject;
 
     /// <summary>
-    /// Callback method type.
+    /// Callback method type name.
     /// </summary>
-    public Type callbackType;
+    public string callbackTypeName;
 
     /// <summary>
     /// Callback method name.
@@ -42,7 +42,7 @@ public class SetOnTouchCallbackDelayed : MonoBehaviour
     {
         foreach (var component in callbackGameObject.GetComponents<Component>())
         {
-            if (component.GetType() == callbackType)
+            if (component.GetType().Name == callbackTypeName)
             {
                 var action = Delegate.CreateDelegate(typeof(OnTouchCallback), component, callbackMethodName);
                 return new UnityAction<Collider>((collider) => action.Method.Invoke(action.Target, new object[] { collider }));
