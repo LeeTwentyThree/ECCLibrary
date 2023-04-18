@@ -153,10 +153,10 @@ public static partial class CreaturePrefabUtils
     /// </summary>
     /// <param name="triggerObject">The object that holds the touch trigger, for example a creature's mouth collider. Must have Collider with <see cref="Collider.isTrigger"/> set to TRUE.</param>
     /// <param name="callbackObject">The GameObject that holds the callback component and method.</param>
-    /// <param name="callbackComponentTypeName">The name of the type that holds the action performed when the object is collided with.</param>
+    /// <param name="callbackComponentType">The type that holds the action performed when the object is collided with.</param>
     /// <param name="callbackMethodName">The name of the method that is performed when the object is collided with.</param>
     /// <returns></returns>
-    public static OnTouch AddOnTouchTrigger(GameObject triggerObject, GameObject callbackObject, string callbackComponentTypeName, string callbackMethodName)
+    public static OnTouch AddOnTouchTrigger(GameObject triggerObject, GameObject callbackObject, Type callbackComponentType, string callbackMethodName)
     {
         triggerObject.EnsureComponent<VFXSurface>().surfaceType = VFXSurfaceTypes.organic;
         var collider = triggerObject.GetComponent<Collider>();
@@ -166,7 +166,7 @@ public static partial class CreaturePrefabUtils
         var setDelayed = triggerObject.EnsureComponent<SetOnTouchCallbackDelayed>();
         setDelayed.onTouch = onTouch;
         setDelayed.callbackGameObject = callbackObject;
-        setDelayed.callbackTypeName = callbackComponentTypeName;
+        setDelayed.callbackType = callbackComponentType;
         setDelayed.callbackMethodName = callbackMethodName;
         return onTouch;
     }
@@ -190,7 +190,7 @@ public static partial class CreaturePrefabUtils
 
         if (automaticallyAddOnTouchCallback)
         {
-            AddOnTouchTrigger(mouth, creature, typeof(T).Name, "OnTouch");
+            AddOnTouchTrigger(mouth, creature, typeof(T), "OnTouch");
         }
 
         meleeAttack.lastTarget = components.LastTarget;
