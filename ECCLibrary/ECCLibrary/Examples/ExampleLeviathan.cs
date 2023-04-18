@@ -96,7 +96,7 @@ internal class ExampleLeviathan : CreatureAsset
 
         var mouth = prefab.SearchChild("Mouth");
 
-        CreaturePrefabUtils.AddMeleeAttack<MeleeAttack>(prefab, components, mouth, true, 40f);
+        CreaturePrefabUtils.AddMeleeAttack<LeviathanMeleeAttack>(prefab, components, mouth, true, 40f);
 
         yield break;
     }
