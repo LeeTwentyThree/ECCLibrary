@@ -154,13 +154,16 @@ public static class CreatureDataUtils
             popup = popupImage
         };
         PDAHandler.AddEncyclopediaEntry(entryData);
-        PDAHandler.AddCustomScannerEntry(new PDAScanner.EntryData()
+        if (scannable)
         {
-            key = info.TechType,
-            encyclopedia = info.ClassID,
-            scanTime = scanTime,
-            isFragment = false
-        });
+            PDAHandler.AddCustomScannerEntry(new PDAScanner.EntryData()
+            {
+                key = info.TechType,
+                encyclopedia = info.ClassID,
+                scanTime = scanTime,
+                isFragment = false
+            });
+        }
         if (!string.IsNullOrEmpty(title)) LanguageHandler.SetLanguageLine("Ency_" + info.ClassID, title);
         if (!string.IsNullOrEmpty(desc)) LanguageHandler.SetLanguageLine("EncyDesc_" + info.ClassID, desc);
         return entryData;
