@@ -180,6 +180,7 @@ public static partial class CreaturePrefabUtils
         component.swimVelocity = data.swimVelocity;
         component.swimInterval = data.swimInterval;
         var setter = creature.AddComponent<SwimInSchoolFieldSetter>();
+        setter.behaviour = component;
         setter.breakDistance = data.breakDistance;
         setter.chanceLoseLeader = data.chanceLoseLeader;
         setter.percentFindLeaderRespond = data.percentFindLeaderRespond;
