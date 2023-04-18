@@ -10,7 +10,7 @@ internal static class ExamplePatcher
         var exampleCreature = new ExampleCreature(PrefabInfo.WithTechType("ExampleCreature", "Example Creature", "An example of a prey fish."));
         exampleCreature.PrefabInfo.WithIcon(SpriteManager.Get(TechType.LavaBoomerang));
         exampleCreature.Register();
-        CreatureDataUtils.AddCreaturePDAEncyclopediaEntry(exampleCreature, "EncyPath_Lifeforms/Fauna/Herbivores", "Example", "Cool lol", 6, null, null);
+        CreatureDataUtils.AddCreaturePDAEncyclopediaEntry(exampleCreature, "Lifeforms/Fauna/Herbivores", "Example", "Cool lol", 6, null, null);
 
         var exampleLeviathan = new ExampleLeviathan(PrefabInfo.WithTechType("ExampleLeviathan", "Example Leviathan", "An example of a Leviathan."));
         exampleLeviathan.Register();

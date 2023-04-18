@@ -87,14 +87,14 @@ public static class CreatureDataUtils
     /// <para>To find examples of this string, open "...Subnautica\Subnautica_Data\StreamingAssets\SNUnmanagedData\LanguageFiles\English.json" and search for "EncyPath".</para>
     /// <para>Examples:</para>
     /// <list type="bullet">
-    /// <item>EncyPath_Lifeforms/Fauna/Herbivores</item>
-    /// <item>EncyPath_Lifeforms/Fauna/Carnivores</item>
-    /// <item>EncyPath_Lifeforms/Fauna/Rays</item>
-    /// <item>EncyPath_Lifeforms/Fauna/Sharks</item>
-    /// <item>EncyPath_Lifeforms/Fauna/Leviathans</item>
-    /// <item>EncyPath_Lifeforms/Fauna/Other</item>
-    /// <item>EncyPath_Lifeforms/Fauna/SmallHerbivores</item>
-    /// <item>EncyPath_Lifeforms/Fauna/LargeHerbivores</item>
+    /// <item>Lifeforms/Fauna/Herbivores</item>
+    /// <item>Lifeforms/Fauna/Carnivores</item>
+    /// <item>Lifeforms/Fauna/Rays</item>
+    /// <item>Lifeforms/Fauna/Sharks</item>
+    /// <item>Lifeforms/Fauna/Leviathans</item>
+    /// <item>Lifeforms/Fauna/Other</item>
+    /// <item>Lifeforms/Fauna/SmallHerbivores</item>
+    /// <item>Lifeforms/Fauna/LargeHerbivores</item>
     /// </list>
     /// </param>
     /// <param name="title">Displayed title of the PDA entry in English. If set to null, you can implement your own language system.</param>
@@ -116,14 +116,14 @@ public static class CreatureDataUtils
     /// <para>To find examples of this string, open "...Subnautica\Subnautica_Data\StreamingAssets\SNUnmanagedData\LanguageFiles\English.json" and search for "EncyPath".</para>
     /// <para>Examples:</para>
     /// <list type="bullet">
-    /// <item>EncyPath_Lifeforms/Fauna/Herbivores</item>
-    /// <item>EncyPath_Lifeforms/Fauna/Carnivores</item>
-    /// <item>EncyPath_Lifeforms/Fauna/Rays</item>
-    /// <item>EncyPath_Lifeforms/Fauna/Sharks</item>
-    /// <item>EncyPath_Lifeforms/Fauna/Leviathans</item>
-    /// <item>EncyPath_Lifeforms/Fauna/Other</item>
-    /// <item>EncyPath_Lifeforms/Fauna/SmallHerbivores</item>
-    /// <item>EncyPath_Lifeforms/Fauna/LargeHerbivores</item>
+    /// <item>Lifeforms/Fauna/Herbivores</item>
+    /// <item>Lifeforms/Fauna/Carnivores</item>
+    /// <item>Lifeforms/Fauna/Rays</item>
+    /// <item>Lifeforms/Fauna/Sharks</item>
+    /// <item>Lifeforms/Fauna/Leviathans</item>
+    /// <item>Lifeforms/Fauna/Other</item>
+    /// <item>Lifeforms/Fauna/SmallHerbivores</item>
+    /// <item>Lifeforms/Fauna/LargeHerbivores</item>
     /// </list>
     /// </param>
     /// <param name="title">Displayed title of the PDA entry in English. If set to null, you can implement your own language system.</param>
