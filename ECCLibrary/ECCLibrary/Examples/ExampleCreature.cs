@@ -22,6 +22,7 @@ internal class ExampleCreature : CreatureAsset
         template.SizeDistribution = new AnimationCurve(new Keyframe(0, 0.5f), new Keyframe(1, 1f));
         template.AnimateByVelocityData = new AnimateByVelocityData(6f);
         template.SetWaterParkCreatureData(new WaterParkCreatureDataStruct(0.1f, 0.5f, 1f, 1.5f, true, true, ClassID));
+        template.SwimInSchoolData = new SwimInSchoolData(0.5f, 3f, 2f, 0.5f, 1f, 0.1f, 25f);
         return template;
     }
 
