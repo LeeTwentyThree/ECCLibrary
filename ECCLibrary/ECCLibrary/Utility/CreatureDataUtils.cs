@@ -88,4 +88,91 @@ public static class CreatureDataUtils
             dict.Add(techType, charge);
         }
     }
+
+    /// <summary>
+    /// Registers a single PDA encylopedia entry into the game for a given creature asset.
+    /// </summary>
+    /// <param name="creature">Relevant CreatureAsset.</param>
+    /// <param name="path"><para>Path to this entry in the databank.</para>
+    /// <para>To find examples of this string, open "...Subnautica\Subnautica_Data\StreamingAssets\SNUnmanagedData\LanguageFiles\English.json" and search for "EncyPath".</para>
+    /// <para>Examples:</para>
+    /// <list type="bullet">
+    /// <item>EncyPath_Lifeforms/Fauna/Herbivores</item>
+    /// <item>EncyPath_Lifeforms/Fauna/Carnivores</item>
+    /// <item>EncyPath_Lifeforms/Fauna/Rays</item>
+    /// <item>EncyPath_Lifeforms/Fauna/Sharks</item>
+    /// <item>EncyPath_Lifeforms/Fauna/Leviathans</item>
+    /// <item>EncyPath_Lifeforms/Fauna/Other</item>
+    /// <item>EncyPath_Lifeforms/Fauna/SmallHerbivores</item>
+    /// <item>EncyPath_Lifeforms/Fauna/LargeHerbivores</item>
+    /// </list>
+    /// </param>
+    /// <param name="title">Displayed title of the PDA entry in English. If set to null, you can implement your own language system.</param>
+    /// <param name="desc">Displayed description of the PDA entry in English. If set to null, you can implement your own language system.</param>
+    /// <param name="scanTime">Duration of scanning in seconds.</param>
+    /// <param name="image">Databank entry image. Can be null.</param>
+    /// <param name="popupImage">Small popup image. Can be null.</param>
+    /// <returns>Already patched instance of <see cref="PDAScanner.EntryData"/>.</returns>
+    public static PDAEncyclopedia.EntryData AddCreaturePDAEncyclopediaEntry(CreatureAsset creature, string path, string title, string desc, float scanTime, Texture2D image, Sprite popupImage)
+    {
+        return AddPDAEncyclopediaEntry(creature.PrefabInfo, path, title, desc, scanTime, image, popupImage, true);
+    }
+
+    /// <summary>
+    /// Registers a single PDA encylopedia entry into the game.
+    /// </summary>
+    /// <param name="info">Relevant PrefabInfo.</param>
+    /// <param name="path"><para>Path to this entry in the databank.</para>
+    /// <para>To find examples of this string, open "...Subnautica\Subnautica_Data\StreamingAssets\SNUnmanagedData\LanguageFiles\English.json" and search for "EncyPath".</para>
+    /// <para>Examples:</para>
+    /// <list type="bullet">
+    /// <item>EncyPath_Lifeforms/Fauna/Herbivores</item>
+    /// <item>EncyPath_Lifeforms/Fauna/Carnivores</item>
+    /// <item>EncyPath_Lifeforms/Fauna/Rays</item>
+    /// <item>EncyPath_Lifeforms/Fauna/Sharks</item>
+    /// <item>EncyPath_Lifeforms/Fauna/Leviathans</item>
+    /// <item>EncyPath_Lifeforms/Fauna/Other</item>
+    /// <item>EncyPath_Lifeforms/Fauna/SmallHerbivores</item>
+    /// <item>EncyPath_Lifeforms/Fauna/LargeHerbivores</item>
+    /// </list>
+    /// </param>
+    /// <param name="title">Displayed title of the PDA entry in English. If set to null, you can implement your own language system.</param>
+    /// <param name="desc">Displayed description of the PDA entry in English. If set to null, you can implement your own language system.</param>
+    /// <param name="scanTime">Duration of scanning in seconds.</param>
+    /// <param name="image">Databank entry image. Can be null.</param>
+    /// <param name="popupImage">Small popup image. Can be null.</param>
+    /// <param name="scannable">If false, the object will not be scannable.</param>
+    /// <returns>Already patched instance of <see cref="PDAScanner.EntryData"/>.</returns>
+    public static PDAEncyclopedia.EntryData AddPDAEncyclopediaEntry(PrefabInfo info, string path, string title, string desc, float scanTime, Texture2D image, Sprite popupImage, bool scannable = true)
+    {
+        string[] encyNodes;
+        if (string.IsNullOrEmpty(path))
+            encyNodes = new string[0];
+        else
+            encyNodes = path.Split('/');
+
+        if (string.IsNullOrEmpty(path))
+        {
+            return null;
+        }
+        var entryData = new PDAEncyclopedia.EntryData()
+        {
+            key = info.ClassID,
+            nodes = encyNodes,
+            path = path,
+            image = image,
+            popup = popupImage
+        };
+        PDAHandler.AddEncyclopediaEntry(entryData);
+        PDAHandler.AddCustomScannerEntry(new PDAScanner.EntryData()
+        {
+            key = info.TechType,
+            encyclopedia = info.ClassID,
+            scanTime = scanTime,
+            isFragment = false
+        });
+        if (!string.IsNullOrEmpty(title)) LanguageHandler.SetLanguageLine("Ency_" + info.ClassID, title);
+        if (!string.IsNullOrEmpty(desc)) LanguageHandler.SetLanguageLine("EncyDesc_" + info.ClassID, desc);
+        return entryData;
+    }
 }
