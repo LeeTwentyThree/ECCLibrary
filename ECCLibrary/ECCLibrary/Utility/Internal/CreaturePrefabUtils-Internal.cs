@@ -1,4 +1,5 @@
 ﻿using ECCLibrary.Data;
+using ECCLibrary.Mono;
 
 namespace ECCLibrary;
 
@@ -178,6 +179,10 @@ public static partial class CreaturePrefabUtils
         component.schoolSize = data.schoolSize;
         component.swimVelocity = data.swimVelocity;
         component.swimInterval = data.swimInterval;
+        var setter = creature.AddComponent<SwimInSchoolFieldSetter>();
+        setter.breakDistance = data.breakDistance;
+        setter.chanceLoseLeader = data.chanceLoseLeader;
+        setter.percentFindLeaderRespond = data.percentFindLeaderRespond;
         return component;
     }
 
