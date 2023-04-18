@@ -136,6 +136,13 @@ public sealed class CreatureTemplate
     public AttackCyclopsData AttackCyclopsData { get; set; } = null;
 
     /// <summary>
+    /// <para>Contains data pertaining to adding the <see cref="SwimInSchool"/> CreatureAction.</para>
+    /// <para>Each schooling creature chooses a single "leader" larger than itself (and of the same TechType) to follow. Therefore, the <see cref="CreatureTemplate.SizeDistribution"/> property should be defined for this action to function properly.</para>
+    /// <para>Not assigned by default.</para>
+    /// </summary>
+    public SwimInSchoolData SwimInSchoolData { get; set; } = null;
+
+    /// <summary>
     /// Mass in kg. Ranges from about 1.8f to 4050f. Default is 15kg.
     /// </summary>
     public float Mass { get; set; } = 10f;

@@ -168,6 +168,19 @@ public static partial class CreaturePrefabUtils
         return component;
     }
 
+    internal static SwimInSchool AddSwimInSchool(GameObject creature, SwimInSchoolData data)
+    {
+        var component = creature.EnsureComponent<SwimInSchool>();
+        component.evaluatePriority = data.evaluatePriority;
+        component.kBreakDistance = data.breakDistance;
+        component.percentFindLeaderRespond = data.percentFindLeaderRespond;
+        component.chanceLoseLeader = data.chanceLoseLeader;
+        component.schoolSize = data.schoolSize;
+        component.swimVelocity = data.swimVelocity;
+        component.swimInterval = data.swimInterval;
+        return component;
+    }
+
     internal static CreatureFlinch AddCreatureFlinch(GameObject creature, Animator animator)
     {
         var component = creature.AddComponent<CreatureFlinch>();

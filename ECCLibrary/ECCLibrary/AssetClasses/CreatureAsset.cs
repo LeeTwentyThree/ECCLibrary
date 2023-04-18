@@ -215,7 +215,7 @@ public abstract class CreatureAsset
             ccs.AnimateByVelocity = CreaturePrefabUtils.AddAnimateByVelocity(prefab, template.AnimateByVelocityData, ccs.Animator, ccs.Rigidbody, ccs.BehaviourLOD);
         }
 
-        // behaviour
+        // basic swimming behaviour
 
         var locomotionData = template.LocomotionData;
         if (locomotionData != null)
@@ -391,6 +391,13 @@ public abstract class CreatureAsset
         if (template.AvoidTerrainData != null)
         {
             CreaturePrefabUtils.AddAvoidTerrain(prefab, template.AvoidTerrainData);
+        }
+
+        // misc behaviour
+
+        if (template.SwimInSchoolData != null)
+        {
+            CreaturePrefabUtils.AddSwimInSchool(prefab, template.SwimInSchoolData);
         }
 
         // alien containment (water park)
