@@ -181,8 +181,9 @@ public static partial class CreaturePrefabUtils
     /// <param name="automaticallyAddOnTouchCallback">If true, the <see cref="OnTouch"/> component will be added and properly assigned.</param>
     /// <param name="damage">Bite damage.</param>
     /// <param name="interval">Seconds between each bite.</param>
+    /// <param name="canBiteVehicle">If false, this creature is unable to attack the Seamoth and PRAWN Suit.</param>
     /// <returns></returns>
-    public static T AddMeleeAttack<T>(GameObject creature, CreatureComponents components, GameObject mouth, bool automaticallyAddOnTouchCallback, float damage, float interval = 1f) where T : MeleeAttack
+    public static T AddMeleeAttack<T>(GameObject creature, CreatureComponents components, GameObject mouth, bool automaticallyAddOnTouchCallback, float damage, float interval = 1f, bool canBiteVehicle = true) where T : MeleeAttack
     {
         var meleeAttack = creature.AddComponent<T>();
 
@@ -200,6 +201,7 @@ public static partial class CreaturePrefabUtils
 
         meleeAttack.biteDamage = damage;
         meleeAttack.biteInterval = interval;
+        meleeAttack.canBiteVehicle = canBiteVehicle;
 
         return meleeAttack;
     }
