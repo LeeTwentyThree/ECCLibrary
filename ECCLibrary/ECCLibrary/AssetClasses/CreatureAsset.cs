@@ -79,6 +79,7 @@ public abstract class CreatureAsset
         if (template.PickupableFishData != null && template.PickupableFishData.CanBeHeld) CraftDataHandler.SetEquipmentType(TechType, EquipmentType.Hand);
         CreatureDataUtils.SetBehaviorType(TechType, template.BehaviourType);
         CreatureDataUtils.SetItemSounds(TechType, template.ItemSoundsType);
+        WorldEntityDatabaseHandler.AddCustomInfo(ClassID, TechType, Vector3.one, false, template.CellLevel, EntitySlot.Type.Creature);
 
         // register custom prefab
 
