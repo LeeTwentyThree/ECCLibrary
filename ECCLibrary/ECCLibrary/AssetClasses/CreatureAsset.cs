@@ -52,6 +52,11 @@ public abstract class CreatureAsset
     }
 
     /// <summary>
+    /// The EntityInfo for this creature, only assigned <i>after</i> <see cref="Register"/> is called.
+    /// </summary>
+    public UWE.WorldEntityInfo EntityInfo { get; private set; }
+
+    /// <summary>
     /// Registers this creature into the game.
     /// </summary>
     public void Register()
@@ -79,7 +84,8 @@ public abstract class CreatureAsset
         if (template.PickupableFishData != null && template.PickupableFishData.CanBeHeld) CraftDataHandler.SetEquipmentType(TechType, EquipmentType.Hand);
         CreatureDataUtils.SetBehaviorType(TechType, template.BehaviourType);
         CreatureDataUtils.SetItemSounds(TechType, template.ItemSoundsType);
-        WorldEntityDatabaseHandler.AddCustomInfo(ClassID, TechType, Vector3.one, false, template.CellLevel, EntitySlot.Type.Creature);
+        EntityInfo = new UWE.WorldEntityInfo() { cellLevel = template.CellLevel, classId = ClassID, localScale = Vector3.one, prefabZUp = false, slotType = EntitySlot.Type.Creature, techType = TechType };
+        WorldEntityDatabaseHandler.AddCustomInfo(ClassID, EntityInfo);
 
         // register custom prefab
 
