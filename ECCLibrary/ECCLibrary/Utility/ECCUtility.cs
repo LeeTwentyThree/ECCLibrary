@@ -87,11 +87,11 @@ public static class ECCUtility
     /// <param name="path"></param>
     /// <param name="id"></param>
     /// <returns></returns>
-    public static FMODAsset GetFmodAsset(string path, string id)
+    public static FMODAsset GetFmodAsset(string path, string id = null)
     {
         var asset = ScriptableObject.CreateInstance<FMODAsset>();
         asset.path = path;
-        asset.id = id;
+        asset.id = id ?? path;
         return asset;
     }
 
