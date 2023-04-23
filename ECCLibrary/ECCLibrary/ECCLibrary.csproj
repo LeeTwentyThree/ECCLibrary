@@ -31,10 +31,10 @@
 		<PackageReference Include="UnityEngine.Modules" Version="2019.4.36" />
 	</ItemGroup>
 
-	<!--Reference the SMLHelper DLL. You WILL need to modify this locally if the name of the library changes or if you have a different folder structure-->
+	<!--Reference the Nautilus DLL.-->
 	<ItemGroup>
-	  <Reference Include="SMLHelper">
-	    <HintPath>$(PluginsDir)\SMLib\SMLHelper.dll</HintPath>
+	  <Reference Include="Nautilus">
+	    <HintPath>$(PluginsDir)\Nautilus\Nautilus.dll</HintPath>
 	  </Reference>
 	</ItemGroup>
 
