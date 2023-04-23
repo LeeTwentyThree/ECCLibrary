@@ -104,10 +104,9 @@ public static class CreatureDataUtils
     /// <param name="image">Databank entry image. Can be null.</param>
     /// <param name="popupImage">Small popup image. Can be null.</param>
     /// <returns>Already patched instance of <see cref="PDAEncyclopedia.EntryData"/> and instance of <see cref="PDAScanner.EntryData"/> if applicable (<paramref name="scannable"/> == true).</returns>
-    public static Tuple<PDAEncyclopedia.EntryData, PDAScanner.EntryData> AddCreaturePDAEncyclopediaEntry(CreatureAsset creature, string path, string title, string desc, float scanTime, Texture2D image, Sprite popupImage)
+    public static void AddCreaturePDAEncyclopediaEntry(CreatureAsset creature, string path, string title, string desc, float scanTime, Texture2D image, Sprite popupImage)
     {
-        var data = AddPDAEncyclopediaEntry(creature.PrefabInfo, path, title, desc, scanTime, image, popupImage, true);
-        return data;
+        AddPDAEncyclopediaEntry(creature.PrefabInfo, path, title, desc, scanTime, image, popupImage, true);
     }
 
     /// <summary>
@@ -135,18 +134,18 @@ public static class CreatureDataUtils
     /// <param name="popupImage">Small popup image. Can be null.</param>
     /// <param name="scannable">If false, the object will not be scannable.</param>
     /// <returns>Already patched instance of <see cref="PDAEncyclopedia.EntryData"/> and instance of <see cref="PDAScanner.EntryData"/> if applicable (<paramref name="scannable"/> == true).</returns>
-    public static Tuple<PDAEncyclopedia.EntryData, PDAScanner.EntryData> AddPDAEncyclopediaEntry(PrefabInfo info, string path, string title, string desc, float scanTime, Texture2D image, Sprite popupImage, bool scannable = true)
+    public static void AddPDAEncyclopediaEntry(PrefabInfo info, string path, string title, string desc, float scanTime, Texture2D image, Sprite popupImage, bool scannable = true)
     {
+        if (string.IsNullOrEmpty(path))
+        {
+            return;
+        }
+
         string[] encyNodes;
         if (string.IsNullOrEmpty(path))
             encyNodes = new string[0];
         else
             encyNodes = path.Split('/');
-
-        if (string.IsNullOrEmpty(path))
-        {
-            return null;
-        }
 
         var encyEntryData = new PDAEncyclopedia.EntryData()
         {
@@ -154,7 +153,8 @@ public static class CreatureDataUtils
             nodes = encyNodes,
             path = path,
             image = image,
-            popup = popupImage
+            popup = popupImage,
+            sound = ECCSoundAssets.UnlockDatabankEntry
         };
         PDAHandler.AddEncyclopediaEntry(encyEntryData);
 
@@ -173,6 +173,5 @@ public static class CreatureDataUtils
 
         if (!string.IsNullOrEmpty(title)) LanguageHandler.SetLanguageLine("Ency_" + info.ClassID, title);
         if (!string.IsNullOrEmpty(desc)) LanguageHandler.SetLanguageLine("EncyDesc_" + info.ClassID, desc);
-        return Tuple.Create(encyEntryData, scannerEntryData);
     }
 }
