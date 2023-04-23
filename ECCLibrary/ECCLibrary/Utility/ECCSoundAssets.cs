@@ -8,5 +8,11 @@ public static class ECCSoundAssets
     /// <summary>
     /// Fish damage sound.
     /// </summary>
-    public static FMODAsset FishSplat { get; } = ECCUtility.GetFmodAsset("event:/sub/common/fishsplat", "{0e47f1c6-6178-41bd-93bf-40bfca179cb6}");
+    public static FMODAsset FishSplat { get; } = ECCUtility.GetFmodAsset("event:/sub/common/fishsplat");
+
+    /// <summary>
+    /// Sound for unlocking normal databank entries.
+    /// </summary>
+    public static FMODAsset UnlockDatabankEntry { get; } = ECCUtility.GetFmodAsset("event:/tools/scanner/new_encyclopediea");
+
 }
