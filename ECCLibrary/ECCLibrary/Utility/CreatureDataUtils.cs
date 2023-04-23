@@ -106,7 +106,7 @@ public static class CreatureDataUtils
     /// <returns>Already patched instance of <see cref="PDAEncyclopedia.EntryData"/> and instance of <see cref="PDAScanner.EntryData"/> if applicable (<paramref name="scannable"/> == true).</returns>
     public static void AddCreaturePDAEncyclopediaEntry(CreatureAsset creature, string path, string title, string desc, float scanTime, Texture2D image, Sprite popupImage)
     {
-        AddPDAEncyclopediaEntry(creature.PrefabInfo, path, title, desc, scanTime, image, popupImage, true);
+        AddPDAEncyclopediaEntry(creature.PrefabInfo, path, title, desc, scanTime, image, popupImage, new ScannerEntryData(2));
     }
 
     /// <summary>
@@ -132,9 +132,8 @@ public static class CreatureDataUtils
     /// <param name="scanTime">Duration of scanning in seconds.</param>
     /// <param name="image">Databank entry image. Can be null.</param>
     /// <param name="popupImage">Small popup image. Can be null.</param>
-    /// <param name="scannable">If false, the object will not be scannable.</param>
-    /// <returns>Already patched instance of <see cref="PDAEncyclopedia.EntryData"/> and instance of <see cref="PDAScanner.EntryData"/> if applicable (<paramref name="scannable"/> == true).</returns>
-    public static void AddPDAEncyclopediaEntry(PrefabInfo info, string path, string title, string desc, float scanTime, Texture2D image, Sprite popupImage, bool scannable = true)
+    /// <param name="scanData">Data pertaining to scanning. If unassigned, the object will not be scannable.</param>
+    public static void AddPDAEncyclopediaEntry(PrefabInfo info, string path, string title, string desc, float scanTime, Texture2D image, Sprite popupImage, ScannerEntryData scanData)
     {
         if (string.IsNullOrEmpty(path))
         {
@@ -158,15 +157,17 @@ public static class CreatureDataUtils
         };
         PDAHandler.AddEncyclopediaEntry(encyEntryData);
 
-        PDAScanner.EntryData scannerEntryData = null;
-        if (scannable)
+        if (scanData != null)
         {
-            scannerEntryData = new PDAScanner.EntryData()
+            PDAScanner.EntryData scannerEntryData = new PDAScanner.EntryData()
             {
                 key = info.TechType,
                 encyclopedia = info.ClassID,
-                scanTime = scanTime,
-                isFragment = false
+                scanTime = scanData.scanTime,
+                isFragment = scanData.isFragment,
+                blueprint = scanData.blueprintToUnlock,
+                destroyAfterScan = scanData.destroyAfterScan,
+                totalFragments = scanData.totalFragments
             };
             PDAHandler.AddCustomScannerEntry(scannerEntryData);
         }
