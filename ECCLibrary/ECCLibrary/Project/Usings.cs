@@ -2,12 +2,12 @@
 global using BepInEx.Logging;
 global using HarmonyLib;
 
-global using SMLHelper.Assets;
-global using SMLHelper.Assets.Gadgets;
-global using SMLHelper.Assets.PrefabTemplates;
-global using SMLHelper.Crafting;
-global using SMLHelper.Handlers;
-global using SMLHelper.Utility;
+global using Nautilus.Assets;
+global using Nautilus.Assets.Gadgets;
+global using Nautilus.Assets.PrefabTemplates;
+global using Nautilus.Crafting;
+global using Nautilus.Handlers;
+global using Nautilus.Utility;
 
 global using UnityEngine;
 
