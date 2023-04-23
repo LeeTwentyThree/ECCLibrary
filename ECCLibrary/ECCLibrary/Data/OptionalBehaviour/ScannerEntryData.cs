@@ -38,7 +38,7 @@ public class ScannerEntryData
     /// <param name="blueprintToUnlock">The blueprint that is unlocked when scanning this object. This may also recursively unlock other blueprints.</param>
     /// <param name="scanTime">By default about 2-3 seconds for smaller fish, 5-7 seconds for medium-sized fish, and 9 seconds for larger fauna and leviathans.</param>
     /// <param name="isFragment">If true, this object may be less likely to spawn when visiting newly loaded areas once the associated blueprint is unlocked.</param>
-    public ScannerEntryData(float scanTime = 2f, TechType blueprintToUnlock = TechType.None, bool isFragment = false, int totalFragments = 1, bool destroyAfterScan = false)
+    public ScannerEntryData(float scanTime, TechType blueprintToUnlock = TechType.None, bool isFragment = false, int totalFragments = 1, bool destroyAfterScan = false)
     {
         this.totalFragments = totalFragments;
         this.destroyAfterScan = destroyAfterScan;
