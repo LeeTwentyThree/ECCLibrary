@@ -1,5 +1,4 @@
 ﻿using ECCLibrary.Data;
-using System;
 
 namespace ECCLibrary;
 
@@ -157,6 +156,7 @@ public static class CreatureDataUtils
         };
         PDAHandler.AddEncyclopediaEntry(encyEntryData);
 
+        
         if (scanData != null)
         {
             PDAScanner.EntryData scannerEntryData = new PDAScanner.EntryData()
