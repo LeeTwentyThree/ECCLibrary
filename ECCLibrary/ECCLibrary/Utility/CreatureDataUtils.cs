@@ -105,7 +105,7 @@ public static class CreatureDataUtils
     /// <returns>Already patched instance of <see cref="PDAEncyclopedia.EntryData"/> and instance of <see cref="PDAScanner.EntryData"/> if applicable (<paramref name="scannable"/> == true).</returns>
     public static void AddCreaturePDAEncyclopediaEntry(CreatureAsset creature, string path, string title, string desc, float scanTime, Texture2D image, Sprite popupImage)
     {
-        AddPDAEncyclopediaEntry(creature.PrefabInfo, path, title, desc, scanTime, image, popupImage, new ScannerEntryData(2));
+        AddPDAEncyclopediaEntry(creature.PrefabInfo, path, title, desc, image, popupImage, new ScannerEntryData(scanTime));
     }
 
     /// <summary>
@@ -132,7 +132,7 @@ public static class CreatureDataUtils
     /// <param name="image">Databank entry image. Can be null.</param>
     /// <param name="popupImage">Small popup image. Can be null.</param>
     /// <param name="scanData">Data pertaining to scanning. If unassigned, the object will not be scannable.</param>
-    public static void AddPDAEncyclopediaEntry(PrefabInfo info, string path, string title, string desc, float scanTime, Texture2D image, Sprite popupImage, ScannerEntryData scanData)
+    public static void AddPDAEncyclopediaEntry(PrefabInfo info, string path, string title, string desc, Texture2D image, Sprite popupImage, ScannerEntryData scanData)
     {
         if (string.IsNullOrEmpty(path))
         {
