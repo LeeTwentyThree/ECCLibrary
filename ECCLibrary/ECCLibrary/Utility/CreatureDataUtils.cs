@@ -128,7 +128,6 @@ public static class CreatureDataUtils
     /// </param>
     /// <param name="title">Displayed title of the PDA entry in English. If set to null, you can implement your own language system.</param>
     /// <param name="desc">Displayed description of the PDA entry in English. If set to null, you can implement your own language system.</param>
-    /// <param name="scanTime">Duration of scanning in seconds.</param>
     /// <param name="image">Databank entry image. Can be null.</param>
     /// <param name="popupImage">Small popup image. Can be null.</param>
     /// <param name="scanData">Data pertaining to scanning. If unassigned, the object will not be scannable.</param>
