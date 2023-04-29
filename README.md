@@ -15,7 +15,7 @@ The XML documentation within the library is very elaborate and should provide su
 
 ## Requirements
 
-SMLHelper 3 (name subject to change).
+Nautilus (name subject to change).
 
 ## Contributing to ECCLibrary
 
@@ -29,4 +29,4 @@ If you would like to build the project, follow the steps below to set up the env
 3. Locate the `GameDir.targets` file, open it, and replace the GameDir path with the correct path to your Subnautica folder.
 4. Ensure the NuGet packages are loaded correctly. You may need to right click the Solution at the top of the Solution Explorer and choose `Restore NuGet Packages`.
 5. Build the solution. A folder named ECCLibrary should be automatically placed in your BepInEx `plugins` folder.
-   - If that does not work, double check the SMLHelper reference path in the csproj file.
+   - If that does not work, double check the Nautilus reference path in the csproj file.
