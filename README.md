@@ -15,7 +15,7 @@ The XML documentation within the library is very elaborate and should provide su
 
 ## Requirements
 
-Nautilus (name subject to change).
+[Nautilus, the new Subnautica Modding API.](https://github.com/SubnauticaModding/Nautilus)
 
 ## Contributing to ECCLibrary
 
