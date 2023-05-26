@@ -10,8 +10,6 @@ public abstract class CreatureAsset
 {
     private CreatureTemplate template;
 
-    private GameObject cachedPrefab;
-
     /// <summary>
     /// Information for registering the prefab.
     /// </summary>
@@ -121,12 +119,6 @@ public abstract class CreatureAsset
             yield return ObjectReferences.SetReferences();
         }
 
-        if (cachedPrefab != null)
-        {
-            gameObject.Set(cachedPrefab);
-            yield break;
-        }
-
         var prefab = Object.Instantiate(template.Model);
         prefab.name = PrefabInfo.ClassID;
         prefab.tag = "Creature";
@@ -139,7 +131,6 @@ public abstract class CreatureAsset
         ApplyMaterials(prefab);
 
         gameObject.Set(prefab);
-        cachedPrefab = prefab;
         yield break;
     }
 
