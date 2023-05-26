@@ -1,5 +1,4 @@
 ﻿using ECCLibrary.Data;
-using UnityEngine.AddressableAssets;
 
 namespace ECCLibrary.Examples;
 
