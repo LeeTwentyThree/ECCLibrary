@@ -104,7 +104,7 @@ public static class CreatureDataUtils
     /// <param name="popupImage">Small popup image. Can be null.</param>
     public static void AddCreaturePDAEncyclopediaEntry(CreatureAsset creature, string path, string title, string desc, float scanTime, Texture2D image, Sprite popupImage)
     {
-        PDAHandler.AddEncyclopediaEntry(creature.ClassID, path, title, desc, image, popupImage, ECCSoundAssets.UnlockDatabankEntry);
-        PDAHandler.AddCustomScannerEntry(creature.TechType, creature.TechType, false, creature.ClassID, 1, scanTime, false);
+        PDAHandler.AddEncyclopediaEntry(creature.ClassID, path, title, desc, image, popupImage, PDAHandler.UnlockBasic);
+        PDAHandler.AddCustomScannerEntry(creature.TechType, TechType.None, false, creature.ClassID, 1, scanTime, false);
     }
 }
