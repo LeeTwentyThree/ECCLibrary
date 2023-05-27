@@ -3,11 +3,11 @@
 /// <summary>
 /// Contains data pertaining to the <see cref="BehaviourLOD"/> component.
 /// </summary>
-public struct BehaviourLODData
+public readonly struct BehaviourLODData
 {
-    private float? veryClose;
-    private float? close;
-    private float? far;
+    private readonly float? veryClose;
+    private readonly float? close;
+    private readonly float? far;
 
     /// <summary>
     /// Beyond this distance some animations may be removed.
