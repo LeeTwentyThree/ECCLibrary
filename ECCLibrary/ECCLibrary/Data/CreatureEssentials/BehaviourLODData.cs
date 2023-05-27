@@ -5,18 +5,24 @@
 /// </summary>
 public struct BehaviourLODData
 {
+    private float? veryClose;
+    private float? close;
+    private float? far;
+
     /// <summary>
-    /// Beyond this distance some animations may be removed
+    /// Beyond this distance some animations may be removed.
     /// </summary>
-    public float veryClose;
+    public float VeryClose => veryClose ?? 10;
+
     /// <summary>
-    /// Beyond this distance some functionalities may be less precise
+    /// Beyond this distance some functionalities may be less precise.
     /// </summary>
-    public float close;
+    public float Close => close ?? 50;
+
     /// <summary>
-    /// Beyond this distance trail animations will no longer exist
+    /// Beyond this distance trail animations will no longer exist.
     /// </summary>
-    public float far;
+    public float Far => far ?? 500;
 
     /// <summary>
     /// Contains data pertaining to the <see cref="BehaviourLOD"/> component.

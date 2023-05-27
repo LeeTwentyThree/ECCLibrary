@@ -171,9 +171,9 @@ public abstract class CreatureAsset
         ccs.VfxSurface.surfaceType = template.SurfaceType;
 
         ccs.BehaviourLOD = prefab.EnsureComponent<BehaviourLOD>();
-        ccs.BehaviourLOD.veryCloseThreshold = template.BehaviourLODData.veryClose;
-        ccs.BehaviourLOD.closeThreshold = template.BehaviourLODData.close;
-        ccs.BehaviourLOD.farThreshold = template.BehaviourLODData.far;
+        ccs.BehaviourLOD.veryCloseThreshold = template.BehaviourLODData.VeryClose;
+        ccs.BehaviourLOD.closeThreshold = template.BehaviourLODData.Close;
+        ccs.BehaviourLOD.farThreshold = template.BehaviourLODData.Far;
 
         ccs.Animator = prefab.GetComponentInChildren<Animator>();
 
