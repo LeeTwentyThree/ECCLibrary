@@ -1,7 +1,7 @@
 ﻿namespace ECCLibrary.Data;
 
 /// <summary>
-/// Contains data pertaining to the <see cref="BehaviourLOD"/> component.
+/// Contains data pertaining to the <see cref="BehaviourLOD"/> component. Default values are (10, 50, 500).
 /// </summary>
 public readonly struct BehaviourLODData
 {

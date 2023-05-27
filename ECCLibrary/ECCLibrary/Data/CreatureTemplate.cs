@@ -150,7 +150,7 @@ public sealed class CreatureTemplate
     /// <summary>
     /// Determines the distance for which certain calculations (such as Trail Managers) perform (or don't). It is recommended to increase these values for large creatures.
     /// </summary>
-    public BehaviourLODData BehaviourLODData { get; set; } = new BehaviourLODData(10f, 50f, 500f);
+    public BehaviourLODData BehaviourLODData { get; set; } = new BehaviourLODData();
 
     /// <summary>
     /// The FOV is used for detecting things such as prey. SHOULD BE NEGATIVE! This value has an expected range of [-1, 0]. Is 0f by default. A value of -1 means a given object is ALWAYS in view.

@@ -8,23 +8,37 @@ namespace ECCLibrary;
 public static class CreatureTemplateUtils
 {
     /// <summary>
-    /// <para>Sets the most commonly used properties for creatures.</para>
-    /// <para>Assigns the following properties:</para>
+    /// <para>Sets the most commonly used properties relating to creature data.</para>
+    /// <para>Assigns the following properties so that you don't have to:</para>
     /// <list type="bullet">
     /// <item><see cref="CreatureTemplate.CellLevel"/></item>
-    /// <item><see cref="CreatureTemplate.SwimRandomData"/></item>
-    /// <item><see cref="CreatureTemplate.RespawnData"/></item>
-    /// <item><see cref="CreatureTemplate.StayAtLeashData"/></item>
+    /// <item><see cref="CreatureTemplate.Mass"/></item>
+    /// <item><see cref="CreatureTemplate.EyeFOV"/></item>
+    /// <item><see cref="CreatureTemplate.BehaviourLODData"/></item>
     /// <item><see cref="CreatureTemplate.BioReactorCharge"/></item>
     /// </list>
     /// </summary>
-    public static void SetCreatureEssentials(CreatureTemplate template, LargeWorldEntity.CellLevel cellLevel, SwimRandomData swimRandom, RespawnData respawnData, StayAtLeashData stayAtLeash = null, float bioReactorCharge = 200f)
+    public static void SetCreatureDataEssentials(CreatureTemplate template, LargeWorldEntity.CellLevel cellLevel, float mass, float eyeFov = 0f, BehaviourLODData behaviourLod = default, float bioReactorCharge = 200f)
     {
         template.CellLevel = cellLevel;
-        template.SwimRandomData = swimRandom;
-        template.RespawnData = respawnData;
-        template.StayAtLeashData = stayAtLeash;
         template.BioReactorCharge = bioReactorCharge;
+        template.Mass = mass;
+        template.EyeFOV = eyeFov;
+        template.BehaviourLODData = behaviourLod;
+    }
+
+    /// <summary>
+    /// <para>Sets the most commonly used properties relating to creature motion.</para>
+    /// <para>Assigns the following properties so that you don't have to:</para>
+    /// <list type="bullet">
+    /// <item><see cref="CreatureTemplate.SwimRandomData"/></item>
+    /// <item><see cref="CreatureTemplate.StayAtLeashData"/></item>
+    /// </list>
+    /// </summary>
+    public static void SetCreatureMotionEssentials(CreatureTemplate template, SwimRandomData swimRandom, StayAtLeashData stayAtLeash)
+    {
+        template.SwimRandomData = swimRandom;
+        template.StayAtLeashData = stayAtLeash;
     }
 
     /// <summary>
