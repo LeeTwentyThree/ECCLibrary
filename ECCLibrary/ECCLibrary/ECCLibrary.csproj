@@ -31,9 +31,4 @@
 		<PackageReference Include="UnityEngine.Modules" Version="2019.4.36" />
 		<PackageReference Include="Subnautica.Nautilus" Version ="1.0.0-pre.9" />
 	</ItemGroup>
-
-	<!--Post-Build event that automatically places an ECCLibrary folder with the DLL and documentation into your plugins folder as defined in GameDir.targets-->
-	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-		<Exec Command="mkdir &quot;$(PluginsDir)\$(TargetName)&quot;&#xD;&#xA;copy /Y &quot;$(TargetPath)&quot; &quot;$(PluginsDir)\$(TargetName)&quot;&#xD;&#xA;copy /Y &quot;$(TargetDir)\ECCLibrary.xml&quot; &quot;$(PluginsDir)\$(TargetName)\ECCLibrary.xml&quot;" />
-	</Target>
 </Project>
