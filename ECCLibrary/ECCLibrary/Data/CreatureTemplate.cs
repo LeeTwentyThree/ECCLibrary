@@ -163,7 +163,7 @@ public sealed class CreatureTemplate
     public bool AcidImmune { get; set; } = false;
 
     /// <summary>
-    /// Total power output of this creature. All ECC creatures can be put in the bioreactor as long as this value is 0 or greater.
+    /// Total power output of this creature. All ECC creatures can be put in the bioreactor as long as this value is greater than 0.
     /// </summary>
     public float BioReactorCharge { get; set; } = 200f;
 
