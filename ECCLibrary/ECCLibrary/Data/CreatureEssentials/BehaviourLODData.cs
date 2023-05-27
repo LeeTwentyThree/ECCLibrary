@@ -1,7 +1,7 @@
 ﻿namespace ECCLibrary.Data;
 
 /// <summary>
-/// Contains data pertaining to the <see cref="BehaviourLOD"/> component. Default values are (10, 50, 500).
+/// Contains data pertaining to certain creature functions becoming more optimized (lower quality) at a distance. Default values are (10, 50, 500).
 /// </summary>
 public readonly struct BehaviourLODData
 {
@@ -25,7 +25,7 @@ public readonly struct BehaviourLODData
     public float Far => far ?? 500;
 
     /// <summary>
-    /// Contains data pertaining to the <see cref="BehaviourLOD"/> component.
+    /// Contains data pertaining to certain creature functions becoming more optimized (lower quality) at a distance.
     /// </summary>
     /// <param name="veryClose">Beyond this distance some animations may be removed. 10f by default.</param>
     /// <param name="close">Beyond this distance some functionalities may be less precise, and any TrailManagers that have <see cref="TrailManager.allowDisableOnScreen"/> enabled (on by default) will stop functioning. 50f by default.</param>
