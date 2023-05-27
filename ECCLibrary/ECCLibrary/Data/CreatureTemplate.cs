@@ -50,7 +50,7 @@ public sealed class CreatureTemplate
     public AnimateByVelocityData AnimateByVelocityData { get; set; } = null;
 
     /// <summary>
-    /// Contains data pertaining to the <see cref="SwimRandom"/> action.
+    /// Contains data pertaining to the <see cref="SwimRandom"/> action. Assigned a generic value by default, but can be changed or set to null.
     /// </summary>
     public SwimRandomData SwimRandomData { get; set; } = new SwimRandomData(0.2f, 3f, Vector3.one * 20f);
 
