@@ -19,7 +19,7 @@ internal class ECCPlugin : BaseUnityPlugin
         Harmony harmony = new Harmony(PluginInfo.GUID);
         harmony.PatchAll(Assembly.GetExecutingAssembly());
 
-        logger.LogInfo("Attempting to create example creatures.....");
+        logger.LogInfo("Attempting to create example creatures....");
 
         Examples.ExamplePatcher.PatchExampleCreatures();
 
