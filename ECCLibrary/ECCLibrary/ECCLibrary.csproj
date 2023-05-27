@@ -36,5 +36,4 @@
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
 		<Exec Command="mkdir &quot;$(PluginsDir)\$(TargetName)&quot;&#xD;&#xA;copy /Y &quot;$(TargetPath)&quot; &quot;$(PluginsDir)\$(TargetName)&quot;&#xD;&#xA;copy /Y &quot;$(TargetDir)\ECCLibrary.xml&quot; &quot;$(PluginsDir)\$(TargetName)\ECCLibrary.xml&quot;" />
 	</Target>
-
 </Project>
