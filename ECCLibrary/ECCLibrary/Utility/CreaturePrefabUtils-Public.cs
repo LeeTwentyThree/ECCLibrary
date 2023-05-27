@@ -5,7 +5,7 @@ using System;
 namespace ECCLibrary;
 
 /// <summary>
-/// Utilities related to creating a creature prefab object.
+/// Utility methods related to constructing a creature prefab GameObject.
 /// </summary>
 public static partial class CreaturePrefabUtils
 {

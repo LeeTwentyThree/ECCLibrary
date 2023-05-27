@@ -3,7 +3,7 @@
 namespace ECCLibrary;
 
 /// <summary>
-/// Contains various methods to assist in creating data objects that have many fields.
+/// Utility methods related to assigning patch-time data.
 /// </summary>
 public static class CreatureDataUtils
 {
