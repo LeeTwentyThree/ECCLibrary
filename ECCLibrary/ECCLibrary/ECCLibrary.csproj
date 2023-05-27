@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<!--Imports the GameDir.targets file (from the same folder) which should contain the path to the Subnautica directory for the post-build event-->
 	<Import Project="GameDir.targets" />
@@ -26,16 +26,10 @@
 	<!--Import NuGet packages (may not function properly if the nuget.config file is removed!)-->
 	<ItemGroup>
 		<PackageReference Include="BepInEx.Core" Version="5.4.21" />
-		<PackageReference Include="Subnautica.GameLibs" Version="71137.0.0.1-r.0" />
+		<PackageReference Include="Subnautica.GameLibs" Version="71288.0.0-r.0" />
 		<PackageReference Include="Unity.InputSystem" Version="1.5.0" />
 		<PackageReference Include="UnityEngine.Modules" Version="2019.4.36" />
-	</ItemGroup>
-
-	<!--Reference the Nautilus DLL.-->
-	<ItemGroup>
-	  <Reference Include="Nautilus">
-	    <HintPath>$(PluginsDir)\Nautilus\Nautilus.dll</HintPath>
-	  </Reference>
+		<PackageReference Include="Subnautica.Nautilus" Version ="1.0.0-pre.9" />
 	</ItemGroup>
 
 	<!--Post-Build event that automatically places an ECCLibrary folder with the DLL and documentation into your plugins folder as defined in GameDir.targets-->
