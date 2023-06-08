@@ -4,6 +4,7 @@ using ECCLibrary.Data;
 namespace ECCLibrary;
 
 [BepInPlugin(PluginInfo.GUID, PluginInfo.Name, PluginInfo.Version)]
+[BepInDependency("com.snmodding.nautilus")]
 internal class ECCPlugin : BaseUnityPlugin
 {
     public static ECCConfig config = OptionsPanelHandler.RegisterModOptions<ECCConfig>();
