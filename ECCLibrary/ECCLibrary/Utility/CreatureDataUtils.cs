@@ -105,6 +105,6 @@ public static class CreatureDataUtils
     public static void AddCreaturePDAEncyclopediaEntry(CreatureAsset creature, string path, string title, string desc, float scanTime, Texture2D image, Sprite popupImage)
     {
         PDAHandler.AddEncyclopediaEntry(creature.ClassID, path, title, desc, image, popupImage, PDAHandler.UnlockBasic);
-        PDAHandler.AddCustomScannerEntry(creature.TechType, TechType.None, false, creature.ClassID, 1, scanTime, false);
+        PDAHandler.AddCustomScannerEntry(creature.TechType, scanTime, false, creature.ClassID);
     }
 }
