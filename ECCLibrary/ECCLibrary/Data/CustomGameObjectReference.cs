@@ -14,11 +14,8 @@ public class CustomGameObjectReference : AssetReferenceGameObject
     public CustomGameObjectReference(string guid) : base(guid)
     {
     }
-
-    /// <summary>
-    /// Returns true as long as the RuntimeKey exists.
-    /// </summary>
-    /// <returns></returns>
+    
+    /// <returns>Returns true as long as the RuntimeKey exists.</returns>
     public override bool RuntimeKeyIsValid()
     {
         var key = RuntimeKey.ToString();
