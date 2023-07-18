@@ -163,12 +163,12 @@ public sealed class CreatureTemplate
     public bool AcidImmune { get; set; } = false;
 
     /// <summary>
-    /// Total power output of this creature. All ECC creatures can be put in the bioreactor as long as this value is greater than 0.
+    /// Total power output of this creature. All ECC creatures can be put in the bioreactor as long as this value is greater than 0. Default value is 200.
     /// </summary>
     public float BioReactorCharge { get; set; } = 200f;
 
     /// <summary>
-    /// The Surface Type applied to the main collider.
+    /// The Surface Type applied to the main collider. Default is <see cref="VFXSurfaceTypes.organic"/>.
     /// </summary>
     public VFXSurfaceTypes SurfaceType { get; set; } = VFXSurfaceTypes.organic;
 

@@ -8,7 +8,7 @@ namespace ECCLibrary;
 /// </summary>
 public abstract class CreatureAsset
 {
-    private CreatureTemplate template;
+    internal CreatureTemplate Template { get; private set; }
 
     /// <summary>
     /// Information for registering the prefab.
@@ -58,9 +58,9 @@ public abstract class CreatureAsset
     /// </summary>
     public void Register()
     {
-        template = CreateTemplate();
+        Template = CreateTemplate();
 
-        // check validity of essentials
+        // Check validity of essentials
 
         if (PrefabInfo.TechType == TechType.None)
         {
@@ -74,14 +74,14 @@ public abstract class CreatureAsset
             return;
         }
 
-        // assign patch-time data
+        // Assign patch-time data
 
-        if (template.AcidImmune) CreatureDataUtils.SetAcidImmune(TechType);
-        if (template.BioReactorCharge > 0f) CreatureDataUtils.SetBioreactorCharge(TechType, template.BioReactorCharge);
-        if (template.PickupableFishData != null && template.PickupableFishData.CanBeHeld) CraftDataHandler.SetEquipmentType(TechType, EquipmentType.Hand);
-        CreatureDataUtils.SetBehaviorType(TechType, template.BehaviourType);
-        CreatureDataUtils.SetItemSounds(TechType, template.ItemSoundsType);
-        EntityInfo = new UWE.WorldEntityInfo() { cellLevel = template.CellLevel, classId = ClassID, localScale = Vector3.one, prefabZUp = false, slotType = EntitySlot.Type.Creature, techType = TechType };
+        if (Template.AcidImmune) CreatureDataUtils.SetAcidImmune(TechType);
+        if (Template.BioReactorCharge > 0f) CreatureDataUtils.SetBioreactorCharge(TechType, Template.BioReactorCharge);
+        if (Template.PickupableFishData != null && Template.PickupableFishData.CanBeHeld) CraftDataHandler.SetEquipmentType(TechType, EquipmentType.Hand);
+        CreatureDataUtils.SetBehaviorType(TechType, Template.BehaviourType);
+        CreatureDataUtils.SetItemSounds(TechType, Template.ItemSoundsType);
+        EntityInfo = new UWE.WorldEntityInfo() { cellLevel = Template.CellLevel, classId = ClassID, localScale = Vector3.one, prefabZUp = false, slotType = EntitySlot.Type.Creature, techType = TechType };
         WorldEntityDatabaseHandler.AddCustomInfo(ClassID, EntityInfo);
 
         // register custom prefab
@@ -119,7 +119,7 @@ public abstract class CreatureAsset
             yield return ObjectReferences.SetReferences();
         }
 
-        var prefab = Object.Instantiate(template.Model);
+        var prefab = Object.Instantiate(Template.Model);
         prefab.name = PrefabInfo.ClassID;
         prefab.tag = "Creature";
         prefab.SetActive(false);
@@ -156,7 +156,7 @@ public abstract class CreatureAsset
         ccs.TechTag.type = TechType;
 
         ccs.LargeWorldEntity = prefab.EnsureComponent<LargeWorldEntity>();
-        ccs.LargeWorldEntity.cellLevel = template.CellLevel;
+        ccs.LargeWorldEntity.cellLevel = Template.CellLevel;
 
         ccs.EntityTag = prefab.EnsureComponent<EntityTag>();
         ccs.EntityTag.slotType = EntitySlot.Type.Creature;
@@ -165,15 +165,15 @@ public abstract class CreatureAsset
         ccs.SkyApplier.renderers = prefab.GetComponentsInChildren<Renderer>(true);
 
         ccs.EcoTarget = prefab.EnsureComponent<EcoTarget>();
-        ccs.EcoTarget.type = template.EcoTargetType;
+        ccs.EcoTarget.type = Template.EcoTargetType;
 
         ccs.VfxSurface = prefab.EnsureComponent<VFXSurface>();
-        ccs.VfxSurface.surfaceType = template.SurfaceType;
+        ccs.VfxSurface.surfaceType = Template.SurfaceType;
 
         ccs.BehaviourLOD = prefab.EnsureComponent<BehaviourLOD>();
-        ccs.BehaviourLOD.veryCloseThreshold = template.BehaviourLODData.VeryClose;
-        ccs.BehaviourLOD.closeThreshold = template.BehaviourLODData.Close;
-        ccs.BehaviourLOD.farThreshold = template.BehaviourLODData.Far;
+        ccs.BehaviourLOD.veryCloseThreshold = Template.BehaviourLODData.VeryClose;
+        ccs.BehaviourLOD.closeThreshold = Template.BehaviourLODData.Close;
+        ccs.BehaviourLOD.farThreshold = Template.BehaviourLODData.Far;
 
         ccs.Animator = prefab.GetComponentInChildren<Animator>();
 
@@ -183,9 +183,9 @@ public abstract class CreatureAsset
 
         ccs.Rigidbody = prefab.EnsureComponent<Rigidbody>();
         ccs.Rigidbody.useGravity = false;
-        ccs.Rigidbody.mass = template.Mass;
+        ccs.Rigidbody.mass = Template.Mass;
 
-        var physicMaterial = template.PhysicMaterial;
+        var physicMaterial = Template.PhysicMaterial;
         if (physicMaterial == null)
         {
             physicMaterial = ECCUtility.FrictionlessPhysicMaterial;
@@ -207,39 +207,39 @@ public abstract class CreatureAsset
 
         // animate by velocity
 
-        if (template.AnimateByVelocityData != null)
+        if (Template.AnimateByVelocityData != null)
         {
-            ccs.AnimateByVelocity = CreaturePrefabUtils.AddAnimateByVelocity(prefab, template.AnimateByVelocityData, ccs.Animator, ccs.Rigidbody, ccs.BehaviourLOD);
+            ccs.AnimateByVelocity = CreaturePrefabUtils.AddAnimateByVelocity(prefab, Template.AnimateByVelocityData, ccs.Animator, ccs.Rigidbody, ccs.BehaviourLOD);
         }
 
         // basic swimming behaviour
 
-        var locomotionData = template.LocomotionData;
+        var locomotionData = Template.LocomotionData;
         if (locomotionData != null)
         {
-            ccs.Locomotion = CreaturePrefabUtils.AddLocomotion(prefab, template.LocomotionData, ccs.BehaviourLOD, ccs.Rigidbody);
+            ccs.Locomotion = CreaturePrefabUtils.AddLocomotion(prefab, Template.LocomotionData, ccs.BehaviourLOD, ccs.Rigidbody);
 
             ccs.SplineFollowing = CreaturePrefabUtils.AddSplineFollowing(prefab, ccs.Rigidbody, ccs.Locomotion, ccs.BehaviourLOD);
 
-            if (template.SwimBehaviourData != null)
+            if (Template.SwimBehaviourData != null)
             {
-                ccs.SwimBehaviour = CreaturePrefabUtils.AddSwimBehaviour(prefab, template.SwimBehaviourData, ccs.SplineFollowing);
+                ccs.SwimBehaviour = CreaturePrefabUtils.AddSwimBehaviour(prefab, Template.SwimBehaviourData, ccs.SplineFollowing);
             }
         }
 
-        if (template.SwimRandomData != null)
+        if (Template.SwimRandomData != null)
         {
-            ccs.SwimRandom = CreaturePrefabUtils.AddSwimRandom(prefab, template.SwimRandomData);
+            ccs.SwimRandom = CreaturePrefabUtils.AddSwimRandom(prefab, Template.SwimRandomData);
         }
 
-        if (template.StayAtLeashData != null)
+        if (Template.StayAtLeashData != null)
         {
-            ccs.StayAtLeashPosition = CreaturePrefabUtils.AddStayAtLeashPosition(prefab, template.StayAtLeashData);
+            ccs.StayAtLeashPosition = CreaturePrefabUtils.AddStayAtLeashPosition(prefab, Template.StayAtLeashData);
         }
 
         // livemixin
 
-        var lmd = template.LiveMixinData;
+        var lmd = Template.LiveMixinData;
 
         if (lmd.damageEffect == null) lmd.damageEffect = ObjectReferences.genericCreatureHit;
         if (lmd.deathEffect == null) lmd.deathEffect = ObjectReferences.genericCreatureHit;
@@ -249,7 +249,7 @@ public abstract class CreatureAsset
 
         // kharaa
 
-        if (template.CanBeInfected)
+        if (Template.CanBeInfected)
         {
             ccs.InfectedMixin = prefab.AddComponent<InfectedMixin>();
             ccs.InfectedMixin.renderers = prefab.GetComponentsInChildren<Renderer>(true);
@@ -257,20 +257,20 @@ public abstract class CreatureAsset
 
         // main 'creature' component
 
-        ccs.Creature = prefab.AddComponent(template.CreatureComponentType) as Creature;
-        ccs.Creature.Aggression = new CreatureTrait(0f, template.TraitsData.AggressionDecreaseRate);
-        ccs.Creature.Hunger = new CreatureTrait(0f, -template.TraitsData.HungerIncreaseRate);
-        ccs.Creature.Scared = new CreatureTrait(0f, template.TraitsData.ScaredDecreaseRate);
+        ccs.Creature = prefab.AddComponent(Template.CreatureComponentType) as Creature;
+        ccs.Creature.Aggression = new CreatureTrait(0f, Template.TraitsData.AggressionDecreaseRate);
+        ccs.Creature.Hunger = new CreatureTrait(0f, -Template.TraitsData.HungerIncreaseRate);
+        ccs.Creature.Scared = new CreatureTrait(0f, Template.TraitsData.ScaredDecreaseRate);
         ccs.Creature.liveMixin = ccs.LiveMixin;
         ccs.Creature.traitsAnimator = ccs.Animator;
-        ccs.Creature.sizeDistribution = template.SizeDistribution;
-        ccs.Creature.eyeFOV = template.EyeFOV;
+        ccs.Creature.sizeDistribution = Template.SizeDistribution;
+        ccs.Creature.eyeFOV = Template.EyeFOV;
 
         // eating
 
-        if (template.EdibleData != null)
+        if (Template.EdibleData != null)
         {
-            ccs.Eatable = CreaturePrefabUtils.AddEatableComponent(prefab, template.EdibleData);
+            ccs.Eatable = CreaturePrefabUtils.AddEatable(prefab, Template.EdibleData);
         }
 
         // death & damage
@@ -280,9 +280,9 @@ public abstract class CreatureAsset
         ccs.CreatureDeath.liveMixin = ccs.LiveMixin;
         ccs.CreatureDeath.respawnerPrefab = ObjectReferences.respawnerPrefab;
         ccs.CreatureDeath.eatable = ccs.Eatable;
-        ccs.CreatureDeath.respawn = template.RespawnData.respawn;
-        ccs.CreatureDeath.respawnOnlyIfKilledByCreature = template.RespawnData.respawnOnlyIfKilledByCreature;
-        ccs.CreatureDeath.respawnInterval = template.RespawnData.respawnInterval;
+        ccs.CreatureDeath.respawn = Template.RespawnData.respawn;
+        ccs.CreatureDeath.respawnOnlyIfKilledByCreature = Template.RespawnData.respawnOnlyIfKilledByCreature;
+        ccs.CreatureDeath.respawnInterval = Template.RespawnData.respawnInterval;
 
         ccs.DeadAnimationOnEnable = prefab.AddComponent<DeadAnimationOnEnable>();
         ccs.DeadAnimationOnEnable.enabled = false;
@@ -302,46 +302,46 @@ public abstract class CreatureAsset
 
         ccs.CreatureFear = prefab.AddComponent<CreatureFear>();
 
-        if (template.FleeWhenScaredData != null)
+        if (Template.FleeWhenScaredData != null)
         {
-            ccs.FleeWhenScared = CreaturePrefabUtils.AddFleeWhenScared(prefab, template.FleeWhenScaredData, ccs.CreatureFear);
+            ccs.FleeWhenScared = CreaturePrefabUtils.AddFleeWhenScared(prefab, Template.FleeWhenScaredData, ccs.CreatureFear);
         }
 
-        if (template.FleeOnDamageData != null)
+        if (Template.FleeOnDamageData != null)
         {
-            ccs.FleeOnDamage = CreaturePrefabUtils.AddFleeOnDamage(prefab, template.FleeOnDamageData);
+            ccs.FleeOnDamage = CreaturePrefabUtils.AddFleeOnDamage(prefab, Template.FleeOnDamageData);
         }
 
-        if (template.ScareableData != null)
+        if (Template.ScareableData != null)
         {
-            ccs.Scareable = CreaturePrefabUtils.AddScareable(prefab, template.ScareableData, ccs.CreatureFear, ccs.Creature, ccs.FleeWhenScared);
+            ccs.Scareable = CreaturePrefabUtils.AddScareable(prefab, Template.ScareableData, ccs.CreatureFear, ccs.Creature, ccs.FleeWhenScared);
         }
 
         // aggression
 
         ccs.LastTarget = prefab.AddComponent<LastTarget>();
 
-        if (template.AttackLastTargetData != null)
+        if (Template.AttackLastTargetData != null)
         {
-            ccs.AttackLastTarget = CreaturePrefabUtils.AddAttackLastTargetData(prefab, template.AttackLastTargetData, ccs.LastTarget);
+            ccs.AttackLastTarget = CreaturePrefabUtils.AddAttackLastTargetData(prefab, Template.AttackLastTargetData, ccs.LastTarget);
         }
 
-        if (template.AggressiveWhenSeeTargetList != null)
+        if (Template.AggressiveWhenSeeTargetList != null)
         {
-            foreach (var aggression in template.AggressiveWhenSeeTargetList)
+            foreach (var aggression in Template.AggressiveWhenSeeTargetList)
             {
                 CreaturePrefabUtils.AddAggressiveWhenSeeTarget(prefab, aggression, ccs.LastTarget, ccs.Creature);
             }
         }
 
-        if (template.AttackCyclopsData != null)
+        if (Template.AttackCyclopsData != null)
         {
-            ccs.AttackCyclops = CreaturePrefabUtils.AddAttackCyclops(prefab, template.AttackCyclopsData, ccs.LastTarget);
+            ccs.AttackCyclops = CreaturePrefabUtils.AddAttackCyclops(prefab, Template.AttackCyclopsData, ccs.LastTarget);
         }
 
         // picking up and/or holding
 
-        var pickupableData = template.PickupableFishData;
+        var pickupableData = Template.PickupableFishData;
         if (pickupableData != null)
         {
             ccs.Pickupable = prefab.AddComponent<Pickupable>();
@@ -380,33 +380,33 @@ public abstract class CreatureAsset
 
         // object avoidance
 
-        if (template.AvoidObstaclesData != null)
+        if (Template.AvoidObstaclesData != null)
         {
-            CreaturePrefabUtils.AddAvoidObstacles(prefab, template.AvoidObstaclesData, ccs.LastTarget);
+            CreaturePrefabUtils.AddAvoidObstacles(prefab, Template.AvoidObstaclesData, ccs.LastTarget);
         }
 
-        if (template.AvoidTerrainData != null)
+        if (Template.AvoidTerrainData != null)
         {
-            CreaturePrefabUtils.AddAvoidTerrain(prefab, template.AvoidTerrainData);
+            CreaturePrefabUtils.AddAvoidTerrain(prefab, Template.AvoidTerrainData);
         }
 
         // misc behaviour
 
-        if (template.SwimInSchoolData != null)
+        if (Template.SwimInSchoolData != null)
         {
-            CreaturePrefabUtils.AddSwimInSchool(prefab, template.SwimInSchoolData);
+            CreaturePrefabUtils.AddSwimInSchool(prefab, Template.SwimInSchoolData);
         }
 
         // alien containment (water park)
 
-        if (template.WaterParkCreatureData != null)
+        if (Template.WaterParkCreatureData != null)
         {
-            CreaturePrefabUtils.AddWaterParkCreature(prefab, template.WaterParkCreatureData);
+            CreaturePrefabUtils.AddWaterParkCreature(prefab, Template.WaterParkCreatureData);
         }
 
         // extra
 
-        if (template.ScannerRoomScannable)
+        if (Template.ScannerRoomScannable)
         {
             CreaturePrefabUtils.MakeObjectScannerRoomScannable(prefab, true);
         }

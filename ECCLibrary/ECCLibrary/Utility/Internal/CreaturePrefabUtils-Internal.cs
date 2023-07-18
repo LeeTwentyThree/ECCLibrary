@@ -62,16 +62,6 @@ public static partial class CreaturePrefabUtils
         return component;
     }
 
-    internal static Eatable AddEatableComponent(GameObject go, EdibleData edibleData)
-    {
-        var eatable = go.EnsureComponent<Eatable>();
-        eatable.foodValue = edibleData.foodAmount;
-        eatable.waterValue = edibleData.waterAmount;
-        eatable.kDecayRate = 0.015f * edibleData.decomposeSpeed;
-        eatable.decomposes = edibleData.decomposes;
-        return eatable;
-    }
-
     internal static StayAtLeashPosition AddStayAtLeashPosition(GameObject creature, StayAtLeashData stayAtLeashData)
     {
         var component = creature.EnsureComponent<StayAtLeashPosition>();

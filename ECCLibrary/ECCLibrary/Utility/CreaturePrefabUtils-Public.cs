@@ -36,6 +36,59 @@ public static partial class CreaturePrefabUtils
         return modifier;
     }
 
+    /// <summary>
+    /// Adds the <see cref="VFXFabricating"/> component onto a prefab to enable its model in the Fabricator. Automatically determines settings if <paramref name="data"/> is null.
+    /// </summary>
+    public static VFXFabricating AddVFXFabricating(GameObject creature, VFXFabricatingData data)
+    {
+        GameObject modelObject = creature;
+
+        if (data != null && !string.IsNullOrEmpty(data.pathToModel))
+        {
+            modelObject = creature.transform.Find(data.pathToModel).gameObject;
+        }
+
+        VFXFabricating vfxFabricating = modelObject.AddComponent<VFXFabricating>();
+
+        // Determine automatic values if needed (unreliably so)
+
+        if (data == null)
+        {
+            Renderer renderer = modelObject.GetComponentInChildren<Renderer>();
+
+            vfxFabricating.scaleFactor = modelObject.transform.localScale.x;
+            vfxFabricating.eulerOffset = modelObject.transform.localEulerAngles;
+            vfxFabricating.posOffset = new Vector3(0f, renderer.bounds.extents.y, 0f);
+            vfxFabricating.localMinY = -renderer.bounds.extents.y;
+            vfxFabricating.localMaxY = renderer.bounds.extents.y;
+
+            return vfxFabricating;
+        }
+
+        // Otherwise use 'data' as intended
+
+        vfxFabricating.localMinY = data.minY;
+        vfxFabricating.localMaxY = data.maxY;
+        vfxFabricating.posOffset = data.posOffset;
+        vfxFabricating.scaleFactor = data.scaleFactor;
+        vfxFabricating.eulerOffset = data.eulerOffset;
+
+        return vfxFabricating;
+    }
+
+    /// <summary>
+    /// Adds the <see cref="Eatable"/> [sic] component to the given GameObject.
+    /// </summary>
+    public static Eatable AddEatable(GameObject prefab, EdibleData data)
+    {
+        var e = prefab.AddComponent<Eatable>();
+        e.foodValue = data.foodAmount;
+        e.waterValue = data.waterAmount;
+        e.kDecayRate = 0.015f * data.decomposeSpeed;
+        e.decomposes = data.decomposes;
+        return e;
+    }
+
     private static AnimationCurve maxRangeMultiplierCurve = new AnimationCurve(new(0, 1, 0, 0, .333f, .333f), new(0.5f, 0.5f, 0, 0, .333f, .333f), new(1, 1, 0, 0, .333f, .333f));
     private static AnimationCurve distanceAggressionMultiplierCurve = new AnimationCurve(new(0, 1, 0, 0, .333f, .333f), new(1, 0, -3, -3, .333f, .333f));
 
