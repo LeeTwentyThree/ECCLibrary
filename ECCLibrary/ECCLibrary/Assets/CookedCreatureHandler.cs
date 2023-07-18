@@ -11,16 +11,37 @@ public static class CookedCreatureHandler
     /// <summary>
     /// Advanced method to create a cooked/cured creature.
     /// </summary>
-    public static void RegisterCookedVariant(PrefabInfo prefabInfo, GameObject creatureModel, EdibleData edibleData, RecipeData recipe, string[] fabricatorSteps,
-        VFXFabricatingData vfxFabricatingSettings = default)
+    public static void RegisterEdibleVariant(PrefabInfo prefabInfo, TechType originalCreature, GameObject creatureModel, EdibleData edibleData, RecipeData recipe,
+        string[] fabricatorSteps, TechCategory category, VFXFabricatingData vfxFabricatingSettings = default)
     {
         var prefab = new CustomPrefab(prefabInfo);
         prefab.SetRecipe(recipe)
             .WithFabricatorType(CraftTree.Type.Fabricator)
             .WithStepsToFabricatorTab(fabricatorSteps);
+        prefab.SetPdaGroupCategory(TechGroup.Survival, category).RequiredForUnlock = originalCreature;
         prefab.SetGameObject(new CookedCreatureTemplate(prefabInfo, creatureModel, edibleData, vfxFabricatingSettings));
         prefab.Register();
     }
+
+    /// <summary>
+    /// Simple method to create a cooked AND cured variant of the given creature.
+    /// </summary>
+    /// <param name="creature">The original uncooked creature. MUST have been registered already.</param>
+    /// <param name="cookedDescription">Description of the cooked fish item.</param>
+    /// <param name="curedDescription">Description of the cured fish item.</param>
+    /// <param name="cookedData">Food values of the cooked, which will automatically determine the cured values.</param>
+    /// <param name="vfxFabricatingSettings">Fabricator settings. If not assigned, automatic values will be determined. Do NOT rely on those being perfect.</param>
+    public static CookedAndCuredPrefabs RegisterAllCreatureFood(CreatureAsset creature, string cookedDescription, string curedDescription, EdibleData cookedData, VFXFabricatingData vfxFabricatingSettings = default)
+    {
+        var cooked = RegisterCookedFish(creature, cookedDescription, cookedData, vfxFabricatingSettings);
+        var cured = RegisterCuredFish(creature, curedDescription, cookedData.foodAmount, vfxFabricatingSettings);
+        return new CookedAndCuredPrefabs(cooked, cured);
+    }
+
+    /// <summary>
+    /// Holds both the cooked and cured version of the creature.
+    /// </summary>
+    public record struct CookedAndCuredPrefabs(PrefabInfo Cooked, PrefabInfo Cured);
 
     /// <summary>
     /// Simple method to create a cooked variant of the given creature.
@@ -37,12 +58,14 @@ public static class CookedCreatureHandler
             return default;
         }
         var info = PrefabInfo.WithTechType($"Cooked{creature.ClassID}", $"Cooked {creature.ClassID}", description);
-        RegisterCookedVariant(
+        RegisterEdibleVariant(
             info,
+            creature.TechType,
             creature.Template.Model,
             cookedData,
             new RecipeData(new Ingredient(creature.TechType)),
             new string[] { "Survival/CookedFood" },
+            TechCategory.CookedFood,
             vfxFabricatingSettings
         );
         return info;
@@ -53,9 +76,9 @@ public static class CookedCreatureHandler
     /// </summary>
     /// <param name="creature">The original uncooked creature. MUST have been registered already.</param>
     /// <param name="description">Description of the cured fish item.</param>
-    /// <param name="curedData">Food values.</param>
+    /// <param name="foodValue">Food value of the food.</param>
     /// <param name="vfxFabricatingSettings">Fabricator settings. If not assigned, automatic values will be determined. Do NOT rely on those being perfect.</param>
-    public static PrefabInfo RegisterCuredFish(CreatureAsset creature, string description, EdibleData curedData, VFXFabricatingData vfxFabricatingSettings = default)
+    public static PrefabInfo RegisterCuredFish(CreatureAsset creature, string description, float foodValue, VFXFabricatingData vfxFabricatingSettings = default)
     {
         if (creature.Template == null)
         {
@@ -63,12 +86,14 @@ public static class CookedCreatureHandler
             return default;
         }
         var info = PrefabInfo.WithTechType($"Cured{creature.ClassID}", $"Cured {creature.ClassID}", description);
-        RegisterCookedVariant(
+        RegisterEdibleVariant(
             info,
+            creature.TechType,
             creature.Template.Model,
-            curedData,
+            new EdibleData(foodValue, -2, false),
             new RecipeData(new Ingredient(creature.TechType), new Ingredient(TechType.Salt)),
             new string[] { "Survival/CuredFood" },
+            TechCategory.CuredFood,
             vfxFabricatingSettings
         );
         return info;
@@ -93,6 +118,7 @@ public static class CookedCreatureHandler
             PrefabUtils.AddBasicComponents(prefab, info.ClassID, info.TechType, LargeWorldEntity.CellLevel.Near);
             CreaturePrefabUtils.AddEatable(prefab, _edible);
             CreaturePrefabUtils.AddVFXFabricating(prefab, _vfxFabricatingData);
+            prefab.AddComponent<Pickupable>();
             gameObject.Set(prefab);
             yield break;
         }
