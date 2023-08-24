@@ -134,7 +134,13 @@ public static class CookedCreatureHandler
             PrefabUtils.AddBasicComponents(prefab, info.ClassID, info.TechType, LargeWorldEntity.CellLevel.Near);
             CreaturePrefabUtils.AddEatable(prefab, _edible);
             CreaturePrefabUtils.AddVFXFabricating(prefab, _vfxFabricatingData);
-            prefab.AddComponent<Pickupable>();
+            prefab.EnsureComponent<Pickupable>();
+            var rb = prefab.EnsureComponent<Rigidbody>();
+            rb.useGravity = false;
+            rb.mass = 3;
+            prefab.EnsureComponent<WorldForces>();
+            prefab.EnsureComponent<SkyApplier>();
+            prefab.EnsureComponent<EcoTarget>().type = EcoTargetType.DeadMeat;
             gameObject.Set(prefab);
             yield break;
         }

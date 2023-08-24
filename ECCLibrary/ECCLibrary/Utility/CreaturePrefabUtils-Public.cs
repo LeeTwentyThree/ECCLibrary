@@ -81,7 +81,7 @@ public static partial class CreaturePrefabUtils
     /// </summary>
     public static Eatable AddEatable(GameObject prefab, EdibleData data)
     {
-        var e = prefab.AddComponent<Eatable>();
+        var e = prefab.EnsureComponent<Eatable>();
         e.foodValue = data.foodAmount;
         e.waterValue = data.waterAmount;
         e.kDecayRate = 0.015f * data.decomposeSpeed;
