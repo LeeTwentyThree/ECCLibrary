@@ -24,7 +24,7 @@ public static class CookedCreatureHandler
     }
 
     /// <summary>
-    /// The prefable way to create a cooked AND cured variant of the given creature. Automatically assigns the Analysis Tech so it is unlocked with the creature.
+    /// The fastest way to create a cooked AND cured variant of the given creature. Automatically assigns the Analysis Tech so it is unlocked with the creature.
     /// </summary>
     /// <param name="creature">The original uncooked creature. MUST have been registered already.</param>
     /// <param name="cookedName">Name of the cooked fish item.</param>
