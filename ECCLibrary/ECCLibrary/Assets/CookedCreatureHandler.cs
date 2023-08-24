@@ -72,7 +72,7 @@ public static class CookedCreatureHandler
             ECCPlugin.logger.LogError("Attempting to call RegisterCookedFish with a creature that has not been registered yet.");
             return default;
         }
-        var info = PrefabInfo.WithTechType($"Cooked{creature.ClassID}", name, description);
+        var info = PrefabInfo.WithTechType($"Cooked{creature.ClassID}", name, description, unlockAtStart: false);
         RegisterEdibleVariant(
             info,
             creature.TechType,
@@ -101,7 +101,7 @@ public static class CookedCreatureHandler
             ECCPlugin.logger.LogError("Attempting to call RegisterCuredFish with a creature that has not been registered yet.");
             return default;
         }
-        var info = PrefabInfo.WithTechType($"Cured{creature.ClassID}", name, description);
+        var info = PrefabInfo.WithTechType($"Cured{creature.ClassID}", name, description, unlockAtStart: false);
         RegisterEdibleVariant(
             info,
             creature.TechType,
