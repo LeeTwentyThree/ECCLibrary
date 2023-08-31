@@ -8,12 +8,19 @@ namespace ECCLibrary;
 /// </summary>
 public abstract class CreatureAsset
 {
-    internal CreatureTemplate Template { get; private set; }
+    internal CreatureTemplate Template { get; }
 
     /// <summary>
     /// Information for registering the prefab.
     /// </summary>
-    public PrefabInfo PrefabInfo { get; private set; }
+    public PrefabInfo PrefabInfo { get; }
+
+    /// <summary>
+    /// A reference to the custom prefab instance.
+    /// </summary>
+    public ICustomPrefab CustomPrefab => CustomPrefabInstance;
+
+    private CustomPrefab CustomPrefabInstance { get; }
 
     /// <summary>
     /// Instantiates a Creature Asset with the given PrefabInfo. Call the Register method to add the creature to the game.
@@ -24,6 +31,8 @@ public abstract class CreatureAsset
     public CreatureAsset(PrefabInfo prefabInfo)
     {
         PrefabInfo = prefabInfo;
+        CustomPrefabInstance = new CustomPrefab(prefabInfo);
+        Template = CreateTemplate();
     }
 
     /// <summary>
@@ -58,8 +67,6 @@ public abstract class CreatureAsset
     /// </summary>
     public void Register()
     {
-        Template = CreateTemplate();
-
         // Check validity of essentials
 
         if (PrefabInfo.TechType == TechType.None)
@@ -84,11 +91,10 @@ public abstract class CreatureAsset
         EntityInfo = new UWE.WorldEntityInfo() { cellLevel = Template.CellLevel, classId = ClassID, localScale = Vector3.one, prefabZUp = false, slotType = EntitySlot.Type.Creature, techType = TechType };
         WorldEntityDatabaseHandler.AddCustomInfo(ClassID, EntityInfo);
 
-        // register custom prefab
+        // Register the Custom Prefab
 
-        CustomPrefab prefab = new CustomPrefab(PrefabInfo);
-        prefab.SetGameObject(GetGameObject);
-        prefab.Register();
+        CustomPrefabInstance.SetGameObject(GetGameObject);
+        CustomPrefabInstance.Register();
 
         PostRegister();
     }
