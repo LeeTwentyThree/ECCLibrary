@@ -65,6 +65,24 @@ internal class ExampleCreature : CreatureAsset
         CreaturePrefabUtils.AddDamageModifier(prefab, DamageType.Heat, 0f);
         yield break;
     }
+
+    protected override void PostRegister()
+    {
+        LootDistributionHandler.AddLootDistributionData(PrefabInfo.ClassID,
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.SafeShallows_Grass,
+                count = 2,
+                probability = 0.1f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.JellyshroomCaves_CaveSand,
+                count = 6,
+                probability = 0.4f
+            }
+            );
+    }
 }
 
 internal class ExampleCreatureComponent : Creature
