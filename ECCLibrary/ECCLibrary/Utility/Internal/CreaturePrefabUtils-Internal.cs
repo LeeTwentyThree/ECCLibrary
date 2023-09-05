@@ -213,6 +213,17 @@ public static partial class CreaturePrefabUtils
         return component;
     }
 
+    internal static AggressiveToPilotingVehicle AddAggressiveToPilotingVehicle(GameObject creature, AggressiveToPilotingVehicleData data, Creature creatureComponent, LastTarget lastTarget)
+    {
+        var component = creature.AddComponent<AggressiveToPilotingVehicle>();
+        component.lastTarget = lastTarget;
+        component.creature = creatureComponent;
+        component.range = data.range;
+        component.aggressionPerSecond = data.aggressionPerSecond;
+        component.updateAggressionInterval = data.updateAggressionInterval;
+        return component;
+    }
+
     internal static WaterParkCreature AddWaterParkCreature(GameObject creature, WaterParkCreatureData dataScriptableObject)
     {
         var c = creature.EnsureComponent<WaterParkCreature>();

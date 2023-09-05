@@ -95,6 +95,13 @@ public sealed class CreatureTemplate
     public RespawnData RespawnData { get; set; } = new RespawnData(true);
 
     /// <summary>
+    /// Contains data pertaining to the <see cref="AggressiveToPilotingVehicle"/> component, which encourages creatures to target any small vehicle that the player may be piloting
+    /// (this includes ANY vehicle that inherits from the <see cref="Vehicle"/> component i.e. the Seamoth or Prawn Suit). Not many creatures use this component, but ones that do
+    /// will be VERY aggressive (Boneshark levels of aggression!).
+    /// </summary>
+    public AggressiveToPilotingVehicleData AggressiveToPilotingVehicleData { get; set; } = null;
+
+    /// <summary>
     /// The Type of the main component that must inherit from <see cref="Creature"/>.
     /// </summary>
     public Type CreatureComponentType { get; private set; } = typeof(Creature);

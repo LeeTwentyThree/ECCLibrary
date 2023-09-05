@@ -71,4 +71,6 @@ public struct CreatureComponents
     public SoundOnDamage SoundOnDamage { get; internal set; }
     /// <summary> </summary>
     public StayAtLeashPosition StayAtLeashPosition { get; internal set; }
+    /// <summary> </summary>
+    public AggressiveToPilotingVehicle AggressiveToPilotingVehicle { get; internal set; }
 }

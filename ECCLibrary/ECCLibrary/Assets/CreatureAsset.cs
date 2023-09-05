@@ -345,6 +345,11 @@ public abstract class CreatureAsset
             ccs.AttackCyclops = CreaturePrefabUtils.AddAttackCyclops(prefab, Template.AttackCyclopsData, ccs.LastTarget);
         }
 
+        if (Template.AggressiveToPilotingVehicleData != null)
+        {
+            ccs.AggressiveToPilotingVehicle = CreaturePrefabUtils.AddAggressiveToPilotingVehicle(prefab, Template.AggressiveToPilotingVehicleData, ccs.Creature, ccs.LastTarget);
+        }
+
         // picking up and/or holding
 
         var pickupableData = Template.PickupableFishData;
