@@ -90,7 +90,7 @@ public sealed class CreatureTemplate
     public AvoidTerrainData AvoidTerrainData { get; set; } = null;
 
     /// <summary>
-    /// Contains data pertaining to the <see cref="CreatureDeath"/> component.
+    /// Contains data pertaining to the <see cref="CreatureDeath"/> component. Assigned by default to enable respawning. MUST be assigned!
     /// </summary>
     public RespawnData RespawnData { get; set; } = new RespawnData(true);
 
