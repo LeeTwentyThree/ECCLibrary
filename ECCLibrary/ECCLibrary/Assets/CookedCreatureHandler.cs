@@ -1,7 +1,7 @@
 ﻿using ECCLibrary.Data;
 using Ingredient = CraftData.Ingredient;
 
-namespace ECCLibrary.Assets;
+namespace ECCLibrary;
 
 /// <summary>
 /// Manages the creation of cooked and cured creatures.
