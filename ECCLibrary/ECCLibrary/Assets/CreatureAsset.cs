@@ -8,7 +8,7 @@ namespace ECCLibrary;
 /// </summary>
 public abstract class CreatureAsset
 {
-    internal CreatureTemplate Template { get; }
+    internal CreatureTemplate Template { get; init; }
 
     /// <summary>
     /// Information for registering the prefab.

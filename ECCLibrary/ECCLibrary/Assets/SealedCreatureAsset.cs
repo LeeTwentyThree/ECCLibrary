@@ -8,9 +8,14 @@ namespace ECCLibrary;
 /// </summary>
 public sealed class SealedCreatureAsset : CreatureAsset
 {
-    private readonly CreatureTemplate template;
-    private readonly Func<GameObject, CreatureComponents, IEnumerator> modifyPrefab;
-    private readonly Action<GameObject> applyMaterials;
+    /// <summary>
+    /// An optional call that allows for modification of the prefab after creation.
+    /// </summary>
+    public Func<GameObject, CreatureComponents, IEnumerator> OnModifyPrefab { get; set; }
+    /// <summary>
+    /// An optional call that, if overriden, no longer applies the MarmosetUBER shader automatically and allows for full control of the materials. Called AFTER <paramref name="modifyPrefab"/>!
+    /// </summary>
+    public Action<GameObject> OnApplyMaterials { get; set; }
 
     /// <summary>
     /// Creates a basic Creature Asset that does not use inheritance. Supply a template and any needed prefab code. Call the Register method to add the creature to the game.
@@ -21,9 +26,9 @@ public sealed class SealedCreatureAsset : CreatureAsset
     /// <param name="applyMaterials">An optional call that, if overriden, no longer applies the MarmosetUBER shader automatically and allows for full control of the materials. Called AFTER <paramref name="modifyPrefab"/>!</param>
     public SealedCreatureAsset(PrefabInfo prefabInfo, CreatureTemplate template, Func<GameObject, CreatureComponents, IEnumerator> modifyPrefab = null, Action<GameObject> applyMaterials = null) : base(prefabInfo)
     {
-        this.template = template;
-        this.modifyPrefab = modifyPrefab;
-        this.applyMaterials = applyMaterials;
+        Template = template;
+        OnModifyPrefab = modifyPrefab;
+        OnApplyMaterials = applyMaterials;
     }
 
     /// <summary>
@@ -32,7 +37,7 @@ public sealed class SealedCreatureAsset : CreatureAsset
     /// <returns></returns>
     protected override CreatureTemplate CreateTemplate()
     {
-        return template;
+        return null;
     }
 
     /// <summary>
@@ -43,8 +48,8 @@ public sealed class SealedCreatureAsset : CreatureAsset
     /// <returns></returns>
     protected override IEnumerator ModifyPrefab(GameObject prefab, CreatureComponents components)
     {
-        if (modifyPrefab == null) yield break;
-        yield return modifyPrefab.Invoke(prefab, components);
+        if (ModifyPrefab == null) yield break;
+        yield return OnModifyPrefab.Invoke(prefab, components);
     }
 
     /// <summary>
@@ -53,9 +58,9 @@ public sealed class SealedCreatureAsset : CreatureAsset
     /// <param name="prefab"></param>
     protected override void ApplyMaterials(GameObject prefab)
     {
-        if (applyMaterials != null)
+        if (OnApplyMaterials != null)
         {
-            applyMaterials.Invoke(prefab);
+            OnApplyMaterials.Invoke(prefab);
         }
         else
         {
