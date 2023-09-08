@@ -11,7 +11,7 @@ public static class CookedCreatureHandler
     /// <summary>
     /// Advanced method to create a cooked/cured creature.
     /// </summary>
-    public static void RegisterEdibleVariant(PrefabInfo prefabInfo, TechType originalCreature, GameObject creatureModel, EdibleData edibleData, RecipeData recipe,
+    public static void RegisterEdibleVariant(PrefabInfo prefabInfo, GameObject creatureModel, EdibleData edibleData, RecipeData recipe,
         string[] fabricatorSteps, TechCategory category, VFXFabricatingData vfxFabricatingSettings = default)
     {
         var prefab = new CustomPrefab(prefabInfo);
