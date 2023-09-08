@@ -75,7 +75,6 @@ public static class CookedCreatureHandler
         var info = PrefabInfo.WithTechType($"Cooked{creature.ClassID}", name, description, unlockAtStart: false);
         RegisterEdibleVariant(
             info,
-            creature.TechType,
             creature.Template.Model,
             cookedData,
             new RecipeData(new Ingredient(creature.TechType)),
@@ -104,7 +103,6 @@ public static class CookedCreatureHandler
         var info = PrefabInfo.WithTechType($"Cured{creature.ClassID}", name, description, unlockAtStart: false);
         RegisterEdibleVariant(
             info,
-            creature.TechType,
             creature.Template.Model,
             new EdibleData(foodValue, -2, false),
             new RecipeData(new Ingredient(creature.TechType), new Ingredient(TechType.Salt)),
