@@ -3,12 +3,12 @@
 namespace ECCLibrary.Data;
 
 /// <summary>
-/// Contains all of the data related to registering a creature into the game.
+/// This class contains all settings related to the registering and automatic prefab initialization of creatures by the library.
 /// </summary>
 public sealed class CreatureTemplate
 {
     /// <summary>
-    /// Contains all of the data related to registering a creature into the game.
+    /// Creatures a new basic creature template instance. Beyond the constructor, this instance also contains several properties that can be modified.
     /// </summary>
     /// <param name="model">The model that is cloned to create the creature GameObject.</param>
     /// <param name="behaviourType">Goes hand in hand with the EcoTargetType. Please note the Player is a SHARK! Determines very few creature behaviours/interactions.</param>
@@ -23,7 +23,9 @@ public sealed class CreatureTemplate
     }
 
     /// <summary>
-    /// The model that is cloned to create the creature GameObject.
+    /// <para>The model that is cloned to create the creature GameObject.</para>
+    /// <para>This object is NOT cached; for anything that isn't directly loaded from an asset bundle, it is recommended to use <see cref="UnityEngine.Object.DontDestroyOnLoad"/>.
+    /// If you want to be even safer, add the <see cref="SceneCleanerPreserve"/> to your object.</para>
     /// </summary>
     public GameObject Model { get; set; }
 

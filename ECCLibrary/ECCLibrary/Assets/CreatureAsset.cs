@@ -11,12 +11,12 @@ public abstract class CreatureAsset
     internal CreatureTemplate Template { get; init; }
 
     /// <summary>
-    /// Information for registering the prefab.
+    /// Essential information for registering the prefab.
     /// </summary>
     public PrefabInfo PrefabInfo { get; }
 
     /// <summary>
-    /// A reference to the custom prefab instance.
+    /// A reference to the custom prefab instance for this creature. Note that this custom prefab is registered once the <see cref="Register"/> method is called.
     /// </summary>
     public ICustomPrefab CustomPrefab => CustomPrefabInstance;
 
@@ -63,7 +63,7 @@ public abstract class CreatureAsset
     public UWE.WorldEntityInfo EntityInfo { get; private set; }
 
     /// <summary>
-    /// Registers this creature into the game.
+    /// Registers this creature's CustomPrefab into the game. This should only ever be called once, after everything else related to the creature has been finalized.
     /// </summary>
     public void Register()
     {
@@ -100,12 +100,12 @@ public abstract class CreatureAsset
     }
 
     /// <summary>
-    /// An empty method that can be overriden to insert code that runs directly after the prefab is registered (runs at patch time).
+    /// An empty method that can be overriden to insert code that runs directly after the prefab is registered (runs at patch time immediately after <see cref="Register"/> is called).
     /// </summary>
     protected virtual void PostRegister() { }
 
     /// <summary>
-    /// The majority of the data for each creature should be assigned through this call.
+    /// This method expects a <see cref="CreatureTemplate"/> instance. This class holds all the settings regarding the creature's automatic prefab initialization, alongside various patch-time factors.
     /// </summary>
     /// <returns></returns>
     protected abstract CreatureTemplate CreateTemplate();
