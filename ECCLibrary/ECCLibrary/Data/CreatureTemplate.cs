@@ -207,7 +207,7 @@ public sealed class CreatureTemplate
     public AnimationCurve SizeDistribution { get; set; } = new AnimationCurve(new Keyframe[] { new(0, 1), new(1, 1) });
 
     /// <summary>
-    /// Roughly determines how far this creature can be loaded in.
+    /// Roughly determines how far this creature can be loaded in. Default value is <see cref="LargeWorldEntity.CellLevel.Medium"/>.
     /// </summary>
     public LargeWorldEntity.CellLevel CellLevel { get; set; } = LargeWorldEntity.CellLevel.Medium;
 
