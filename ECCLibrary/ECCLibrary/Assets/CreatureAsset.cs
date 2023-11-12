@@ -170,11 +170,17 @@ public abstract class CreatureAsset
         ccs.SkyApplier = prefab.EnsureComponent<SkyApplier>();
         ccs.SkyApplier.renderers = prefab.GetComponentsInChildren<Renderer>(true);
 
-        ccs.EcoTarget = prefab.EnsureComponent<EcoTarget>();
-        ccs.EcoTarget.type = Template.EcoTargetType;
+        if (Template.EcoTargetType != EcoTargetType.None)
+        {
+            ccs.EcoTarget = prefab.EnsureComponent<EcoTarget>();
+            ccs.EcoTarget.type = Template.EcoTargetType;
+        }
 
-        ccs.VfxSurface = prefab.EnsureComponent<VFXSurface>();
-        ccs.VfxSurface.surfaceType = Template.SurfaceType;
+        if (Template.SurfaceType != VFXSurfaceTypes.none)
+        {
+            ccs.VfxSurface = prefab.EnsureComponent<VFXSurface>();
+            ccs.VfxSurface.surfaceType = Template.SurfaceType;
+        }
 
         ccs.BehaviourLOD = prefab.EnsureComponent<BehaviourLOD>();
         ccs.BehaviourLOD.veryCloseThreshold = Template.BehaviourLODData.VeryClose;
