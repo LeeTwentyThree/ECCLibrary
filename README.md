@@ -17,6 +17,10 @@ The XML documentation within the library is very elaborate and should provide su
 
 [Nautilus](https://github.com/SubnauticaModding/Nautilus), the new Subnautica Modding API.
 
+## Pre-releases are available now!
+
+Please check the releases tab on the right side of this page.
+
 ## Contributing to ECCLibrary
 
 ECCLibrary is an open-source mod and contributions are always welcome. If you are interested in contributing to the project, there are several ways to do so.
