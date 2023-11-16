@@ -68,7 +68,7 @@ internal class ExampleCreature : CreatureAsset
 
     protected override void PostRegister()
     {
-        LootDistributionHandler.AddLootDistributionData(PrefabInfo.ClassID,
+        /* LootDistributionHandler.AddLootDistributionData(PrefabInfo.ClassID,
             new LootDistributionData.BiomeData()
             {
                 biome = BiomeType.SafeShallows_Grass,
@@ -82,6 +82,7 @@ internal class ExampleCreature : CreatureAsset
                 probability = 0.4f
             }
             );
+        */
     }
 }
 
