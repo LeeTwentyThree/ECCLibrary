@@ -179,7 +179,7 @@ public static partial class CreaturePrefabUtils
 
     internal static CreatureFlinch AddCreatureFlinch(GameObject creature, Animator animator)
     {
-        var component = creature.AddComponent<CreatureFlinch>();
+        var component = creature.EnsureComponent<CreatureFlinch>();
         component.animator = animator;
         return component;
     }

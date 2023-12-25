@@ -94,7 +94,18 @@ public abstract class CreatureAsset
 
         // Register the Custom Prefab
 
-        CustomPrefabInstance.SetGameObject(GetGameObject);
+        if (Template.TechTypeToClone is not TechType.None)
+        {
+            CustomPrefabInstance.SetGameObject(new CloneTemplate(PrefabInfo, Template.TechTypeToClone)
+            {
+                ModifyPrefabAsync = ModifyPrefabAsync
+            });
+        }
+        else
+        { 
+            CustomPrefabInstance.SetGameObject(GetGameObject);
+        }
+
         CustomPrefabInstance.Register();
 
         PostRegister();
@@ -139,6 +150,20 @@ public abstract class CreatureAsset
 
         gameObject.Set(prefab);
         yield break;
+    }
+    
+    private IEnumerator ModifyPrefabAsync(GameObject prefab)
+    {
+        if (!ObjectReferences.Done)
+        {
+            yield return ObjectReferences.SetReferences();
+        }
+        
+        var components = AddComponents(prefab);
+
+        yield return ModifyPrefab(prefab, components);
+
+        ApplyMaterials(prefab);
     }
 
     /// <summary>
@@ -270,14 +295,21 @@ public abstract class CreatureAsset
 
         // main 'creature' component
 
-        ccs.Creature = prefab.AddComponent(Template.CreatureComponentType) as Creature;
-        ccs.Creature.Aggression = new CreatureTrait(0f, Template.TraitsData.AggressionDecreaseRate);
-        ccs.Creature.Hunger = new CreatureTrait(0f, -Template.TraitsData.HungerIncreaseRate);
-        ccs.Creature.Scared = new CreatureTrait(0f, Template.TraitsData.ScaredDecreaseRate);
-        ccs.Creature.liveMixin = ccs.LiveMixin;
-        ccs.Creature.traitsAnimator = ccs.Animator;
-        ccs.Creature.sizeDistribution = Template.SizeDistribution;
-        ccs.Creature.eyeFOV = Template.EyeFOV;
+        if (Template.TechTypeToClone != TechType.None && prefab.TryGetComponent<Creature>(out var creature))
+        {
+            ccs.Creature = creature;
+        }
+        else
+        {
+            ccs.Creature = prefab.AddComponent(Template.CreatureComponentType) as Creature;
+            ccs.Creature.Aggression = new CreatureTrait(0f, Template.TraitsData.AggressionDecreaseRate);
+            ccs.Creature.Hunger = new CreatureTrait(0f, -Template.TraitsData.HungerIncreaseRate);
+            ccs.Creature.Scared = new CreatureTrait(0f, Template.TraitsData.ScaredDecreaseRate);
+            ccs.Creature.liveMixin = ccs.LiveMixin;
+            ccs.Creature.traitsAnimator = ccs.Animator;
+            ccs.Creature.sizeDistribution = Template.SizeDistribution;
+            ccs.Creature.eyeFOV = Template.EyeFOV;
+        }
 
         // eating
 
@@ -288,7 +320,7 @@ public abstract class CreatureAsset
 
         // death & damage
 
-        ccs.CreatureDeath = prefab.AddComponent<CreatureDeath>();
+        ccs.CreatureDeath = prefab.EnsureComponent<CreatureDeath>();
         ccs.CreatureDeath.useRigidbody = ccs.Rigidbody;
         ccs.CreatureDeath.liveMixin = ccs.LiveMixin;
         ccs.CreatureDeath.respawnerPrefab = ObjectReferences.respawnerPrefab;
@@ -297,12 +329,12 @@ public abstract class CreatureAsset
         ccs.CreatureDeath.respawnOnlyIfKilledByCreature = Template.RespawnData.respawnOnlyIfKilledByCreature;
         ccs.CreatureDeath.respawnInterval = Template.RespawnData.respawnInterval;
 
-        ccs.DeadAnimationOnEnable = prefab.AddComponent<DeadAnimationOnEnable>();
+        ccs.DeadAnimationOnEnable = prefab.EnsureComponent<DeadAnimationOnEnable>();
         ccs.DeadAnimationOnEnable.enabled = false;
         ccs.DeadAnimationOnEnable.animator = ccs.Creature.GetAnimator();
         ccs.DeadAnimationOnEnable.liveMixin = ccs.LiveMixin;
         ccs.DeadAnimationOnEnable.enabled = true;
-
+        
         ccs.CreatureFlinch = CreaturePrefabUtils.AddCreatureFlinch(prefab, ccs.Animator);
 
         prefab.AddComponent<RemoveSoundsOnKill>();
@@ -362,10 +394,11 @@ public abstract class CreatureAsset
         var pickupableData = Template.PickupableFishData;
         if (pickupableData != null)
         {
-            ccs.Pickupable = prefab.AddComponent<Pickupable>();
+            ccs.Pickupable = prefab.EnsureComponent<Pickupable>();
 
             if (pickupableData.CanBeHeld)
             {
+                Object.DestroyImmediate(prefab.GetComponent<DropTool>());
                 HeldFish heldFish = prefab.EnsureComponent<HeldFish>();
                 heldFish.SetAnimationTechTypeReference(pickupableData.ReferenceHoldingAnimation);
                 heldFish.mainCollider = prefab.GetComponent<Collider>();
