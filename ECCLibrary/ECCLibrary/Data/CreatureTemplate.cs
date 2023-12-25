@@ -8,7 +8,7 @@ namespace ECCLibrary.Data;
 public sealed class CreatureTemplate
 {
     /// <summary>
-    /// Creatures a new basic creature template instance. Beyond the constructor, this instance also contains several properties that can be modified.
+    /// Creates a new basic creature template instance. Beyond the constructor, this instance also contains several properties that can be modified.
     /// </summary>
     /// <param name="model">The model that is cloned to create the creature GameObject.</param>
     /// <param name="behaviourType">Goes hand in hand with the EcoTargetType. Please note the Player is a SHARK! Determines very few creature behaviours/interactions.</param>
@@ -21,6 +21,31 @@ public sealed class CreatureTemplate
         EcoTargetType = ecoTargetType;
         LiveMixinData = CreatureDataUtils.CreateLiveMixinData(maxHealth);
     }
+
+    /// <summary>
+    /// Creates a new basic creature template instance based on an existing prefab. Beyond the constructor, this instance also contains several properties that can be modified.
+    /// </summary>
+    /// <param name="techTypeToClone">The tech type to clone and use for this template.</param>
+    /// <param name="maxHealth">Maximum health of this creature.</param>
+    public CreatureTemplate(TechType techTypeToClone, float maxHealth) : 
+        this(techTypeToClone, CreatureData.GetBehaviourType(techTypeToClone), CreatureData.GetEcoTargetType(techTypeToClone), maxHealth) {}
+
+    /// <summary>
+    /// Creates a new basic creature template instance based on an existing prefab. Beyond the constructor, this instance also contains several properties that can be modified.
+    /// </summary>
+    /// <param name="techTypeToClone">The tech type to clone and use for this template.</param>
+    /// <param name="behaviourType">Goes hand in hand with the EcoTargetType. Please note the Player is a SHARK! Determines very few creature behaviours/interactions.</param>
+    /// <param name="ecoTargetType">Goes hand in hand with the BehaviourType. Determines many interactions with creatures, specifically how this creature is "located" or "targeted" by other creatures</param>
+    /// <param name="maxHealth">Maximum health of this creature.</param>
+    public CreatureTemplate(TechType techTypeToClone, BehaviourType behaviourType, EcoTargetType ecoTargetType, float maxHealth)
+    {
+        _techTypeToClone = techTypeToClone;
+        BehaviourType = behaviourType;
+        EcoTargetType = ecoTargetType;
+        LiveMixinData = CreatureDataUtils.CreateLiveMixinData(maxHealth);
+    }
+    
+    internal TechType _techTypeToClone;
 
     /// <summary>
     /// <para>The model that is cloned to create the creature GameObject.</para>
