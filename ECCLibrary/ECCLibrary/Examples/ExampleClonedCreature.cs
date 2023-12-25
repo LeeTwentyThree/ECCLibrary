@@ -2,7 +2,7 @@
 
 namespace ECCLibrary.Examples;
 
-public class ExampleClonedCreature : CreatureAsset
+internal class ExampleClonedCreature : CreatureAsset
 {
     public ExampleClonedCreature(PrefabInfo prefabInfo) : base(prefabInfo)
     {
