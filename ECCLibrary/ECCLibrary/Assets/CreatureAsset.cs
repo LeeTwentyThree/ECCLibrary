@@ -93,9 +93,9 @@ public abstract class CreatureAsset
 
         // Register the Custom Prefab
 
-        if (Template._techTypeToClone is not TechType.None)
+        if (Template.TechTypeToClone is not TechType.None)
         {
-            CustomPrefabInstance.SetGameObject(new CloneTemplate(PrefabInfo, Template._techTypeToClone)
+            CustomPrefabInstance.SetGameObject(new CloneTemplate(PrefabInfo, Template.TechTypeToClone)
             {
                 ModifyPrefabAsync = ModifyPrefabAsync
             });
@@ -294,7 +294,7 @@ public abstract class CreatureAsset
 
         // main 'creature' component
 
-        if (Template._techTypeToClone != TechType.None && prefab.TryGetComponent<Creature>(out var creature))
+        if (Template.TechTypeToClone != TechType.None && prefab.TryGetComponent<Creature>(out var creature))
         {
             ccs.Creature = creature;
         }

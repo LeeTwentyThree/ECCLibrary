@@ -39,13 +39,13 @@ public sealed class CreatureTemplate
     /// <param name="maxHealth">Maximum health of this creature.</param>
     public CreatureTemplate(TechType techTypeToClone, BehaviourType behaviourType, EcoTargetType ecoTargetType, float maxHealth)
     {
-        _techTypeToClone = techTypeToClone;
+        TechTypeToClone = techTypeToClone;
         BehaviourType = behaviourType;
         EcoTargetType = ecoTargetType;
         LiveMixinData = CreatureDataUtils.CreateLiveMixinData(maxHealth);
     }
     
-    internal TechType _techTypeToClone;
+    internal TechType TechTypeToClone { get; }
 
     /// <summary>
     /// <para>The model that is cloned to create the creature GameObject.</para>
