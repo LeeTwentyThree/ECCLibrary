@@ -8,7 +8,7 @@ namespace ECCLibrary;
 /// </summary>
 public abstract class CreatureAsset
 {
-    internal CreatureTemplate Template { get; init; }
+    internal CreatureTemplate Template { get; set; }
 
     /// <summary>
     /// Essential information for registering the prefab.
@@ -32,7 +32,6 @@ public abstract class CreatureAsset
     {
         PrefabInfo = prefabInfo;
         CustomPrefabInstance = new CustomPrefab(prefabInfo);
-        Template = CreateTemplate();
     }
 
     /// <summary>
@@ -67,6 +66,8 @@ public abstract class CreatureAsset
     /// </summary>
     public void Register()
     {
+         Template = CreateTemplate();
+
         // Check validity of essentials
 
         if (PrefabInfo.TechType == TechType.None)
