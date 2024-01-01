@@ -37,7 +37,7 @@ public sealed class SealedCreatureAsset : CreatureAsset
     /// <returns></returns>
     protected override CreatureTemplate CreateTemplate()
     {
-        return null;
+        return Template;
     }
 
     /// <summary>
