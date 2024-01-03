@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 1341666686
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: ecc_example_bundle
+      Dependencies: {}
