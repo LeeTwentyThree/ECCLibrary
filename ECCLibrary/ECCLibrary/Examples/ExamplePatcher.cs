@@ -46,16 +46,20 @@ internal static class ExamplePatcher
                 SizeDistribution = new AnimationCurve(new Keyframe(0, 0.5f), new Keyframe(1, 1f)),
                 AnimateByVelocityData = new AnimateByVelocityData(6f),
                 FleeOnDamageData = new FleeOnDamageData(0.8f, 8f),
-                AggressiveWhenSeeTargetList = new List<AggressiveWhenSeeTargetData> { new(EcoTargetType.Shark, 1, 20, 1) },
+                AggressiveWhenSeeTargetList = new List<AggressiveWhenSeeTargetData> { new(EcoTargetType.Shark, 1, 20, 1), new(EcoTargetType.SmallFish, 1, 20, 1) },
                 AttackLastTargetData = new AttackLastTargetData(0.7f, 8f, 0.5f, 7f)
             }.SetWaterParkCreatureData(new WaterParkCreatureDataStruct(0.1f, 1f, 1f, 1f, false, true, "ExampleShark", "ExampleShark")),
             ModifyExampleShark
         );
+        exampleShark.CustomPrefab.SetSpawns(new SpawnLocation(new Vector3(5, -800, 500)));
         exampleShark.Register();
     }
 
-    private static IEnumerator ModifyExampleShark(GameObject obj1, CreatureComponents obj2)
+    private static IEnumerator ModifyExampleShark(GameObject obj, CreatureComponents components)
     {
+        CreaturePrefabUtils.AddMeleeAttack<MeleeAttack>(obj, components,
+            obj.transform.Find("MouthDamageTrigger").gameObject, true, 20);
+        
         yield break;
     }
 }
