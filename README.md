@@ -9,7 +9,7 @@ The [old version of ECCLibrary](https://github.com/LeeTwentyThree/ECCLibrary-Leg
 ECC 2.0 converts the inheritance-forcing creature data system to a more robust object-oriented system called [Creature Templates](https://github.com/LeeTwentyThree/ECCLibrary/blob/main/ECCLibrary/ECCLibrary/Data/CreatureTemplate.cs).
 
 An example of a creature asset class in ECC 2.0 can be found [here](https://github.com/LeeTwentyThree/ECCLibrary/blob/main/ECCLibrary/ECCLibrary/Examples/ExampleCreature.cs).
-Creatures can also be created [without using inheritance](https://github.com/LeeTwentyThree/ECCLibrary/blob/main/ECCLibrary/ECCLibrary/Examples/ExamplePatcher.cs#L16-L35).
+Creatures can also be created [without using inheritance](https://github.com/LeeTwentyThree/ECCLibrary/blob/main/ECCLibrary/ECCLibrary/Examples/ExamplePatcher.cs#L35-55).
 
 The XML documentation within the library is very elaborate and should provide sufficient information regarding setting up basic creature behaviours.
 
