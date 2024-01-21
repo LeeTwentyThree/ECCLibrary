@@ -4,7 +4,7 @@
 
 ECCLibrary is a modding library for Subnautica that allows you to add fleshed-out creatures to the game without needing to reinvent the wheel each time, saving you hundreds of lines of code and hours of research.
 
-ECCLibrary 2.0 is a complete rewrite on the library, created in response to the "modpocalypse" update.
+ECCLibrary 2.0 is a complete rewrite of the library, created in response to the "modpocalypse" update.
 The [old version of ECCLibrary](https://github.com/LeeTwentyThree/ECCLibrary-Legacy) is no longer supported.
 ECC 2.0 converts the inheritance-forcing creature data system to a more robust object-oriented system called [Creature Templates](https://github.com/LeeTwentyThree/ECCLibrary/blob/main/ECCLibrary/ECCLibrary/Data/CreatureTemplate.cs).
 
