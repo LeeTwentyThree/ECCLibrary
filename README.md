@@ -17,7 +17,7 @@ The XML documentation within the library is very elaborate and should provide su
 
 [Nautilus](https://github.com/SubnauticaModding/Nautilus), the new Subnautica Modding API.
 
-## Pre-releases are available now!
+## ECCLibrary 2.0 is released NOW!
 
 Please check the releases tab on the right side of this page.
 
