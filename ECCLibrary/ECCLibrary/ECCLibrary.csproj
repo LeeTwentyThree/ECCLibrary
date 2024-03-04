@@ -10,11 +10,21 @@
 		<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
 		<LangVersion>10.0</LangVersion>
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
+		<Configurations>BZ;SN1</Configurations>
+		<Platforms>AnyCPU</Platforms>
 	</PropertyGroup>
 
 	<!--Defines the PluginsDir property for use in the Post-Build event-->
 	<PropertyGroup>
 		<PluginsDir>$(GameDir)\BepInEx\plugins</PluginsDir>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'SN1|AnyCPU'">
+		<OutputPath>bin\SN1\</OutputPath>
+		<DefineConstants>SUBNAUTICA;SUBNAUTICA_STABLE</DefineConstants>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'BZ|AnyCPU'">
+		<OutputPath>bin\BZ\</OutputPath>
+		<DefineConstants>BELOWZERO;BELOWZERO_STABLE</DefineConstants>
 	</PropertyGroup>
 
 	<!--Remove unwanted global usings that hinder development (System) make it impossible to compile (System.Net.Http)-->
