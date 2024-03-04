@@ -1,0 +1,734 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class TrailManagerBuilder
+ </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class TrailManagerBuilder
+ ">
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      
+      
+      
+      
+  </head>
+
+  <script type="module">
+    import options from './../public/main.js'
+    import { init } from './../public/docfx.min.js'
+    init(options)
+  </script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="ECCLibrary.TrailManagerBuilder">
+
+
+
+  <h1 id="ECCLibrary_TrailManagerBuilder" data-uid="ECCLibrary.TrailManagerBuilder" class="text-break">
+    Class TrailManagerBuilder
+  
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="ECCLibrary.html">ECCLibrary</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>ECCLibrary.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Helps in the creation of a <span class="xref">TrailManager</span>. Call the <a class="xref" href="ECCLibrary.TrailManagerBuilder.html#ECCLibrary_TrailManagerBuilder_Apply">Apply()</a> method to apply the changes.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class TrailManagerBuilder</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">TrailManagerBuilder</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist derived">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="ECCLibrary_TrailManagerBuilder__ctor_" data-uid="ECCLibrary.TrailManagerBuilder.#ctor*"></a>
+
+  <h3 id="ECCLibrary_TrailManagerBuilder__ctor_ECCLibrary_Data_CreatureComponents_UnityEngine_Transform_System_Single_System_Single_" data-uid="ECCLibrary.TrailManagerBuilder.#ctor(ECCLibrary.Data.CreatureComponents,UnityEngine.Transform,System.Single,System.Single)">
+  TrailManagerBuilder(CreatureComponents, Transform, float, float)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Helps in the creation of a <span class="xref">TrailManager</span>. Call the <a class="xref" href="ECCLibrary.TrailManagerBuilder.html#ECCLibrary_TrailManagerBuilder_Apply">Apply()</a> method to apply the changes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TrailManagerBuilder(CreatureComponents components, Transform rootSegment, float segmentSnapSpeed = 5, float maxSegmentOffset = -1)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>components</code> <a class="xref" href="ECCLibrary.Data.CreatureComponents.html">CreatureComponents</a></dt>
+    <dd><p>The object that holds all creature components.</p>
+</dd>
+    <dt><code>rootSegment</code> <span class="xref">Transform</span></dt>
+    <dd><p>The object that the TrailManager is added to. Is generally a part of the rig. This bone does NOT get animated, and should NOT be included in the list of trail bones.</p>
+</dd>
+    <dt><code>segmentSnapSpeed</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>Controls rigidity. The higher this value, the faster the TrailManager can revert to its default (stiff) state. The lower this value, the more &quot;floaty&quot; it appears.</p>
+</dd>
+    <dt><code>maxSegmentOffset</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>If -1 (default), there is no limit on how far each segment can go. Otherwise, this value forces each bone to remain within a certain distance of its starting point.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ECCLibrary_TrailManagerBuilder__ctor_" data-uid="ECCLibrary.TrailManagerBuilder.#ctor*"></a>
+
+  <h3 id="ECCLibrary_TrailManagerBuilder__ctor_UnityEngine_Transform_BehaviourLOD_UnityEngine_Transform_System_Single_System_Single_" data-uid="ECCLibrary.TrailManagerBuilder.#ctor(UnityEngine.Transform,BehaviourLOD,UnityEngine.Transform,System.Single,System.Single)">
+  TrailManagerBuilder(Transform, BehaviourLOD, Transform, float, float)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Helps in the creation of a <span class="xref">TrailManager</span>. Call the <a class="xref" href="ECCLibrary.TrailManagerBuilder.html#ECCLibrary_TrailManagerBuilder_Apply">Apply()</a> method to apply the changes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TrailManagerBuilder(Transform creatureRoot, BehaviourLOD behaviourLOD, Transform rootSegment, float segmentSnapSpeed = 5, float maxSegmentOffset = -1)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>creatureRoot</code> <span class="xref">Transform</span></dt>
+    <dd><p>The root of the creature. Typically the object that holds the Creature component and all CreatureActions.</p>
+</dd>
+    <dt><code>behaviourLOD</code> <span class="xref">BehaviourLOD</span></dt>
+    <dd><p>The BehaviourLOD of this creature.</p>
+</dd>
+    <dt><code>rootSegment</code> <span class="xref">Transform</span></dt>
+    <dd><p>The object that the TrailManager is added to. Is generally a part of the rig. This bone does NOT get animated, and should NOT be included in the list of trail bones.</p>
+</dd>
+    <dt><code>segmentSnapSpeed</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>Controls rigidity. The higher this value, the faster the TrailManager can revert to its default (stiff) state. The lower this value, the more &quot;floaty&quot; it appears.</p>
+</dd>
+    <dt><code>maxSegmentOffset</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>If -1 (default), there is no limit on how far each segment can go. Otherwise, this value forces each bone to remain within a certain distance of its starting point.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="ECCLibrary_TrailManagerBuilder_AllowDisableOnScreen_" data-uid="ECCLibrary.TrailManagerBuilder.AllowDisableOnScreen*"></a>
+
+  <h3 id="ECCLibrary_TrailManagerBuilder_AllowDisableOnScreen" data-uid="ECCLibrary.TrailManagerBuilder.AllowDisableOnScreen">
+  AllowDisableOnScreen
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>If true, this TrailManager could be disabled while outside the BehaviourLOD's &quot;close threshold&quot; (for performance reasons). True by default.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool AllowDisableOnScreen { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ECCLibrary_TrailManagerBuilder_BehaviourLOD_" data-uid="ECCLibrary.TrailManagerBuilder.BehaviourLOD*"></a>
+
+  <h3 id="ECCLibrary_TrailManagerBuilder_BehaviourLOD" data-uid="ECCLibrary.TrailManagerBuilder.BehaviourLOD">
+  BehaviourLOD
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The BehaviourLOD of this creature.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BehaviourLOD BehaviourLOD { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">BehaviourLOD</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ECCLibrary_TrailManagerBuilder_CreatureRoot_" data-uid="ECCLibrary.TrailManagerBuilder.CreatureRoot*"></a>
+
+  <h3 id="ECCLibrary_TrailManagerBuilder_CreatureRoot" data-uid="ECCLibrary.TrailManagerBuilder.CreatureRoot">
+  CreatureRoot
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The root of the creature. Typically the object that holds the Creature component and all CreatureActions.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Transform CreatureRoot { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Transform</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ECCLibrary_TrailManagerBuilder_MaxSegmentOffset_" data-uid="ECCLibrary.TrailManagerBuilder.MaxSegmentOffset*"></a>
+
+  <h3 id="ECCLibrary_TrailManagerBuilder_MaxSegmentOffset" data-uid="ECCLibrary.TrailManagerBuilder.MaxSegmentOffset">
+  MaxSegmentOffset
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>If -1 (default), there is no limit on how far each segment can go. Otherwise, this value forces each bone to remain within a certain distance of its starting point.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float MaxSegmentOffset { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ECCLibrary_TrailManagerBuilder_PitchMultiplier_" data-uid="ECCLibrary.TrailManagerBuilder.PitchMultiplier*"></a>
+
+  <h3 id="ECCLibrary_TrailManagerBuilder_PitchMultiplier" data-uid="ECCLibrary.TrailManagerBuilder.PitchMultiplier">
+  PitchMultiplier
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Multiplier for the intensity of each bone's trail effect. The lowest time value (t=0) affects the first bone while the highest time value (t=1) affects the last bone. Default value is <a class="xref" href="ECCLibrary.TrailManagerUtilities.html#ECCLibrary_TrailManagerUtilities_FlatMultiplierAnimationCurve">FlatMultiplierAnimationCurve</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AnimationCurve PitchMultiplier { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">AnimationCurve</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ECCLibrary_TrailManagerBuilder_RollMultiplier_" data-uid="ECCLibrary.TrailManagerBuilder.RollMultiplier*"></a>
+
+  <h3 id="ECCLibrary_TrailManagerBuilder_RollMultiplier" data-uid="ECCLibrary.TrailManagerBuilder.RollMultiplier">
+  RollMultiplier
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Multiplier for the intensity of each bone's trail effect. The lowest time value (t=0) affects the first bone while the highest time value (t=1) affects the last bone. Default value is <a class="xref" href="ECCLibrary.TrailManagerUtilities.html#ECCLibrary_TrailManagerUtilities_FlatMultiplierAnimationCurve">FlatMultiplierAnimationCurve</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AnimationCurve RollMultiplier { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">AnimationCurve</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ECCLibrary_TrailManagerBuilder_RootSegment_" data-uid="ECCLibrary.TrailManagerBuilder.RootSegment*"></a>
+
+  <h3 id="ECCLibrary_TrailManagerBuilder_RootSegment" data-uid="ECCLibrary.TrailManagerBuilder.RootSegment">
+  RootSegment
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The object that the TrailManager is added to. Is generally a part of the rig. This bone does NOT get animated, and should NOT be included in the list of trail bones.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Transform RootSegment { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Transform</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ECCLibrary_TrailManagerBuilder_SegmentSnapSpeed_" data-uid="ECCLibrary.TrailManagerBuilder.SegmentSnapSpeed*"></a>
+
+  <h3 id="ECCLibrary_TrailManagerBuilder_SegmentSnapSpeed" data-uid="ECCLibrary.TrailManagerBuilder.SegmentSnapSpeed">
+  SegmentSnapSpeed
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Controls rigidity. The higher this value, the faster the TrailManager can revert to its default (stiff) state. The lower this value, the more &quot;floaty&quot; it appears.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float SegmentSnapSpeed { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ECCLibrary_TrailManagerBuilder_Trails_" data-uid="ECCLibrary.TrailManagerBuilder.Trails*"></a>
+
+  <h3 id="ECCLibrary_TrailManagerBuilder_Trails" data-uid="ECCLibrary.TrailManagerBuilder.Trails">
+  Trails
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The array that contains all of the transforms of the affected bones.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Transform[] Trails { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Transform</span>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ECCLibrary_TrailManagerBuilder_YawMultiplier_" data-uid="ECCLibrary.TrailManagerBuilder.YawMultiplier*"></a>
+
+  <h3 id="ECCLibrary_TrailManagerBuilder_YawMultiplier" data-uid="ECCLibrary.TrailManagerBuilder.YawMultiplier">
+  YawMultiplier
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Multiplier for the intensity of each bone's trail effect. The lowest time value (t=0) affects the first bone while the highest time value (t=1) affects the last bone. Default value is <a class="xref" href="ECCLibrary.TrailManagerUtilities.html#ECCLibrary_TrailManagerUtilities_FlatMultiplierAnimationCurve">FlatMultiplierAnimationCurve</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AnimationCurve YawMultiplier { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">AnimationCurve</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="ECCLibrary_TrailManagerBuilder_Apply_" data-uid="ECCLibrary.TrailManagerBuilder.Apply*"></a>
+
+  <h3 id="ECCLibrary_TrailManagerBuilder_Apply" data-uid="ECCLibrary.TrailManagerBuilder.Apply">
+  Apply()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Finalizes creation of this TrailManager.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TrailManager Apply()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">TrailManager</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ECCLibrary_TrailManagerBuilder_SetAllMultiplierAnimationCurves_" data-uid="ECCLibrary.TrailManagerBuilder.SetAllMultiplierAnimationCurves*"></a>
+
+  <h3 id="ECCLibrary_TrailManagerBuilder_SetAllMultiplierAnimationCurves_UnityEngine_AnimationCurve_" data-uid="ECCLibrary.TrailManagerBuilder.SetAllMultiplierAnimationCurves(UnityEngine.AnimationCurve)">
+  SetAllMultiplierAnimationCurves(AnimationCurve)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the multiplier in every direction to <code class="paramref">curve</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetAllMultiplierAnimationCurves(AnimationCurve curve)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>curve</code> <span class="xref">AnimationCurve</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ECCLibrary_TrailManagerBuilder_SetTrailArrayToAllChildren_" data-uid="ECCLibrary.TrailManagerBuilder.SetTrailArrayToAllChildren*"></a>
+
+  <h3 id="ECCLibrary_TrailManagerBuilder_SetTrailArrayToAllChildren" data-uid="ECCLibrary.TrailManagerBuilder.SetTrailArrayToAllChildren">
+  SetTrailArrayToAllChildren()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Forces the Trails array to contain every single child of the <a class="xref" href="ECCLibrary.TrailManagerBuilder.html#ECCLibrary_TrailManagerBuilder_RootSegment">RootSegment</a>. Does not work well when the creature has fins or any sort of bone structure in the spine that isn't meant to be 100% animated.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetTrailArrayToAllChildren()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ECCLibrary_TrailManagerBuilder_SetTrailArrayToChildrenWithKeywords_" data-uid="ECCLibrary.TrailManagerBuilder.SetTrailArrayToChildrenWithKeywords*"></a>
+
+  <h3 id="ECCLibrary_TrailManagerBuilder_SetTrailArrayToChildrenWithKeywords_System_String_" data-uid="ECCLibrary.TrailManagerBuilder.SetTrailArrayToChildrenWithKeywords(System.String)">
+  SetTrailArrayToChildrenWithKeywords(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Fills the Trails array with every child of the RootSegment (recursive) that contains <code class="paramref">keyword</code> in its name (case insensitive). Ordered from parent to child, top to bottom.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetTrailArrayToChildrenWithKeywords(string keyword)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>keyword</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ECCLibrary_TrailManagerBuilder_SetTrailArrayToPhysBoneChildren_" data-uid="ECCLibrary.TrailManagerBuilder.SetTrailArrayToPhysBoneChildren*"></a>
+
+  <h3 id="ECCLibrary_TrailManagerBuilder_SetTrailArrayToPhysBoneChildren" data-uid="ECCLibrary.TrailManagerBuilder.SetTrailArrayToPhysBoneChildren">
+  SetTrailArrayToPhysBoneChildren()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Fills the Trails array with every child (recursive) of the <a class="xref" href="ECCLibrary.TrailManagerBuilder.html#ECCLibrary_TrailManagerBuilder_RootSegment">RootSegment</a> that contains 'phys' in its name (case insensitive). Ordered from parent to child, top to bottom.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetTrailArrayToPhysBoneChildren()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+        
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+
+    <footer class="border-top">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

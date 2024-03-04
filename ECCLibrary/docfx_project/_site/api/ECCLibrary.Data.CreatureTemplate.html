@@ -1,0 +1,1597 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class CreatureTemplate
+ </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class CreatureTemplate
+ ">
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      
+      
+      
+      
+  </head>
+
+  <script type="module">
+    import options from './../public/main.js'
+    import { init } from './../public/docfx.min.js'
+    init(options)
+  </script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="ECCLibrary.Data.CreatureTemplate">
+
+
+
+  <h1 id="ECCLibrary_Data_CreatureTemplate" data-uid="ECCLibrary.Data.CreatureTemplate" class="text-break">
+    Class CreatureTemplate
+  
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="ECCLibrary.html">ECCLibrary</a>.<a class="xref" href="ECCLibrary.Data.html">Data</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>ECCLibrary.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>This class contains all settings related to the registering and automatic prefab initialization of creatures by the library.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class CreatureTemplate</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">CreatureTemplate</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist derived">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="ECCLibrary_Data_CreatureTemplate__ctor_" data-uid="ECCLibrary.Data.CreatureTemplate.#ctor*"></a>
+
+  <h3 id="ECCLibrary_Data_CreatureTemplate__ctor_TechType_BehaviourType_EcoTargetType_System_Single_" data-uid="ECCLibrary.Data.CreatureTemplate.#ctor(TechType,BehaviourType,EcoTargetType,System.Single)">
+  CreatureTemplate(TechType, BehaviourType, EcoTargetType, float)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Creates a new basic creature template instance based on an existing prefab. Beyond the constructor, this instance also contains several properties that can be modified.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CreatureTemplate(TechType techTypeToClone, BehaviourType behaviourType, EcoTargetType ecoTargetType, float maxHealth)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>techTypeToClone</code> <span class="xref">TechType</span></dt>
+    <dd><p>The tech type to clone and use for this template.</p>
+</dd>
+    <dt><code>behaviourType</code> <span class="xref">BehaviourType</span></dt>
+    <dd><p>Goes hand in hand with the EcoTargetType. Please note the Player is a SHARK! Determines very few creature behaviours/interactions.</p>
+</dd>
+    <dt><code>ecoTargetType</code> <span class="xref">EcoTargetType</span></dt>
+    <dd><p>Goes hand in hand with the BehaviourType. Determines many interactions with creatures, specifically how this creature is &quot;located&quot; or &quot;targeted&quot; by other creatures</p>
+</dd>
+    <dt><code>maxHealth</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>Maximum health of this creature.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ECCLibrary_Data_CreatureTemplate__ctor_" data-uid="ECCLibrary.Data.CreatureTemplate.#ctor*"></a>
+
+  <h3 id="ECCLibrary_Data_CreatureTemplate__ctor_TechType_System_Single_" data-uid="ECCLibrary.Data.CreatureTemplate.#ctor(TechType,System.Single)">
+  CreatureTemplate(TechType, float)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Creates a new basic creature template instance based on an existing prefab. Beyond the constructor, this instance also contains several properties that can be modified.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CreatureTemplate(TechType techTypeToClone, float maxHealth)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>techTypeToClone</code> <span class="xref">TechType</span></dt>
+    <dd><p>The tech type to clone and use for this template.</p>
+</dd>
+    <dt><code>maxHealth</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>Maximum health of this creature.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ECCLibrary_Data_CreatureTemplate__ctor_" data-uid="ECCLibrary.Data.CreatureTemplate.#ctor*"></a>
+
+  <h3 id="ECCLibrary_Data_CreatureTemplate__ctor_UnityEngine_GameObject_BehaviourType_EcoTargetType_System_Single_" data-uid="ECCLibrary.Data.CreatureTemplate.#ctor(UnityEngine.GameObject,BehaviourType,EcoTargetType,System.Single)">
+  CreatureTemplate(GameObject, BehaviourType, EcoTargetType, float)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Creates a new basic creature template instance. Beyond the constructor, this instance also contains several properties that can be modified.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CreatureTemplate(GameObject model, BehaviourType behaviourType, EcoTargetType ecoTargetType, float maxHealth)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>model</code> <span class="xref">GameObject</span></dt>
+    <dd><p>The model that is cloned to create the creature GameObject.</p>
+</dd>
+    <dt><code>behaviourType</code> <span class="xref">BehaviourType</span></dt>
+    <dd><p>Goes hand in hand with the EcoTargetType. Please note the Player is a SHARK! Determines very few creature behaviours/interactions.</p>
+</dd>
+    <dt><code>ecoTargetType</code> <span class="xref">EcoTargetType</span></dt>
+    <dd><p>Goes hand in hand with the BehaviourType. Determines many interactions with creatures, specifically how this creature is &quot;located&quot; or &quot;targeted&quot; by other creatures</p>
+</dd>
+    <dt><code>maxHealth</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>Maximum health of this creature.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="ECCLibrary_Data_CreatureTemplate_AcidImmune_" data-uid="ECCLibrary.Data.CreatureTemplate.AcidImmune*"></a>
+
+  <h3 id="ECCLibrary_Data_CreatureTemplate_AcidImmune" data-uid="ECCLibrary.Data.CreatureTemplate.AcidImmune">
+  AcidImmune
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Whether the creature is immune to brine or not. False by default. Typically useful for Lost River creatures.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool AcidImmune { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ECCLibrary_Data_CreatureTemplate_AggressiveToPilotingVehicleData_" data-uid="ECCLibrary.Data.CreatureTemplate.AggressiveToPilotingVehicleData*"></a>
+
+  <h3 id="ECCLibrary_Data_CreatureTemplate_AggressiveToPilotingVehicleData" data-uid="ECCLibrary.Data.CreatureTemplate.AggressiveToPilotingVehicleData">
+  AggressiveToPilotingVehicleData
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Contains data pertaining to the <span class="xref">AggressiveToPilotingVehicle</span> component, which encourages creatures to target any small vehicle that the player may be piloting
+(this includes ANY vehicle that inherits from the <span class="xref">Vehicle</span> component i.e. the Seamoth or Prawn Suit). Not many creatures use this component, but ones that do
+will be VERY aggressive (Boneshark levels of aggression!).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AggressiveToPilotingVehicleData AggressiveToPilotingVehicleData { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ECCLibrary.Data.AggressiveToPilotingVehicleData.html">AggressiveToPilotingVehicleData</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ECCLibrary_Data_CreatureTemplate_AggressiveWhenSeeTargetList_" data-uid="ECCLibrary.Data.CreatureTemplate.AggressiveWhenSeeTargetList*"></a>
+
+  <h3 id="ECCLibrary_Data_CreatureTemplate_AggressiveWhenSeeTargetList" data-uid="ECCLibrary.Data.CreatureTemplate.AggressiveWhenSeeTargetList">
+  AggressiveWhenSeeTargetList
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>A list of all data pertaining to the <span class="xref">AggressiveWhenSeeTarget</span> component, which enables the creature to become aggressive towards specific fauna/the player.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;AggressiveWhenSeeTargetData&gt; AggressiveWhenSeeTargetList { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="ECCLibrary.Data.AggressiveWhenSeeTargetData.html">AggressiveWhenSeeTargetData</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ECCLibrary_Data_CreatureTemplate_AnimateByVelocityData_" data-uid="ECCLibrary.Data.CreatureTemplate.AnimateByVelocityData*"></a>
+
+  <h3 id="ECCLibrary_Data_CreatureTemplate_AnimateByVelocityData" data-uid="ECCLibrary.Data.CreatureTemplate.AnimateByVelocityData">
+  AnimateByVelocityData
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Contains data pertaining to the <span class="xref">AnimateByVelocity</span> component. This component sets animation parameters based on the creature's direction &amp; velocity.
+<br> Means the 'speed' parameter can be used in the creature's Animator.
+<br> NOT assigned by default!</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AnimateByVelocityData AnimateByVelocityData { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ECCLibrary.Data.AnimateByVelocityData.html">AnimateByVelocityData</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ECCLibrary_Data_CreatureTemplate_AttackCyclopsData_" data-uid="ECCLibrary.Data.CreatureTemplate.AttackCyclopsData*"></a>
+
+  <h3 id="ECCLibrary_Data_CreatureTemplate_AttackCyclopsData" data-uid="ECCLibrary.Data.CreatureTemplate.AttackCyclopsData">
+  AttackCyclopsData
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Contains data pertaining to creating the <span class="xref">AttackCyclops</span> CreatureAction. Not assigned by default.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AttackCyclopsData AttackCyclopsData { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ECCLibrary.Data.AttackCyclopsData.html">AttackCyclopsData</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ECCLibrary_Data_CreatureTemplate_AttackLastTargetData_" data-uid="ECCLibrary.Data.CreatureTemplate.AttackLastTargetData*"></a>
+
+  <h3 id="ECCLibrary_Data_CreatureTemplate_AttackLastTargetData" data-uid="ECCLibrary.Data.CreatureTemplate.AttackLastTargetData">
+  AttackLastTargetData
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Contains data pertaining to creating the <span class="xref">AttackLastTarget</span> CreatureAction. Not assigned by default.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AttackLastTargetData AttackLastTargetData { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ECCLibrary.Data.AttackLastTargetData.html">AttackLastTargetData</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ECCLibrary_Data_CreatureTemplate_AvoidObstaclesData_" data-uid="ECCLibrary.Data.CreatureTemplate.AvoidObstaclesData*"></a>
+
+  <h3 id="ECCLibrary_Data_CreatureTemplate_AvoidObstaclesData" data-uid="ECCLibrary.Data.CreatureTemplate.AvoidObstaclesData">
+  AvoidObstaclesData
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Contains data pertaining to creating the <span class="xref">AvoidObstacles</span> CreatureAction. This component is used by most creatures (everything besides leviathans) to avoid objects and/or terrain. Not assigned by default.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AvoidObstaclesData AvoidObstaclesData { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ECCLibrary.Data.AvoidObstaclesData.html">AvoidObstaclesData</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ECCLibrary_Data_CreatureTemplate_AvoidTerrainData_" data-uid="ECCLibrary.Data.CreatureTemplate.AvoidTerrainData*"></a>
+
+  <h3 id="ECCLibrary_Data_CreatureTemplate_AvoidTerrainData" data-uid="ECCLibrary.Data.CreatureTemplate.AvoidTerrainData">
+  AvoidTerrainData
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Contains data pertaining to creating the <span class="xref">AvoidTerrain</span> CreatureAction. This is a more advanced and expensive collision avoidance system used by leviathans.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AvoidTerrainData AvoidTerrainData { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ECCLibrary.Data.AvoidTerrainData.html">AvoidTerrainData</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ECCLibrary_Data_CreatureTemplate_BehaviourLODData_" data-uid="ECCLibrary.Data.CreatureTemplate.BehaviourLODData*"></a>
+
+  <h3 id="ECCLibrary_Data_CreatureTemplate_BehaviourLODData" data-uid="ECCLibrary.Data.CreatureTemplate.BehaviourLODData">
+  BehaviourLODData
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Determines the distance for which certain calculations (such as Trail Managers) perform (or don't). It is recommended to increase these values for large creatures.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BehaviourLODData BehaviourLODData { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ECCLibrary.Data.BehaviourLODData.html">BehaviourLODData</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ECCLibrary_Data_CreatureTemplate_BehaviourType_" data-uid="ECCLibrary.Data.CreatureTemplate.BehaviourType*"></a>
+
+  <h3 id="ECCLibrary_Data_CreatureTemplate_BehaviourType" data-uid="ECCLibrary.Data.CreatureTemplate.BehaviourType">
+  BehaviourType
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Goes hand in hand with the EcoTargetType. Please note the Player is a SHARK! Determines very few creature behaviours/interactions.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BehaviourType BehaviourType { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">BehaviourType</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ECCLibrary_Data_CreatureTemplate_BioReactorCharge_" data-uid="ECCLibrary.Data.CreatureTemplate.BioReactorCharge*"></a>
+
+  <h3 id="ECCLibrary_Data_CreatureTemplate_BioReactorCharge" data-uid="ECCLibrary.Data.CreatureTemplate.BioReactorCharge">
+  BioReactorCharge
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Total power output of this creature. All ECC creatures can be put in the bioreactor as long as this value is greater than 0. Default value is 200.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float BioReactorCharge { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ECCLibrary_Data_CreatureTemplate_CanBeInfected_" data-uid="ECCLibrary.Data.CreatureTemplate.CanBeInfected*"></a>
+
+  <h3 id="ECCLibrary_Data_CreatureTemplate_CanBeInfected" data-uid="ECCLibrary.Data.CreatureTemplate.CanBeInfected">
+  CanBeInfected
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Whether this creature can randomly spawn with Kharaa symptoms. True by default.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool CanBeInfected { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ECCLibrary_Data_CreatureTemplate_CellLevel_" data-uid="ECCLibrary.Data.CreatureTemplate.CellLevel*"></a>
+
+  <h3 id="ECCLibrary_Data_CreatureTemplate_CellLevel" data-uid="ECCLibrary.Data.CreatureTemplate.CellLevel">
+  CellLevel
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Roughly determines how far this creature can be loaded in. Default value is <span class="xref">LargeWorldEntity.CellLevel.Medium</span>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public LargeWorldEntity.CellLevel CellLevel { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">CellLevel</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ECCLibrary_Data_CreatureTemplate_CreatureComponentType_" data-uid="ECCLibrary.Data.CreatureTemplate.CreatureComponentType*"></a>
+
+  <h3 id="ECCLibrary_Data_CreatureTemplate_CreatureComponentType" data-uid="ECCLibrary.Data.CreatureTemplate.CreatureComponentType">
+  CreatureComponentType
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The Type of the main component that must inherit from <span class="xref">Creature</span>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Type CreatureComponentType { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ECCLibrary_Data_CreatureTemplate_EcoTargetType_" data-uid="ECCLibrary.Data.CreatureTemplate.EcoTargetType*"></a>
+
+  <h3 id="ECCLibrary_Data_CreatureTemplate_EcoTargetType" data-uid="ECCLibrary.Data.CreatureTemplate.EcoTargetType">
+  EcoTargetType
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Goes hand in hand with the BehaviourType. Determines many interactions with creatures, specifically how this creature is &quot;located&quot; or &quot;targeted&quot; by other creatures.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EcoTargetType EcoTargetType { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">EcoTargetType</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ECCLibrary_Data_CreatureTemplate_EdibleData_" data-uid="ECCLibrary.Data.CreatureTemplate.EdibleData*"></a>
+
+  <h3 id="ECCLibrary_Data_CreatureTemplate_EdibleData" data-uid="ECCLibrary.Data.CreatureTemplate.EdibleData">
+  EdibleData
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Contains data pertaining to the <span class="xref">Eatable</span> [sic] component. Not assigned by default.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EdibleData EdibleData { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ECCLibrary.Data.EdibleData.html">EdibleData</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ECCLibrary_Data_CreatureTemplate_EyeFOV_" data-uid="ECCLibrary.Data.CreatureTemplate.EyeFOV*"></a>
+
+  <h3 id="ECCLibrary_Data_CreatureTemplate_EyeFOV" data-uid="ECCLibrary.Data.CreatureTemplate.EyeFOV">
+  EyeFOV
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The FOV is used for detecting things such as prey. SHOULD BE NEGATIVE! This value has an expected range of [-1, 0]. Is 0f by default. A value of -1 means a given object is ALWAYS in view.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float EyeFOV { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ECCLibrary_Data_CreatureTemplate_FleeOnDamageData_" data-uid="ECCLibrary.Data.CreatureTemplate.FleeOnDamageData*"></a>
+
+  <h3 id="ECCLibrary_Data_CreatureTemplate_FleeOnDamageData" data-uid="ECCLibrary.Data.CreatureTemplate.FleeOnDamageData">
+  FleeOnDamageData
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Contains data pertaining to the <span class="xref">FleeOnDamage</span> action. Assigned by default with default values and a priority of 0.8f.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FleeOnDamageData FleeOnDamageData { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ECCLibrary.Data.FleeOnDamageData.html">FleeOnDamageData</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ECCLibrary_Data_CreatureTemplate_FleeWhenScaredData_" data-uid="ECCLibrary.Data.CreatureTemplate.FleeWhenScaredData*"></a>
+
+  <h3 id="ECCLibrary_Data_CreatureTemplate_FleeWhenScaredData" data-uid="ECCLibrary.Data.CreatureTemplate.FleeWhenScaredData">
+  FleeWhenScaredData
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Contains data pertaining to the <span class="xref">FleeWhenScared</span> action. Not assigned by default.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FleeWhenScaredData FleeWhenScaredData { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ECCLibrary.Data.FleeWhenScaredData.html">FleeWhenScaredData</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ECCLibrary_Data_CreatureTemplate_ItemSoundsType_" data-uid="ECCLibrary.Data.CreatureTemplate.ItemSoundsType*"></a>
+
+  <h3 id="ECCLibrary_Data_CreatureTemplate_ItemSoundsType" data-uid="ECCLibrary.Data.CreatureTemplate.ItemSoundsType">
+  ItemSoundsType
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Pickup sounds of the item.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ItemSoundsType ItemSoundsType { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ECCLibrary.Data.ItemSoundsType.html">ItemSoundsType</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ECCLibrary_Data_CreatureTemplate_LiveMixinData_" data-uid="ECCLibrary.Data.CreatureTemplate.LiveMixinData*"></a>
+
+  <h3 id="ECCLibrary_Data_CreatureTemplate_LiveMixinData" data-uid="ECCLibrary.Data.CreatureTemplate.LiveMixinData">
+  LiveMixinData
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Controls health and damage-taking aspects of this creature.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public LiveMixinData LiveMixinData { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">LiveMixinData</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ECCLibrary_Data_CreatureTemplate_LocomotionData_" data-uid="ECCLibrary.Data.CreatureTemplate.LocomotionData*"></a>
+
+  <h3 id="ECCLibrary_Data_CreatureTemplate_LocomotionData" data-uid="ECCLibrary.Data.CreatureTemplate.LocomotionData">
+  LocomotionData
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Contains data pertaining to creating the <span class="xref">Locomotion</span> component.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public LocomotionData LocomotionData { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ECCLibrary.Data.LocomotionData.html">LocomotionData</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ECCLibrary_Data_CreatureTemplate_Mass_" data-uid="ECCLibrary.Data.CreatureTemplate.Mass*"></a>
+
+  <h3 id="ECCLibrary_Data_CreatureTemplate_Mass" data-uid="ECCLibrary.Data.CreatureTemplate.Mass">
+  Mass
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Mass in kg. Ranges from about 1.8f to 4050f. Default is 15kg.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float Mass { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ECCLibrary_Data_CreatureTemplate_Model_" data-uid="ECCLibrary.Data.CreatureTemplate.Model*"></a>
+
+  <h3 id="ECCLibrary_Data_CreatureTemplate_Model" data-uid="ECCLibrary.Data.CreatureTemplate.Model">
+  Model
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The model that is cloned to create the creature GameObject.</p>
+<p>This object is NOT cached; for anything that isn't directly loaded from an asset bundle, it is recommended to use <span class="xref">UnityEngine.Object.DontDestroyOnLoad(UnityEngine.Object)</span>.
+If you want to be even safer, add the <span class="xref">SceneCleanerPreserve</span> to your object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GameObject Model { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">GameObject</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ECCLibrary_Data_CreatureTemplate_PhysicMaterial_" data-uid="ECCLibrary.Data.CreatureTemplate.PhysicMaterial*"></a>
+
+  <h3 id="ECCLibrary_Data_CreatureTemplate_PhysicMaterial" data-uid="ECCLibrary.Data.CreatureTemplate.PhysicMaterial">
+  PhysicMaterial
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Physic material used for all colliders. If unassigned, will default to <a class="xref" href="ECCLibrary.ECCUtility.html#ECCLibrary_ECCUtility_FrictionlessPhysicMaterial">FrictionlessPhysicMaterial</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PhysicMaterial PhysicMaterial { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">PhysicMaterial</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ECCLibrary_Data_CreatureTemplate_PickupableFishData_" data-uid="ECCLibrary.Data.CreatureTemplate.PickupableFishData*"></a>
+
+  <h3 id="ECCLibrary_Data_CreatureTemplate_PickupableFishData" data-uid="ECCLibrary.Data.CreatureTemplate.PickupableFishData">
+  PickupableFishData
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Contains data pertaining to picking up and/or holding fish in your hands. Not assigned by default.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PickupableFishData PickupableFishData { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ECCLibrary.Data.PickupableFishData.html">PickupableFishData</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ECCLibrary_Data_CreatureTemplate_RespawnData_" data-uid="ECCLibrary.Data.CreatureTemplate.RespawnData*"></a>
+
+  <h3 id="ECCLibrary_Data_CreatureTemplate_RespawnData" data-uid="ECCLibrary.Data.CreatureTemplate.RespawnData">
+  RespawnData
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Contains data pertaining to the <span class="xref">CreatureDeath</span> component. Assigned by default to enable respawning. MUST be assigned!</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RespawnData RespawnData { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ECCLibrary.Data.RespawnData.html">RespawnData</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ECCLibrary_Data_CreatureTemplate_ScannerRoomScannable_" data-uid="ECCLibrary.Data.CreatureTemplate.ScannerRoomScannable*"></a>
+
+  <h3 id="ECCLibrary_Data_CreatureTemplate_ScannerRoomScannable" data-uid="ECCLibrary.Data.CreatureTemplate.ScannerRoomScannable">
+  ScannerRoomScannable
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>If set to true, the Scanner Room can scan for this creature. False by default.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ScannerRoomScannable { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ECCLibrary_Data_CreatureTemplate_ScareableData_" data-uid="ECCLibrary.Data.CreatureTemplate.ScareableData*"></a>
+
+  <h3 id="ECCLibrary_Data_CreatureTemplate_ScareableData" data-uid="ECCLibrary.Data.CreatureTemplate.ScareableData">
+  ScareableData
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Contains data pertaining to the <span class="xref">Scareable</span> component. This component is what enables small fish to swim away from the player and potential predators. Not assigned by default.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ScareableData ScareableData { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ECCLibrary.Data.ScareableData.html">ScareableData</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ECCLibrary_Data_CreatureTemplate_SizeDistribution_" data-uid="ECCLibrary.Data.CreatureTemplate.SizeDistribution*"></a>
+
+  <h3 id="ECCLibrary_Data_CreatureTemplate_SizeDistribution" data-uid="ECCLibrary.Data.CreatureTemplate.SizeDistribution">
+  SizeDistribution
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Possible sizes for this creature. Randomly picks a value in the range of 0 to 1. This value can not go above 1. Flat curve at 1 by default.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AnimationCurve SizeDistribution { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">AnimationCurve</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ECCLibrary_Data_CreatureTemplate_StayAtLeashData_" data-uid="ECCLibrary.Data.CreatureTemplate.StayAtLeashData*"></a>
+
+  <h3 id="ECCLibrary_Data_CreatureTemplate_StayAtLeashData" data-uid="ECCLibrary.Data.CreatureTemplate.StayAtLeashData">
+  StayAtLeashData
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Contains data pertaining to the <span class="xref">StayAtLeashPosition</span> action. This component keeps creatures from wandering too far. Not assigned by default.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public StayAtLeashData StayAtLeashData { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ECCLibrary.Data.StayAtLeashData.html">StayAtLeashData</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ECCLibrary_Data_CreatureTemplate_SurfaceType_" data-uid="ECCLibrary.Data.CreatureTemplate.SurfaceType*"></a>
+
+  <h3 id="ECCLibrary_Data_CreatureTemplate_SurfaceType" data-uid="ECCLibrary.Data.CreatureTemplate.SurfaceType">
+  SurfaceType
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The Surface Type applied to the main collider. Default is <span class="xref">VFXSurfaceTypes.organic</span>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public VFXSurfaceTypes SurfaceType { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">VFXSurfaceTypes</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ECCLibrary_Data_CreatureTemplate_SwimBehaviourData_" data-uid="ECCLibrary.Data.CreatureTemplate.SwimBehaviourData*"></a>
+
+  <h3 id="ECCLibrary_Data_CreatureTemplate_SwimBehaviourData" data-uid="ECCLibrary.Data.CreatureTemplate.SwimBehaviourData">
+  SwimBehaviourData
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Contains data pertaining to creating the <span class="xref">SwimBehaviour</span> component.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SwimBehaviourData SwimBehaviourData { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ECCLibrary.Data.SwimBehaviourData.html">SwimBehaviourData</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ECCLibrary_Data_CreatureTemplate_SwimInSchoolData_" data-uid="ECCLibrary.Data.CreatureTemplate.SwimInSchoolData*"></a>
+
+  <h3 id="ECCLibrary_Data_CreatureTemplate_SwimInSchoolData" data-uid="ECCLibrary.Data.CreatureTemplate.SwimInSchoolData">
+  SwimInSchoolData
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Contains data pertaining to adding the <span class="xref">SwimInSchool</span> CreatureAction.</p>
+<p>Each schooling creature chooses a single "leader" larger than itself (and of the same TechType) to follow. Therefore, the <a class="xref" href="ECCLibrary.Data.CreatureTemplate.html#ECCLibrary_Data_CreatureTemplate_SizeDistribution">SizeDistribution</a> property should be defined for this action to function properly.</p>
+<p>Not assigned by default.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SwimInSchoolData SwimInSchoolData { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ECCLibrary.Data.SwimInSchoolData.html">SwimInSchoolData</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ECCLibrary_Data_CreatureTemplate_SwimRandomData_" data-uid="ECCLibrary.Data.CreatureTemplate.SwimRandomData*"></a>
+
+  <h3 id="ECCLibrary_Data_CreatureTemplate_SwimRandomData" data-uid="ECCLibrary.Data.CreatureTemplate.SwimRandomData">
+  SwimRandomData
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Contains data pertaining to the <span class="xref">SwimRandom</span> action. Assigned a generic value by default, but can be changed or set to null.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SwimRandomData SwimRandomData { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ECCLibrary.Data.SwimRandomData.html">SwimRandomData</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ECCLibrary_Data_CreatureTemplate_TraitsData_" data-uid="ECCLibrary.Data.CreatureTemplate.TraitsData*"></a>
+
+  <h3 id="ECCLibrary_Data_CreatureTemplate_TraitsData" data-uid="ECCLibrary.Data.CreatureTemplate.TraitsData">
+  TraitsData
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Settings that determine basic attributes of the creature.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CreatureTraitsData TraitsData { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ECCLibrary.Data.CreatureTraitsData.html">CreatureTraitsData</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ECCLibrary_Data_CreatureTemplate_WaterParkCreatureData_" data-uid="ECCLibrary.Data.CreatureTemplate.WaterParkCreatureData*"></a>
+
+  <h3 id="ECCLibrary_Data_CreatureTemplate_WaterParkCreatureData" data-uid="ECCLibrary.Data.CreatureTemplate.WaterParkCreatureData">
+  WaterParkCreatureData
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Settings for growth in Alien Containment. Not assigned by default.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public WaterParkCreatureData WaterParkCreatureData { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">WaterParkCreatureData</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="ECCLibrary_Data_CreatureTemplate_AddAggressiveWhenSeeTargetData_" data-uid="ECCLibrary.Data.CreatureTemplate.AddAggressiveWhenSeeTargetData*"></a>
+
+  <h3 id="ECCLibrary_Data_CreatureTemplate_AddAggressiveWhenSeeTargetData_ECCLibrary_Data_AggressiveWhenSeeTargetData_" data-uid="ECCLibrary.Data.CreatureTemplate.AddAggressiveWhenSeeTargetData(ECCLibrary.Data.AggressiveWhenSeeTargetData)">
+  AddAggressiveWhenSeeTargetData(AggressiveWhenSeeTargetData)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Adds a single type of aggression to this creature. This method can be called MULTIPLE TIMES to add multiple types of aggression! Not functional without the <span class="xref">AttackLastTarget</span> component.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CreatureTemplate AddAggressiveWhenSeeTargetData(AggressiveWhenSeeTargetData data)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>data</code> <a class="xref" href="ECCLibrary.Data.AggressiveWhenSeeTargetData.html">AggressiveWhenSeeTargetData</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ECCLibrary.Data.CreatureTemplate.html">CreatureTemplate</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ECCLibrary_Data_CreatureTemplate_SetCreatureComponentType_" data-uid="ECCLibrary.Data.CreatureTemplate.SetCreatureComponentType*"></a>
+
+  <h3 id="ECCLibrary_Data_CreatureTemplate_SetCreatureComponentType__1" data-uid="ECCLibrary.Data.CreatureTemplate.SetCreatureComponentType``1">
+  SetCreatureComponentType&lt;T&gt;()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the Type of the main component. Must inherit from <span class="xref">Creature</span>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CreatureTemplate SetCreatureComponentType&lt;T&gt;() where T : Creature</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ECCLibrary.Data.CreatureTemplate.html">CreatureTemplate</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="ECCLibrary_Data_CreatureTemplate_SetWaterParkCreatureData_" data-uid="ECCLibrary.Data.CreatureTemplate.SetWaterParkCreatureData*"></a>
+
+  <h3 id="ECCLibrary_Data_CreatureTemplate_SetWaterParkCreatureData_ECCLibrary_Data_WaterParkCreatureDataStruct_" data-uid="ECCLibrary.Data.CreatureTemplate.SetWaterParkCreatureData(ECCLibrary.Data.WaterParkCreatureDataStruct)">
+  SetWaterParkCreatureData(WaterParkCreatureDataStruct)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Properly assigns values to the <a class="xref" href="ECCLibrary.Data.CreatureTemplate.html#ECCLibrary_Data_CreatureTemplate_WaterParkCreatureData">WaterParkCreatureData</a> property, and creates a new instance of the ScriptableObject if null.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CreatureTemplate SetWaterParkCreatureData(WaterParkCreatureDataStruct dataStruct)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>dataStruct</code> <a class="xref" href="ECCLibrary.Data.WaterParkCreatureDataStruct.html">WaterParkCreatureDataStruct</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ECCLibrary.Data.CreatureTemplate.html">CreatureTemplate</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+        
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+
+    <footer class="border-top">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

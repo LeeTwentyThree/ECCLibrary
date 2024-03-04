@@ -1,0 +1,552 @@
+{
+  "homepages": [],
+  "source_base_path": "D:/My Documents/GitHub/ECCLibrary/ECCLibrary/docfx_project",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ECCLibrary.CookedCreatureHandler.CookedAndCuredPrefabs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ECCLibrary.CookedCreatureHandler.CookedAndCuredPrefabs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ECCLibrary.CookedCreatureHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ECCLibrary.CookedCreatureHandler.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ECCLibrary.CreatureAsset.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ECCLibrary.CreatureAsset.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ECCLibrary.CreatureDataUtils.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ECCLibrary.CreatureDataUtils.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ECCLibrary.CreaturePrefabUtils.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ECCLibrary.CreaturePrefabUtils.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ECCLibrary.CreatureTemplateUtils.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ECCLibrary.CreatureTemplateUtils.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ECCLibrary.Data.AggressiveToPilotingVehicleData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ECCLibrary.Data.AggressiveToPilotingVehicleData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ECCLibrary.Data.AggressiveWhenSeeTargetData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ECCLibrary.Data.AggressiveWhenSeeTargetData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ECCLibrary.Data.AnimateByVelocityData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ECCLibrary.Data.AnimateByVelocityData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ECCLibrary.Data.AttackCyclopsData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ECCLibrary.Data.AttackCyclopsData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ECCLibrary.Data.AttackLastTargetData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ECCLibrary.Data.AttackLastTargetData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ECCLibrary.Data.AvoidObstaclesData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ECCLibrary.Data.AvoidObstaclesData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ECCLibrary.Data.AvoidTerrainData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ECCLibrary.Data.AvoidTerrainData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ECCLibrary.Data.BehaviourLODData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ECCLibrary.Data.BehaviourLODData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ECCLibrary.Data.CreatureComponents.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ECCLibrary.Data.CreatureComponents.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ECCLibrary.Data.CreatureSpawnData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ECCLibrary.Data.CreatureSpawnData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ECCLibrary.Data.CreatureTemplate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ECCLibrary.Data.CreatureTemplate.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ECCLibrary.Data.CreatureTraitsData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ECCLibrary.Data.CreatureTraitsData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ECCLibrary.Data.CustomGameObjectReference.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ECCLibrary.Data.CustomGameObjectReference.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ECCLibrary.Data.EdibleData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ECCLibrary.Data.EdibleData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ECCLibrary.Data.FleeOnDamageData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ECCLibrary.Data.FleeOnDamageData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ECCLibrary.Data.FleeWhenScaredData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ECCLibrary.Data.FleeWhenScaredData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ECCLibrary.Data.ItemSoundsType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ECCLibrary.Data.ItemSoundsType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ECCLibrary.Data.LocomotionData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ECCLibrary.Data.LocomotionData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ECCLibrary.Data.PickupableFishData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ECCLibrary.Data.PickupableFishData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ECCLibrary.Data.RespawnData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ECCLibrary.Data.RespawnData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ECCLibrary.Data.ScareableData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ECCLibrary.Data.ScareableData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ECCLibrary.Data.StayAtLeashData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ECCLibrary.Data.StayAtLeashData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ECCLibrary.Data.SwimBehaviourData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ECCLibrary.Data.SwimBehaviourData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ECCLibrary.Data.SwimInSchoolData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ECCLibrary.Data.SwimInSchoolData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ECCLibrary.Data.SwimRandomData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ECCLibrary.Data.SwimRandomData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ECCLibrary.Data.VFXFabricatingData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ECCLibrary.Data.VFXFabricatingData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ECCLibrary.Data.WaterParkCreatureDataStruct.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ECCLibrary.Data.WaterParkCreatureDataStruct.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ECCLibrary.Data.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ECCLibrary.Data.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ECCLibrary.ECCConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ECCLibrary.ECCConfig.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ECCLibrary.ECCSoundAssets.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ECCLibrary.ECCSoundAssets.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ECCLibrary.ECCStringComparison.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ECCLibrary.ECCStringComparison.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ECCLibrary.ECCUtility.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ECCLibrary.ECCUtility.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ECCLibrary.GameObjectExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ECCLibrary.GameObjectExtensions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ECCLibrary.Mono.HeldFish.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ECCLibrary.Mono.HeldFish.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ECCLibrary.Mono.SetOnTouchCallbackDelayed.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ECCLibrary.Mono.SetOnTouchCallbackDelayed.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ECCLibrary.Mono.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ECCLibrary.Mono.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ECCLibrary.SealedCreatureAsset.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ECCLibrary.SealedCreatureAsset.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ECCLibrary.TrailManagerBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ECCLibrary.TrailManagerBuilder.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ECCLibrary.TrailManagerUtilities.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ECCLibrary.TrailManagerUtilities.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ECCLibrary.TransformExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ECCLibrary.TransformExtensions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/ECCLibrary.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/ECCLibrary.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/intro.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/intro.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "articles/toc.html"
+        },
+        ".json": {
+          "relative_path": "articles/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

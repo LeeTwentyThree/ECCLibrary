@@ -1,0 +1,192 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Namespace ECCLibrary
+ </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Namespace ECCLibrary
+ ">
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      
+      
+      
+      
+  </head>
+
+  <script type="module">
+    import options from './../public/main.js'
+    import { init } from './../public/docfx.min.js'
+    init(options)
+  </script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="ECCLibrary">
+
+  <h1 id="ECCLibrary" data-uid="ECCLibrary" class="text-break">Namespace ECCLibrary
+</h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 remarks"></div>
+
+    <h3 id="classes">
+Classes
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="ECCLibrary.CookedCreatureHandler.html">CookedCreatureHandler</a></dt>
+      <dd><p>Manages the creation of cooked and cured creatures.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="ECCLibrary.CreatureAsset.html">CreatureAsset</a></dt>
+      <dd><p>Override this class to define a new creature. Call the <a class="xref" href="ECCLibrary.CreatureAsset.html#ECCLibrary_CreatureAsset_Register">Register()</a> method on an instance to add it to the game.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="ECCLibrary.CreatureDataUtils.html">CreatureDataUtils</a></dt>
+      <dd><p>Utility methods related to assigning patch-time data.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="ECCLibrary.CreaturePrefabUtils.html">CreaturePrefabUtils</a></dt>
+      <dd><p>Utility methods related to constructing a creature prefab GameObject.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="ECCLibrary.CreatureTemplateUtils.html">CreatureTemplateUtils</a></dt>
+      <dd><p>Utility methods related to using the <a class="xref" href="ECCLibrary.Data.CreatureTemplate.html">CreatureTemplate</a> class more efficiently. An alternative to setting all properties manually.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="ECCLibrary.ECCConfig.html">ECCConfig</a></dt>
+      <dd><p>Main and only config file for ECCLibrary.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="ECCLibrary.ECCSoundAssets.html">ECCSoundAssets</a></dt>
+      <dd><p>Holds generic sound assets that are used for creatures in the game.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="ECCLibrary.ECCUtility.html">ECCUtility</a></dt>
+      <dd><p>Contains various utilities of no particular category.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="ECCLibrary.GameObjectExtensions.html">GameObjectExtensions</a></dt>
+      <dd><p>Various ECC-related extensions for GameObjects.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="ECCLibrary.SealedCreatureAsset.html">SealedCreatureAsset</a></dt>
+      <dd><p>An alternative to <a class="xref" href="ECCLibrary.CreatureAsset.html">CreatureAsset</a> that does not use inheritance. Supply a template and any needed prefab code.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="ECCLibrary.TrailManagerBuilder.html">TrailManagerBuilder</a></dt>
+      <dd><p>Helps in the creation of a <span class="xref">TrailManager</span>. Call the <a class="xref" href="ECCLibrary.TrailManagerBuilder.html#ECCLibrary_TrailManagerBuilder_Apply">Apply()</a> method to apply the changes.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="ECCLibrary.TrailManagerUtilities.html">TrailManagerUtilities</a></dt>
+      <dd><p>Utilities related to the <span class="xref">TrailManager</span> class.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="ECCLibrary.TransformExtensions.html">TransformExtensions</a></dt>
+      <dd><p>Various ECC-related extensions for Transforms.</p>
+</dd>
+    </dl>
+    <h3 id="structs">
+Structs
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="ECCLibrary.CookedCreatureHandler.CookedAndCuredPrefabs.html">CookedCreatureHandler.CookedAndCuredPrefabs</a></dt>
+      <dd><p>Holds both the cooked and cured version of the creature.</p>
+</dd>
+    </dl>
+    <h3 id="enums">
+Enums
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="ECCLibrary.ECCStringComparison.html">ECCStringComparison</a></dt>
+      <dd><p>Enum which is solely used for ECCHelper methods.</p>
+</dd>
+    </dl>
+
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+        
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+
+    <footer class="border-top">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
