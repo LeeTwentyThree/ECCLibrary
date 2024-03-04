@@ -8,7 +8,7 @@ namespace ECCLibrary;
 public static class CreatureDataUtils
 {
     /// <summary>
-    /// Creates an instance of the <see cref="LiveMixinData"/> Scriptable Object.
+    /// Creates an instance of the <see cref="LiveMixinData"/> ScriptableObject.
     /// </summary>
     /// <param name="maxHealth"></param>
     /// <param name="weldable"></param>
