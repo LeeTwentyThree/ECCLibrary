@@ -39,6 +39,7 @@ jobs:
       with:
         # Upload entire repository
         path: 'ECCLibrary/docfx_project/_site'
+        publish_branch: gh-pages
     - name: Deploy to GitHub Pages
       id: deployment
       uses: actions/deploy-pages@v4
