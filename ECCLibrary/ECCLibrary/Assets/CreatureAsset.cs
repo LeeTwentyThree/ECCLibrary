@@ -302,9 +302,9 @@ public abstract class CreatureAsset
         else
         {
             ccs.Creature = prefab.AddComponent(Template.CreatureComponentType) as Creature;
-            ccs.Creature.Aggression = new CreatureTrait(0f, Template.TraitsData.AggressionDecreaseRate);
-            ccs.Creature.Hunger = new CreatureTrait(0f, -Template.TraitsData.HungerIncreaseRate);
-            ccs.Creature.Scared = new CreatureTrait(0f, Template.TraitsData.ScaredDecreaseRate);
+            ccs.Creature.Aggression = new CreatureTrait(0f, Template.TraitsData.aggressionDecreaseRate);
+            ccs.Creature.Hunger = new CreatureTrait(0f, -Template.TraitsData.hungerIncreaseRate);
+            ccs.Creature.Scared = new CreatureTrait(0f, Template.TraitsData.scaredDecreaseRate);
             ccs.Creature.liveMixin = ccs.LiveMixin;
             ccs.Creature.traitsAnimator = ccs.Animator;
             ccs.Creature.sizeDistribution = Template.SizeDistribution;
