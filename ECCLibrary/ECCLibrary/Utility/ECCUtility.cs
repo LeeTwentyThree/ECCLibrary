@@ -118,7 +118,7 @@ public static class ECCUtility
 public static class GameObjectExtensions
 {
     /// <summary>
-    /// Find a GameObject in this object's hiearchy, by name.
+    /// Find a GameObject in this object's hierarchy, by name.
     /// </summary>
     /// <param name="gameObject"></param>
     /// <param name="byName"></param>
@@ -135,7 +135,7 @@ public static class GameObjectExtensions
 public static class TransformExtensions
 {
     /// <summary>
-    /// Find a GameObject in this object's hiearchy, by name.
+    /// Find a GameObject in this object's hierarchy, by name.
     /// </summary>
     /// <param name="transform"></param>
     /// <param name="byName"></param>
