@@ -1,4 +1,5 @@
-﻿using ECCLibrary.Data;
+﻿using System.Reflection;
+using ECCLibrary.Data;
 using Ingredient = CraftData.Ingredient;
 
 namespace ECCLibrary;
@@ -35,13 +36,16 @@ public static class CookedCreatureHandler
     /// <param name="curedSprite">Icon of the cured fish item.</param>
     /// <param name="cookedData">Food values of the cooked, which will automatically determine the cured values.</param>
     /// <param name="vfxFabricatingSettings">Fabricator settings. If not assigned, automatic values will be determined. Do NOT rely on those being perfect.</param>
+    /// <param name="sourceAssembly">The <see cref="Assembly"/> that adds these prefabs to the game. If null, will resolve to whichever Assembly this method was called by.</param>
     public static CookedAndCuredPrefabs RegisterAllCreatureFood(CreatureAsset creature,
         string cookedName, string cookedDescription, Sprite cookedSprite,
         string curedName, string curedDescription, Sprite curedSprite,
-        EdibleData cookedData, VFXFabricatingData vfxFabricatingSettings = default)
+        EdibleData cookedData, VFXFabricatingData vfxFabricatingSettings = default, Assembly sourceAssembly = null)
     {
-        var cooked = RegisterCookedFish(creature, cookedName, cookedDescription, cookedData, vfxFabricatingSettings).WithIcon(cookedSprite);
-        var cured = RegisterCuredFish(creature, curedName, curedDescription, cookedData.foodAmount, vfxFabricatingSettings).WithIcon(curedSprite);
+        var creatureItemAssembly = sourceAssembly != null ? sourceAssembly : Assembly.GetCallingAssembly();
+        
+        var cooked = RegisterCookedFish(creature, cookedName, cookedDescription, cookedData, vfxFabricatingSettings, creatureItemAssembly).WithIcon(cookedSprite);
+        var cured = RegisterCuredFish(creature, curedName, curedDescription, cookedData.foodAmount, vfxFabricatingSettings, creatureItemAssembly).WithIcon(curedSprite);
 
         KnownTechHandler.SetAnalysisTechEntry(
             creature.TechType,
@@ -65,14 +69,17 @@ public static class CookedCreatureHandler
     /// <param name="description">Description of the cooked fish item.</param>
     /// <param name="cookedData">Food values.</param>
     /// <param name="vfxFabricatingSettings">Fabricator settings. If not assigned, automatic values will be determined. Do NOT rely on those being perfect.</param>
-    public static PrefabInfo RegisterCookedFish(CreatureAsset creature, string name, string description, EdibleData cookedData, VFXFabricatingData vfxFabricatingSettings = default)
+    /// <param name="ownerAssembly">The <see cref="Assembly"/> that adds these prefabs to the game. If null, will resolve to whichever Assembly this method was called by.</param>
+    public static PrefabInfo RegisterCookedFish(CreatureAsset creature, string name, string description, EdibleData cookedData, VFXFabricatingData vfxFabricatingSettings = default, Assembly ownerAssembly = null)
     {
+        var creatureItemAssembly = ownerAssembly != null ? ownerAssembly : Assembly.GetCallingAssembly();
+
         if (creature.Template == null)
         {
             ECCPlugin.logger.LogError("Attempting to call RegisterCookedFish with a creature that has not been registered yet.");
             return default;
         }
-        var info = PrefabInfo.WithTechType($"Cooked{creature.ClassID}", name, description, unlockAtStart: false);
+        var info = PrefabInfo.WithTechType($"Cooked{creature.ClassID}", name, description, "English", false, creatureItemAssembly);
         RegisterEdibleVariant(
             info,
             creature.Template.Model,
@@ -93,14 +100,17 @@ public static class CookedCreatureHandler
     /// <param name="description">Description of the cured fish item.</param>
     /// <param name="foodValue">Food value of the food.</param>
     /// <param name="vfxFabricatingSettings">Fabricator settings. If not assigned, automatic values will be determined. Do NOT rely on those being perfect.</param>
-    public static PrefabInfo RegisterCuredFish(CreatureAsset creature, string name, string description, float foodValue, VFXFabricatingData vfxFabricatingSettings = default)
+    /// <param name="ownerAssembly">The <see cref="Assembly"/> that adds these prefabs to the game. If null, will resolve to whichever Assembly this method was called by.</param>
+    public static PrefabInfo RegisterCuredFish(CreatureAsset creature, string name, string description, float foodValue, VFXFabricatingData vfxFabricatingSettings = default, Assembly ownerAssembly = null)
     {
+        var creatureItemAssembly = ownerAssembly != null ? ownerAssembly : Assembly.GetCallingAssembly();
+
         if (creature.Template == null)
         {
             ECCPlugin.logger.LogError("Attempting to call RegisterCuredFish with a creature that has not been registered yet.");
             return default;
         }
-        var info = PrefabInfo.WithTechType($"Cured{creature.ClassID}", name, description, unlockAtStart: false);
+        var info = PrefabInfo.WithTechType($"Cured{creature.ClassID}", name, description, "English", false, creatureItemAssembly);
         RegisterEdibleVariant(
             info,
             creature.Template.Model,
