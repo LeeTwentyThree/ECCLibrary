@@ -1,4 +1,5 @@
-﻿using ECCLibrary.Data;
+﻿#if SUBNAUTICA
+using ECCLibrary.Data;
 
 namespace ECCLibrary;
 
@@ -57,3 +58,4 @@ internal static class SoundEvents
         }
     }
 }
+#endif

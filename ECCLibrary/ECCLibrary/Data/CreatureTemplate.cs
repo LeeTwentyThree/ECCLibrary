@@ -277,8 +277,15 @@ public sealed class CreatureTemplate
         return this;
     }
 
+#if SUBNAUTICA
     /// <summary>
     /// Pickup sounds of the item.
     /// </summary>
     public ItemSoundsType ItemSoundsType { get; set; } = ItemSoundsType.Fish;
+#elif BELOWZERO
+    /// <summary>
+    /// Pickup sounds of the item.
+    /// </summary>
+    public TechData.SoundType ItemSoundsType { get; set; } = TechData.SoundType.Fish;
+#endif
 }

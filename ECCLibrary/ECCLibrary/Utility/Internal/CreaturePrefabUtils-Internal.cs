@@ -118,7 +118,11 @@ public static partial class CreaturePrefabUtils
     {
         var component = creature.EnsureComponent<FleeWhenScared>();
         component.creatureFear = fear;
+#if SUBNAUTICA
         component.exhausted = new CreatureTrait(0f, 0.05f);
+#elif BELOWZERO
+        component.exhausted = new CreatureTrait {falloff = 0.05f};
+#endif
         component.evaluatePriority = data.evaluatePriority;
         component.swimVelocity = data.swimVelocity;
         component.swimInterval = data.swimInterval;
@@ -209,7 +213,11 @@ public static partial class CreaturePrefabUtils
         component.attackPause = data.attackPause;
         component.maxDistToLeash = data.maxDistToLeash;
         component.swimVelocity = data.swimVelocity;
-        component.aggressiveToNoise = new CreatureTrait(0, data.aggressionFalloff);
+#if SUBNAUTICA
+        component.aggressiveToNoise = new CreatureTrait(0f, data.aggressionFalloff);
+#elif BELOWZERO
+        component.aggressiveToNoise = new CreatureTrait { falloff = data.aggressionFalloff };
+#endif
         return component;
     }
 

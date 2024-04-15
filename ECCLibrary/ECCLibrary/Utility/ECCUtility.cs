@@ -71,6 +71,7 @@ public static class ECCUtility
         }
     }
 
+#if SUBNAUTICA
     /// <summary>
     /// Converts a <see cref="Atlas.Sprite"/> to a <see cref="Sprite"/>.
     /// </summary>
@@ -80,6 +81,7 @@ public static class ECCUtility
         var tex = sprite.texture;
         return Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), Vector2.one * 0.5f);
     }
+#endif
 
     /// <summary>
     /// Creates an FMODAsset with the given parameters.

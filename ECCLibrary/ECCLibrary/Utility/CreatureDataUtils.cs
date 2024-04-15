@@ -51,14 +51,19 @@ public static class CreatureDataUtils
     /// </summary>
     /// <param name="techType"></param>
     /// <param name="soundType"></param>
+#if SUBNAUTICA
     public static void SetItemSounds(TechType techType, ItemSoundsType soundType)
+#elif BELOWZERO
+    public static void SetItemSounds(TechType techType, TechData.SoundType soundType)
+#endif
     {
-        string pickupSound = SoundEvents.GetPickupSoundEvent(soundType);
-        string dropSound = SoundEvents.GetDropSoundEvent(soundType);
-        string eatSound = SoundEvents.GetEatSoundEvent(soundType);
-        CraftData.pickupSoundList.Add(techType, pickupSound);
-        CraftData.dropSoundList.Add(techType, dropSound);
-        CraftData.useEatSound.Add(techType, eatSound);
+#if SUBNAUTICA
+        CraftData.pickupSoundList.Add(techType, SoundEvents.GetPickupSoundEvent(soundType));
+        CraftData.dropSoundList.Add(techType, SoundEvents.GetDropSoundEvent(soundType));
+        CraftData.useEatSound.Add(techType, SoundEvents.GetEatSoundEvent(soundType));
+#elif BELOWZERO
+        CraftDataHandler.SetSoundType(techType, soundType);
+#endif
     }
 
     /// <summary>

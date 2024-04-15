@@ -147,6 +147,14 @@ public abstract class CreatureAsset
         yield return ModifyPrefab(prefab, components);
 
         ApplyMaterials(prefab);
+        
+#if BELOWZERO
+        foreach (var action in prefab.GetComponents<CreatureAction>())
+        {
+            action.creature = components.Creature;
+            action.swimBehaviour = components.SwimBehaviour;
+        }
+#endif
 
         gameObject.Set(prefab);
         yield break;
@@ -286,12 +294,14 @@ public abstract class CreatureAsset
         ccs.LiveMixin = CreaturePrefabUtils.AddLiveMixin(prefab, lmd);
 
         // kharaa
-
+        
+#if SUBNAUTICA
         if (Template.CanBeInfected)
         {
             ccs.InfectedMixin = prefab.AddComponent<InfectedMixin>();
             ccs.InfectedMixin.renderers = prefab.GetComponentsInChildren<Renderer>(true);
         }
+#endif
 
         // main 'creature' component
 
@@ -302,6 +312,7 @@ public abstract class CreatureAsset
         else
         {
             ccs.Creature = prefab.AddComponent(Template.CreatureComponentType) as Creature;
+#if SUBNAUTICA
             ccs.Creature.Aggression = new CreatureTrait(0f, Template.TraitsData.aggressionDecreaseRate);
             ccs.Creature.Hunger = new CreatureTrait(0f, -Template.TraitsData.hungerIncreaseRate);
             ccs.Creature.Scared = new CreatureTrait(0f, Template.TraitsData.scaredDecreaseRate);
@@ -309,6 +320,15 @@ public abstract class CreatureAsset
             ccs.Creature.traitsAnimator = ccs.Animator;
             ccs.Creature.sizeDistribution = Template.SizeDistribution;
             ccs.Creature.eyeFOV = Template.EyeFOV;
+#elif BELOWZERO
+            ccs.Creature.Aggression = new AggressionCreatureTrait { falloff = Template.TraitsData.aggressionDecreaseRate };
+            ccs.Creature.Hunger = new CreatureTrait { falloff = -Template.TraitsData.hungerIncreaseRate };
+            ccs.Creature.Scared = new CreatureTrait { falloff = Template.TraitsData.scaredDecreaseRate };
+            ccs.Creature.liveMixin = ccs.LiveMixin;
+            ccs.Creature.traitsAnimator = ccs.Animator;
+            ccs.Creature.sizeDistribution = Template.SizeDistribution;
+            ccs.Creature.eyeFOV = Template.EyeFOV;
+#endif
         }
 
         // eating

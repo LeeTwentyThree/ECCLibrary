@@ -107,7 +107,9 @@ public static partial class CreaturePrefabUtils
         component.maxRangeScalar = data.maxRangeScalar;
         component.maxSearchRings = data.maxSearchRings;
         component.ignoreSameKind = data.ignoreSameKind;
+#if SUBNAUTICA
         component.targetShouldBeInfected = data.targetShouldBeInfected;
+#endif
         component.minimumVelocity = data.minimumVelocity;
         component.hungerThreshold = data.hungerThreshold;
         return component;

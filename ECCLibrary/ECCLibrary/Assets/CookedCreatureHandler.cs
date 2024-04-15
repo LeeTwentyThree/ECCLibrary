@@ -1,6 +1,8 @@
 ﻿using System.Reflection;
 using ECCLibrary.Data;
+# if SUBNAUTICA
 using Ingredient = CraftData.Ingredient;
+#endif
 
 namespace ECCLibrary;
 
@@ -84,9 +86,13 @@ public static class CookedCreatureHandler
             info,
             creature.Template.Model,
             cookedData,
-            new RecipeData(new Ingredient(creature.TechType)),
+            new RecipeData(new Ingredient(creature.TechType, 1)),
             new string[] { "Survival", "CookedFood" },
+#if SUBNAUTICA
             TechCategory.CookedFood,
+#elif BELOWZERO
+            TechCategory.FoodAndDrinks,
+#endif
             vfxFabricatingSettings
         );
         return info;
@@ -115,9 +121,13 @@ public static class CookedCreatureHandler
             info,
             creature.Template.Model,
             new EdibleData(foodValue, -2, false),
-            new RecipeData(new Ingredient(creature.TechType), new Ingredient(TechType.Salt)),
+            new RecipeData(new Ingredient(creature.TechType, 1), new Ingredient(TechType.Salt, 1)),
             new string[] { "Survival", "CuredFood" },
-            TechCategory.CuredFood,
+#if SUBNAUTICA
+            TechCategory.CookedFood,
+#elif BELOWZERO
+            TechCategory.FoodAndDrinks,
+#endif
             vfxFabricatingSettings
         );
         return info;

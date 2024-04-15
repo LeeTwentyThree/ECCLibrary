@@ -6,7 +6,13 @@ internal static class ObjectReferences
 
     public static IEnumerator SetReferences()
     {
-        var task = CraftData.GetPrefabForTechTypeAsync(TechType.Peeper);
+        TechType creatureReference;
+#if SUBNAUTICA
+        creatureReference = TechType.Peeper;
+#elif BELOWZERO
+        creatureReference = TechType.ArcticPeeper;
+#endif
+        var task = CraftData.GetPrefabForTechTypeAsync(creatureReference);
         yield return task;
         var peeper = task.GetResult();
         var lm = peeper.GetComponent<LiveMixin>().data;

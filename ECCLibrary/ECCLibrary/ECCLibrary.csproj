@@ -10,8 +10,17 @@
 		<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
 		<LangVersion>10.0</LangVersion>
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
-		<Configurations>BZ;SN1</Configurations>
+		<Configurations>SN1;BZ</Configurations>
 		<Platforms>AnyCPU</Platforms>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'SN1|AnyCPU'">
+		<OutputPath>bin\SN1\</OutputPath>
+		<DefineConstants>SUBNAUTICA</DefineConstants>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'BZ|AnyCPU'">
+		<OutputPath>bin\BZ\</OutputPath>
+		<DefineConstants>BELOWZERO</DefineConstants>
 	</PropertyGroup>
 
 	<!--Defines the PluginsDir property for use in the Post-Build event-->
@@ -20,11 +29,11 @@
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'SN1|AnyCPU'">
 		<OutputPath>bin\SN1\</OutputPath>
-		<DefineConstants>SUBNAUTICA;SUBNAUTICA_STABLE</DefineConstants>
+		<DefineConstants>SUBNAUTICA</DefineConstants>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'BZ|AnyCPU'">
 		<OutputPath>bin\BZ\</OutputPath>
-		<DefineConstants>BELOWZERO;BELOWZERO_STABLE</DefineConstants>
+		<DefineConstants>BELOWZERO</DefineConstants>
 	</PropertyGroup>
 
 	<!--Remove unwanted global usings that hinder development (System) make it impossible to compile (System.Net.Http)-->
@@ -36,9 +45,17 @@
 	<!--Import NuGet packages (may not function properly if the nuget.config file is removed!)-->
 	<ItemGroup>
 		<PackageReference Include="BepInEx.Core" Version="5.4.21" />
-		<PackageReference Include="Subnautica.GameLibs" Version="71288.0.0-r.0" />
 		<PackageReference Include="Unity.InputSystem" Version="1.5.0" />
 		<PackageReference Include="UnityEngine.Modules" Version="2019.4.36" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(Configuration)|$(Platform)' == 'SN1|AnyCPU'">
+		<PackageReference Include="Subnautica.GameLibs" Version="71288.0.0-r.0" />
 		<PackageReference Include="Subnautica.Nautilus" Version="1.*-*" PrivateAssets="all" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(Configuration)|$(Platform)' == 'BZ|AnyCPU'">
+		<PackageReference Include="Subnautica.BelowZero.GameLibs" Version="49371.0.0.1-r.0" />
+		<PackageReference Include="SubnauticaZero.Nautilus" Version="1.*-*" PrivateAssets="all" />
 	</ItemGroup>
 </Project>
