@@ -203,6 +203,7 @@ public abstract class CreatureAsset
 
         ccs.SkyApplier = prefab.EnsureComponent<SkyApplier>();
         ccs.SkyApplier.renderers = prefab.GetComponentsInChildren<Renderer>(true);
+        ccs.SkyApplier.dynamic = true;
 
         if (Template.EcoTargetType != EcoTargetType.None)
         {
