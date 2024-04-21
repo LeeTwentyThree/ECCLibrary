@@ -2,7 +2,7 @@
 
 ## Eel's Creature Creator
 
-ECCLibrary is a modding library for Subnautica that allows you to add fleshed-out creatures to the game without needing to reinvent the wheel each time, saving you hundreds of lines of code and hours of research.
+ECCLibrary is a modding library for Subnautica and Subnautica: Below Zero that allows you to add fleshed-out creatures to the game without needing to reinvent the wheel each time, saving you hundreds of lines of code and hours of research.
 
 ECCLibrary 2.0 is a complete rewrite of the library, created in response to the "modpocalypse" update.
 The [old version of ECCLibrary](https://github.com/LeeTwentyThree/ECCLibrary-Legacy) is no longer supported.
