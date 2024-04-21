@@ -124,7 +124,7 @@ public static class CookedCreatureHandler
             new RecipeData(new Ingredient(creature.TechType, 1), new Ingredient(TechType.Salt, 1)),
             new string[] { "Survival", "CuredFood" },
 #if SUBNAUTICA
-            TechCategory.CookedFood,
+            TechCategory.CuredFood,
 #elif BELOWZERO
             TechCategory.FoodAndDrinks,
 #endif
