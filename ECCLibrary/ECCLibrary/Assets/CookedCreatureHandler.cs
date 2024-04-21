@@ -159,6 +159,7 @@ public static class CookedCreatureHandler
             prefab.EnsureComponent<WorldForces>();
             prefab.EnsureComponent<SkyApplier>();
             prefab.EnsureComponent<EcoTarget>().type = EcoTargetType.DeadMeat;
+            MaterialUtils.ApplySNShaders(prefab);
             gameObject.Set(prefab);
             yield break;
         }
