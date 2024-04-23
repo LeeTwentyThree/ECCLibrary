@@ -200,10 +200,36 @@ public abstract class CreatureAsset
 
         ccs.EntityTag = prefab.EnsureComponent<EntityTag>();
         ccs.EntityTag.slotType = EntitySlot.Type.Creature;
-
-        ccs.SkyApplier = prefab.EnsureComponent<SkyApplier>();
-        ccs.SkyApplier.renderers = prefab.GetComponentsInChildren<Renderer>(true);
-        ccs.SkyApplier.dynamic = true;
+        
+        // sky applier
+        
+        if (Template.PickupableFishData == null)
+        {
+            ccs.SkyApplier = prefab.EnsureComponent<SkyApplier>();
+            ccs.SkyApplier.renderers = prefab.GetComponentsInChildren<Renderer>(true);
+            ccs.SkyApplier.dynamic = true;
+        }
+        else
+        {
+            // main sky applier
+            
+            var worldModel = prefab.transform.Find(Template.PickupableFishData.WorldModelName)?.gameObject;
+            if (worldModel)
+            {
+                ccs.SkyApplier = worldModel.EnsureComponent<SkyApplier>();
+                ccs.SkyApplier.renderers = worldModel.GetComponentsInChildren<Renderer>(true);
+                ccs.SkyApplier.dynamic = true;
+            }
+            
+            // view model sky applier
+            var viewModel = prefab.transform.Find(Template.PickupableFishData.ViewModelName)?.gameObject;
+            if (viewModel)
+            {
+                var viewModelSkyApplier = viewModel.EnsureComponent<SkyApplier>();
+                viewModelSkyApplier.renderers = viewModel.GetComponentsInChildren<Renderer>(true);
+                viewModelSkyApplier.dynamic = true;
+            }
+        }
 
         if (Template.EcoTargetType != EcoTargetType.None)
         {
@@ -254,9 +280,21 @@ public abstract class CreatureAsset
 
         // animate by velocity
 
-        if (Template.AnimateByVelocityData != null)
+        // force animate by velocity for small aquarium-sized fish because they need it to avoid an NRE
+        
+        if (Template.AnimateByVelocityData != null || Template.PickupableFishData != null)
         {
-            ccs.AnimateByVelocity = CreaturePrefabUtils.AddAnimateByVelocity(prefab, Template.AnimateByVelocityData, ccs.Animator, ccs.Rigidbody, ccs.BehaviourLOD);
+            // small aquarium-sized fish should have the animate by velocity on 
+            
+            var animateByVelocityParent = prefab;
+            if (Template.PickupableFishData != null)
+            {
+                var worldModelTransform = prefab.transform.Find(Template.PickupableFishData.WorldModelName);
+                if (worldModelTransform != null) animateByVelocityParent = worldModelTransform.gameObject;
+            }
+
+            ccs.AnimateByVelocity = CreaturePrefabUtils.AddAnimateByVelocity(prefab, animateByVelocityParent,
+                Template.AnimateByVelocityData ?? new AnimateByVelocityData(3), ccs.Animator, ccs.Rigidbody, ccs.BehaviourLOD);
         }
 
         // basic swimming behaviour

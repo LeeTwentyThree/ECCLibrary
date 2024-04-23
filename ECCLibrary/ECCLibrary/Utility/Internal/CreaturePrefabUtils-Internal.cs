@@ -100,15 +100,15 @@ public static partial class CreaturePrefabUtils
         return component;
     }
 
-    internal static AnimateByVelocity AddAnimateByVelocity(GameObject creature, AnimateByVelocityData data, Animator animator, Rigidbody rigidbody, BehaviourLOD behaviourLOD)
+    internal static AnimateByVelocity AddAnimateByVelocity(GameObject creatureRoot, GameObject modelRoot, AnimateByVelocityData data, Animator animator, Rigidbody rigidbody, BehaviourLOD behaviourLOD)
     {
-        var component = creature.EnsureComponent<AnimateByVelocity>();
+        var component = modelRoot.EnsureComponent<AnimateByVelocity>();
         component.animator = animator;
         component.animationMoveMaxSpeed = data.animationMoveMaxSpeed;
         component.animationMaxPitch = data.animationMaxPitch;
         component.animationMaxTilt = data.animationMaxTilt;
         component.useStrafeAnimation = data.useStrafeAnimation;
-        component.rootGameObject = creature;
+        component.rootGameObject = creatureRoot;
         component.dampTime = data.dampTime;
         component.levelOfDetail = behaviourLOD;
         return component;
