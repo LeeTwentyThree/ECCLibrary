@@ -95,6 +95,7 @@ public static class CookedCreatureHandler
 #endif
             vfxFabricatingSettings
         );
+        CraftDataHandler.SetCookedVariant(creature.TechType, info.TechType);
         return info;
     }
 
@@ -154,12 +155,15 @@ public static class CookedCreatureHandler
             CreaturePrefabUtils.AddVFXFabricating(prefab, _vfxFabricatingData);
             prefab.EnsureComponent<Pickupable>();
             var rb = prefab.EnsureComponent<Rigidbody>();
+            rb.interpolation = RigidbodyInterpolation.Interpolate;
             rb.useGravity = false;
             rb.mass = 3;
             prefab.EnsureComponent<WorldForces>();
             prefab.EnsureComponent<SkyApplier>();
             prefab.EnsureComponent<EcoTarget>().type = EcoTargetType.DeadMeat;
             MaterialUtils.ApplySNShaders(prefab);
+            var animator = prefab.GetComponentInChildren<Animator>();
+            if (animator) animator.enabled = false;
             gameObject.Set(prefab);
             yield break;
         }
