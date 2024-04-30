@@ -34,7 +34,7 @@ One way to contribute is to submit bug reports and feature requests through the 
 
 If you would like to build the project, follow the steps below to set up the environment:
 1. Fork or clone the repository.
-2. ~~Open the `ECCLibrary.csproj` file with an appropriate IDE (Visual Studio, Rider, etc.,).~~
+2. Open the `ECCLibrary.sln` file with an appropriate IDE (Visual Studio, Rider, etc.,).
 3. ~~Locate the `GameDir.targets` file, open it, and replace the GameDir path with the correct path to your Subnautica folder.~~
 4. ~~Ensure the NuGet packages are loaded correctly. You may need to right click the Solution at the top of the Solution Explorer and choose `Restore NuGet Packages`.~~
 5. ~~Build the solution. A folder named ECCLibrary should be automatically placed in your BepInEx `plugins` folder.~~
