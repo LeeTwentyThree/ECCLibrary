@@ -150,6 +150,7 @@ public static class CookedCreatureHandler
         public override IEnumerator GetPrefabAsync(TaskResult<GameObject> gameObject)
         {
             GameObject prefab = Object.Instantiate(_model);
+            prefab.SetActive(false);
             PrefabUtils.AddBasicComponents(prefab, info.ClassID, info.TechType, LargeWorldEntity.CellLevel.Near);
             CreaturePrefabUtils.AddEatable(prefab, _edible);
             CreaturePrefabUtils.AddVFXFabricating(prefab, _vfxFabricatingData);
@@ -158,7 +159,7 @@ public static class CookedCreatureHandler
             rb.interpolation = RigidbodyInterpolation.Interpolate;
             rb.useGravity = false;
             rb.mass = 3;
-            prefab.EnsureComponent<WorldForces>();
+            prefab.EnsureComponent<WorldForces>().useRigidbody = rb;
             prefab.EnsureComponent<SkyApplier>();
             prefab.EnsureComponent<EcoTarget>().type = EcoTargetType.DeadMeat;
             MaterialUtils.ApplySNShaders(prefab);
