@@ -2,12 +2,14 @@
 
 namespace ECCLibrary.Examples;
 
+// This file shows one method of creature creation, which involves making a new class that inherits from the CreatureAsset class
 internal class ExampleCreature : CreatureAsset
 {
     public ExampleCreature(PrefabInfo prefabInfo) : base(prefabInfo)
     {
     }
 
+    // This is the most essential part of creating your creature. This is where you set all required and optional properties.
     protected override CreatureTemplate CreateTemplate()
     {
         var template = new CreatureTemplate(GetModel(), BehaviourType.SmallFish, EcoTargetType.SmallFish, 160f);
@@ -23,6 +25,9 @@ internal class ExampleCreature : CreatureAsset
         return template;
     }
 
+    // You can ignore the entire GetModel function if you're using a custom creature model.
+    // All this part of the code does is generate a model out of basic Unity shapes for the sake of the tutorial.
+    // For actual mods I would instead recommend using a GameObject loaded directly from an Asset Bundle, and applying any changes in ModifyPrefab.
     public static GameObject GetModel()
     {
         var model = new GameObject("CreatureModel");
@@ -60,12 +65,14 @@ internal class ExampleCreature : CreatureAsset
         return model;
     }
 
+    // This override is optional, but allows you to apply custom behavior onto your creature *object*. In this example I make it immune to heat damage. 
     protected override IEnumerator ModifyPrefab(GameObject prefab, CreatureComponents components)
     {
         CreaturePrefabUtils.AddDamageModifier(prefab, DamageType.Heat, 0f);
         yield break;
     }
 
+    // This override is useful for registering custom spawns. I have them commented out as to not disrupt gameplay for users
     protected override void PostRegister()
     {
         /* LootDistributionHandler.AddLootDistributionData(PrefabInfo.ClassID,
@@ -86,6 +93,7 @@ internal class ExampleCreature : CreatureAsset
     }
 }
 
+// It's optional but oftentimes nice to make a new class for your creature instances.
 internal class ExampleCreatureComponent : Creature
 {
     public override void Start()
