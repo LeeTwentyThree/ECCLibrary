@@ -10,7 +10,7 @@ ECC 2.0 converts the inheritance-forcing creature data system to a more robust o
 
 An example of a creature asset class in ECC 2.0 can be found [here](https://github.com/LeeTwentyThree/ECCLibrary/blob/main/ECCLibrary/ECCLibrary/Examples/ExampleCreature.cs). Note that this example is much more complicated than it needs to be because I construct the prefab entirely through code instead of exporting a model out of the Unity Editor.
 
-Creatures can also be created [without using inheritance](https://github.com/LeeTwentyThree/ECCLibrary/blob/main/ECCLibrary/ECCLibrary/Examples/ExamplePatcher.cs#L35-L55). This example is cleaner than the previous one because the prefab is defined in Unity.
+Creatures can also be created [without using inheritance](https://github.com/LeeTwentyThree/ECCLibrary/blob/main/ECCLibrary/ECCLibrary/Examples/ExamplePatcher.cs#L37-L57). This example is cleaner than the previous one because the prefab is defined in Unity.
 
 [De-Extinction for SN1 and Below Zero](https://github.com/LeeTwentyThree/SubnauticaMods/tree/main/DeExtinction) is also a great example with many fish ranging from small edible creatures to leviathans.
 - [Filtorb](https://github.com/LeeTwentyThree/SubnauticaMods/blob/main/DeExtinction/Prefabs/Creatures/FiltorbPrefab.cs)
