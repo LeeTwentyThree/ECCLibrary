@@ -76,20 +76,24 @@ public abstract class CreatureAsset
             return;
         }
 
-        if (!SanityChecking.TryRegisterTechTypeForFirstTime(TechType))
+        var registeringForFirstTime = SanityChecking.TryRegisterTechTypeForFirstTime(TechType); 
+        if (!registeringForFirstTime)
         {
-            ECCPlugin.logger.LogWarning($"Initializing multiple creatures with the same TechType ('{TechType}')! Some settings on the second CreatureAsset (Class ID: '{ClassID}') will override previously defined settings.");
+            ECCPlugin.logger.LogWarning($"Initializing multiple creatures with the same TechType ('{TechType}')! The new Creature Template of Class ID '{ClassID}' will NOT override any previously defined settings.");
         }
 
         // Assign patch-time data
 
-        if (Template.AcidImmune) CreatureDataUtils.SetAcidImmune(TechType);
-        if (Template.BioReactorCharge > 0f) CreatureDataUtils.SetBioreactorCharge(TechType, Template.BioReactorCharge);
-        if (Template.PickupableFishData != null && Template.PickupableFishData.CanBeHeld) CraftDataHandler.SetEquipmentType(TechType, EquipmentType.Hand);
-        CreatureDataUtils.SetBehaviorType(TechType, Template.BehaviourType);
-        CreatureDataUtils.SetItemSounds(TechType, Template.ItemSoundsType);
-        EntityInfo = new UWE.WorldEntityInfo { cellLevel = Template.CellLevel, classId = ClassID, localScale = Vector3.one, prefabZUp = false, slotType = EntitySlot.Type.Creature, techType = TechType };
-        WorldEntityDatabaseHandler.AddCustomInfo(ClassID, EntityInfo);
+        if (registeringForFirstTime)
+        {
+            if (Template.AcidImmune) CreatureDataUtils.SetAcidImmune(TechType);
+            if (Template.BioReactorCharge > 0f) CreatureDataUtils.SetBioreactorCharge(TechType, Template.BioReactorCharge);
+            if (Template.PickupableFishData != null && Template.PickupableFishData.CanBeHeld) CraftDataHandler.SetEquipmentType(TechType, EquipmentType.Hand);
+            CreatureDataUtils.SetBehaviorType(TechType, Template.BehaviourType);
+            CreatureDataUtils.SetItemSounds(TechType, Template.ItemSoundsType);
+            EntityInfo = new UWE.WorldEntityInfo { cellLevel = Template.CellLevel, classId = ClassID, localScale = Vector3.one, prefabZUp = false, slotType = EntitySlot.Type.Creature, techType = TechType };
+            WorldEntityDatabaseHandler.AddCustomInfo(ClassID, EntityInfo);
+        }
 
         // Register the Custom Prefab
 
