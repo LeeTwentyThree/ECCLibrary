@@ -157,7 +157,6 @@ public abstract class CreatureAsset
 #endif
 
         gameObject.Set(prefab);
-        yield break;
     }
     
     private IEnumerator ModifyPrefabAsync(GameObject prefab)
