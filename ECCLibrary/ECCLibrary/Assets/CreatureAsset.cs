@@ -78,7 +78,7 @@ public abstract class CreatureAsset
 
         if (!SanityChecking.TryRegisterTechTypeForFirstTime(TechType))
         {
-            ECCPlugin.logger.LogWarning($"Initializing multiple creatures with the same TechType ({TechType})! Some settings on the second CreatureAsset (Class ID: '{ClassID}') will override previously defined settings.");
+            ECCPlugin.logger.LogWarning($"Initializing multiple creatures with the same TechType ('{TechType}')! Some settings on the second CreatureAsset (Class ID: '{ClassID}') will override previously defined settings.");
         }
 
         // Assign patch-time data
