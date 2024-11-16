@@ -76,15 +76,15 @@ public abstract class CreatureAsset
             return;
         }
 
-        var registeringForFirstTime = SanityChecking.TryRegisterTechTypeForFirstTime(TechType); 
-        if (!registeringForFirstTime)
+        var registeringTechTypeForFirstTime = SanityChecking.TryRegisterTechTypeForFirstTime(TechType); 
+        if (!registeringTechTypeForFirstTime)
         {
             ECCPlugin.logger.LogWarning($"Initializing multiple creatures with the same TechType ('{TechType}')! The new Creature Template of Class ID '{ClassID}' will NOT override any previously defined settings.");
         }
 
         // Assign patch-time data
 
-        if (registeringForFirstTime)
+        if (registeringTechTypeForFirstTime)
         {
             if (Template.AcidImmune) CreatureDataUtils.SetAcidImmune(TechType);
             if (Template.BioReactorCharge > 0f) CreatureDataUtils.SetBioreactorCharge(TechType, Template.BioReactorCharge);
