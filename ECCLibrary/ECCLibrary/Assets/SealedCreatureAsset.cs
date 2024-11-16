@@ -13,7 +13,7 @@ public sealed class SealedCreatureAsset : CreatureAsset
     /// </summary>
     public Func<GameObject, CreatureComponents, IEnumerator> OnModifyPrefab { get; set; }
     /// <summary>
-    /// An optional call that, if overriden, no longer applies the MarmosetUBER shader automatically and allows for full control of the materials. Called AFTER <paramref name="OnModifyPrefab"/>!
+    /// An optional call that, if overriden, no longer applies the MarmosetUBER shader automatically and allows for full control of the materials. Called AFTER <see cref="OnModifyPrefab"/>!
     /// </summary>
     public Action<GameObject> OnApplyMaterials { get; set; }
 
