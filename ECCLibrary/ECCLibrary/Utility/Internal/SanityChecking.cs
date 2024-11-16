@@ -1,11 +1,11 @@
 ﻿namespace ECCLibrary;
 
-internal class SanityChecking
+internal static class SanityChecking
 {
-    private static HashSet<TechType> registeredTechTypes = new HashSet<TechType>();
+    private static readonly HashSet<TechType> RegisteredTechTypes = new();
 
-    public static bool CanRegisterTechTypeSafely(TechType techType)
+    public static bool TryRegisterTechTypeForFirstTime(TechType techType)
     {
-        return registeredTechTypes.Add(techType);
+        return RegisteredTechTypes.Add(techType);
     }
 }

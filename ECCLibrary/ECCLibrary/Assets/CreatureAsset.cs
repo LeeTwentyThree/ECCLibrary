@@ -76,10 +76,9 @@ public abstract class CreatureAsset
             return;
         }
 
-        if (!SanityChecking.CanRegisterTechTypeSafely(TechType))
+        if (!SanityChecking.TryRegisterTechTypeForFirstTime(TechType))
         {
-            ECCPlugin.logger.LogError("Initializing multiple creatures with the same TechType!");
-            return;
+            ECCPlugin.logger.LogWarning($"Initializing multiple creatures with the same TechType ({TechType})! Some settings on the second CreatureAsset (Class ID: '{ClassID}') will override previously defined settings.");
         }
 
         // Assign patch-time data
@@ -89,7 +88,7 @@ public abstract class CreatureAsset
         if (Template.PickupableFishData != null && Template.PickupableFishData.CanBeHeld) CraftDataHandler.SetEquipmentType(TechType, EquipmentType.Hand);
         CreatureDataUtils.SetBehaviorType(TechType, Template.BehaviourType);
         CreatureDataUtils.SetItemSounds(TechType, Template.ItemSoundsType);
-        EntityInfo = new UWE.WorldEntityInfo() { cellLevel = Template.CellLevel, classId = ClassID, localScale = Vector3.one, prefabZUp = false, slotType = EntitySlot.Type.Creature, techType = TechType };
+        EntityInfo = new UWE.WorldEntityInfo { cellLevel = Template.CellLevel, classId = ClassID, localScale = Vector3.one, prefabZUp = false, slotType = EntitySlot.Type.Creature, techType = TechType };
         WorldEntityDatabaseHandler.AddCustomInfo(ClassID, EntityInfo);
 
         // Register the Custom Prefab
@@ -479,7 +478,7 @@ public abstract class CreatureAsset
                     fpsModel.propModel = prefab.SearchChild(pickupableData.WorldModelName);
                     if (fpsModel.propModel == null)
                     {
-                        ECCPlugin.logger.LogError($"Error finding World model. No child of name {pickupableData.WorldModelName} exists in the hierarchy of item {TechType}.");
+                        ECCPlugin.logger.LogError($"Error finding World model. No child of name {pickupableData.WorldModelName} exists in the hierarchy of item {ClassID}.");
                     }
                     else
                     {
@@ -488,7 +487,7 @@ public abstract class CreatureAsset
                     fpsModel.viewModel = prefab.SearchChild(pickupableData.ViewModelName);
                     if (fpsModel.viewModel == null)
                     {
-                        ECCPlugin.logger.LogError($"Error finding View model. No child of name {pickupableData.ViewModelName} exists in the hierarchy of item {TechType}.");
+                        ECCPlugin.logger.LogError($"Error finding View model. No child of name {pickupableData.ViewModelName} exists in the hierarchy of item {ClassID}.");
                     }
                 }
             }
