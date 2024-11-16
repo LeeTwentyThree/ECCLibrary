@@ -134,7 +134,14 @@ public abstract class CreatureAsset
     {
         if (!ObjectReferences.Done)
         {
-            yield return ObjectReferences.SetReferences();
+            if (!ObjectReferences.StartedLoadingReferences)
+            {
+                yield return ObjectReferences.SetReferences();
+            }
+            else
+            {
+                yield return new WaitUntil(() => ObjectReferences.Done);
+            }
         }
 
         var prefab = Object.Instantiate(Template.Model);

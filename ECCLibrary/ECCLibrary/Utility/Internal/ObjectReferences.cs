@@ -3,9 +3,12 @@
 internal static class ObjectReferences
 {
     public static bool Done { get; private set; }
+    
+    public static bool StartedLoadingReferences { get; private set; }
 
     public static IEnumerator SetReferences()
     {
+        StartedLoadingReferences = true;
         TechType creatureReference;
 #if SUBNAUTICA
         creatureReference = TechType.Peeper;
