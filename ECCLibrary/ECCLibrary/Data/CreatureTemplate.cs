@@ -21,6 +21,21 @@ public sealed class CreatureTemplate
         EcoTargetType = ecoTargetType;
         LiveMixinData = CreatureDataUtils.CreateLiveMixinData(maxHealth);
     }
+    
+    /// <summary>
+    /// Creates a new basic creature template instance. Beyond the constructor, this instance also contains several properties that can be modified.
+    /// </summary>
+    /// <param name="modelDelegate">The function that returns the model that will be cloned to create the creature GameObject.</param>
+    /// <param name="behaviourType">Goes hand in hand with the EcoTargetType. Please note the Player is a SHARK! Determines very few creature behaviours/interactions.</param>
+    /// <param name="ecoTargetType">Goes hand in hand with the BehaviourType. Determines many interactions with creatures, specifically how this creature is "located" or "targeted" by other creatures</param>
+    /// <param name="maxHealth">Maximum health of this creature.</param>
+    public CreatureTemplate(Func<GameObject> modelDelegate, BehaviourType behaviourType, EcoTargetType ecoTargetType, float maxHealth)
+    {
+        ModelDelegate = modelDelegate;
+        BehaviourType = behaviourType;
+        EcoTargetType = ecoTargetType;
+        LiveMixinData = CreatureDataUtils.CreateLiveMixinData(maxHealth);
+    }
 
     /// <summary>
     /// Creates a new basic creature template instance based on an existing prefab. Beyond the constructor, this instance also contains several properties that can be modified.
