@@ -48,11 +48,34 @@ public sealed class CreatureTemplate
     internal TechType TechTypeToClone { get; }
 
     /// <summary>
-    /// <para>The model that is cloned to create the creature GameObject.</para>
-    /// <para>This object is NOT cached; for anything that isn't directly loaded from an asset bundle, it is recommended to use <see cref="UnityEngine.Object.DontDestroyOnLoad"/>.
-    /// If you want to be even safer, add the <see cref="SceneCleanerPreserve"/> to your object.</para>
+    /// <para>The model that is cloned to create the creature prefab.</para>
     /// </summary>
-    public GameObject Model { get; set; }
+    /// <remarks><para>If assigned a value, this will be prioritized over <see cref="ModelDelegate"/>.</para>
+    /// <para>For anything that isn't directly loaded from an asset bundle, it is recommended to use <see cref="UnityEngine.Object.DontDestroyOnLoad"/>.
+    /// If you want to be even safer, add the <see cref="SceneCleanerPreserve"/> to your object.</para></remarks>
+    public GameObject Model {
+        get
+        {
+            // If the cached model exists, return it
+            if (_model != null) return _model;
+            // Otherwise, get the model from the factory
+            _model = ModelDelegate.Invoke();
+            return _model;
+        }
+        set => _model = value;
+    }
+
+    private GameObject _model;
+
+    /// <summary>
+    /// <para>The function for getting the creature prefab model on-demand.</para>
+    /// </summary>
+    /// <remarks>
+    /// <para>Using this over the <see cref="Model"/> property can lead to faster load times,
+    /// because creature assets are not loaded at patch time. If <see cref="Model"/> is assigned a value, this property will be ignored.</para>
+    /// <para>With default implementation this is only called once for each creature, only when it is first spawned.
+    /// </para></remarks>
+    public Func<GameObject> ModelDelegate { get; set; }
 
     /// <summary>
     /// Physic material used for all colliders. If unassigned, will default to <see cref="ECCUtility.FrictionlessPhysicMaterial"/>.
