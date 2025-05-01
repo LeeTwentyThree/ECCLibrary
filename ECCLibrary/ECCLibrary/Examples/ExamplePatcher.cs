@@ -53,7 +53,10 @@ internal static class ExamplePatcher
             }.SetWaterParkCreatureData(new WaterParkCreatureDataStruct(0.1f, 1f, 1f, 1f, false, true, "ExampleShark", "ExampleShark")),
             ModifyExampleShark
         );
-        exampleShark.CustomPrefab.SetSpawns(new SpawnLocation(new Vector3(5, -800, 500)));
+        if (ECCPlugin.config.EnableExampleShark)
+        {
+            exampleShark.CustomPrefab.SetSpawns(new SpawnLocation(new Vector3(5, -800, 500)));
+        }
         exampleShark.Register();
     }
 
