@@ -1,4 +1,5 @@
-﻿using ECCLibrary.Data;
+﻿using System;
+using ECCLibrary.Data;
 
 namespace ECCLibrary;
 
@@ -121,6 +122,23 @@ public class TrailManagerBuilder
         foreach (var transform in allTransforms)
         {
             if (transform != RootSegment && transform.name.ToLower().Contains(keywordLower))
+            {
+                trailTransforms.Add(transform);
+            }
+        }
+        Trails = trailTransforms.ToArray();
+    }
+    
+    /// <summary>
+    /// Fills the Trails array with every child of the RootSegment (recursive) for which <paramref name="condition"/> is evaluated to true. Ordered from parent to child, top to bottom.
+    /// </summary>
+    public void SetTrailArrayToChildrenWithCondition(Func<Transform, bool> condition)
+    {
+        var allTransforms = RootSegment.GetComponentsInChildren<Transform>();
+        var trailTransforms = new List<Transform>();
+        foreach (var transform in allTransforms)
+        {
+            if (transform != RootSegment && condition.Invoke(transform))
             {
                 trailTransforms.Add(transform);
             }
