@@ -1,11 +1,12 @@
-﻿using UnityEngine.Serialization;
+﻿using System;
+using Random = UnityEngine.Random;
 
 namespace ECCLibrary.Mono;
 
 /// <summary>
 /// A basic component for creatures that plays idle sounds at random intervals, based on distance.
 /// </summary>
-public class CreatureVoice : MonoBehaviour
+public class CreatureVoice : MonoBehaviour, IScheduledUpdateBehaviour
 {
     /// <summary>
     /// The normal idle sound asset. Required.
@@ -48,11 +49,21 @@ public class CreatureVoice : MonoBehaviour
 
     private float _timeCanPlaySoundAgain;
     private bool _hasFarSound;
-    
+    private bool _schedulerRegistered;
+
+    private bool _creatureDead;
+
+    private bool _prepared;
+
     /// <summary>
     /// The time that any idle sound was last played. Useful for blocking unnecessary interruptions.
     /// </summary>
     public float TimeLastPlayed { get; private set; }
+    
+    /// <summary>
+    /// Implemented as part of <see cref="IScheduledUpdateBehaviour"/>. Not intended to be modified.
+    /// </summary>
+    public int scheduledUpdateIndex { get; set; }
 
     /// <summary>
     /// Stops any idle sounds from being played until the given number of seconds has passed.
@@ -65,14 +76,43 @@ public class CreatureVoice : MonoBehaviour
     
     private void Start()
     {
+        Prepare();
+    }
+
+    private void Prepare()
+    {
+        if (_prepared)
+            return;
+        
         _hasFarSound = farIdleSound != null;
         if (!playSoundOnStart)
         {
             _timeCanPlaySoundAgain = Time.time + Random.Range(minInterval, maxInterval);
         }
+
+        _prepared = true;
     }
 
-    private void Update()
+    private void OnEnable()
+    {
+        Prepare();
+        if (!_creatureDead && !_schedulerRegistered)
+        {
+            UpdateSchedulerUtils.Register(this);
+            _schedulerRegistered = true;
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (_schedulerRegistered)
+        {
+            UpdateSchedulerUtils.Deregister(this);
+            _schedulerRegistered = false;
+        }
+}
+
+    void IScheduledUpdateBehaviour.ScheduledUpdate()
     {
         if (Time.time < _timeCanPlaySoundAgain) return;
         
@@ -82,6 +122,11 @@ public class CreatureVoice : MonoBehaviour
 
     private void PlayIdleSound()
     {
+        if (!_prepared)
+        {
+            ECCPlugin.logger.LogError(this + " is not ready to play audio!");
+        }
+        
         if (_hasFarSound && Vector3.Distance(MainCamera.camera.transform.position, transform.position) >= farThreshold)
         {
             emitter.SetAsset(farIdleSound);
@@ -96,5 +141,21 @@ public class CreatureVoice : MonoBehaviour
             animator.SetTrigger(animatorTriggerParam);
         }
         TimeLastPlayed = Time.time;
+    }
+
+    string IManagedBehaviour.GetProfileTag()
+    {
+        return "ECCLibrary:CreatureVoice";
+    }
+
+    // This is a Unity message called by Subnautica's LiveMixin class
+    private void OnKill()
+    {
+        _creatureDead = true;
+        if (_schedulerRegistered)
+        {
+            UpdateSchedulerUtils.Deregister(this);
+            _schedulerRegistered = false;
+        }
     }
 }
