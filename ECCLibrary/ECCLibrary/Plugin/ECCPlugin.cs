@@ -3,7 +3,7 @@
 namespace ECCLibrary;
 
 [BepInPlugin(PluginInfo.GUID, PluginInfo.Name, PluginInfo.Version)]
-[BepInDependency("com.snmodding.nautilus")]
+[BepInDependency("com.snmodding.nautilus", "1.0.0.42")]
 internal class ECCPlugin : BaseUnityPlugin
 {
     public static ECCConfig config = OptionsPanelHandler.RegisterModOptions<ECCConfig>();

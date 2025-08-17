@@ -1,8 +1,5 @@
 ﻿using System.Reflection;
 using ECCLibrary.Data;
-# if SUBNAUTICA
-using Ingredient = CraftData.Ingredient;
-#endif
 
 namespace ECCLibrary;
 

@@ -58,9 +58,9 @@ public static class CreatureDataUtils
 #endif
     {
 #if SUBNAUTICA
-        CraftData.pickupSoundList.Add(techType, SoundEvents.GetPickupSoundEvent(soundType));
-        CraftData.dropSoundList.Add(techType, SoundEvents.GetDropSoundEvent(soundType));
-        CraftData.useEatSound.Add(techType, SoundEvents.GetEatSoundEvent(soundType));
+        CraftDataHandler.SetPickupSound(techType, SoundEvents.GetPickupSoundEvent(soundType));
+        CraftDataHandler.SetDropSound(techType, SoundEvents.GetDropSoundEvent(soundType));
+        CraftDataHandler.SetEatingSound(techType, SoundEvents.GetEatSoundEvent(soundType));
 #elif BELOWZERO
         CraftDataHandler.SetSoundType(techType, soundType);
 #endif

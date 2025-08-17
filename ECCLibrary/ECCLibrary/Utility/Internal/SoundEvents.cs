@@ -10,7 +10,7 @@ internal static class SoundEvents
         switch (soundType)
         {
             default:
-                return CraftData.defaultPickupSound;
+                return TechData.defaultSoundPickup;
             case ItemSoundsType.AirBladder:
                 return "event:/tools/airbladder/airbladder_pickup";
             case ItemSoundsType.Light:
@@ -37,7 +37,7 @@ internal static class SoundEvents
         switch (soundType)
         {
             default:
-                return CraftData.defaultDropSound;
+                return TechData.defaultSoundDrop;
             case ItemSoundsType.Floater:
                 return "event:/loot/floater/floater_place";
         }
@@ -48,7 +48,7 @@ internal static class SoundEvents
         switch (soundType)
         {
             default:
-                return CraftData.defaultEatSound;
+                return TechData.defaultSoundUse;
             case ItemSoundsType.Water:
                 return "event:/player/drink";
             case ItemSoundsType.FirstAidKit:
